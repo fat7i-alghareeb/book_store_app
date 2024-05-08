@@ -1,6 +1,7 @@
 # book_app
 
-A new Flutter project.
+I think this gonna be my best app yet 
+or i just hope
 
 ## Getting Started
 
