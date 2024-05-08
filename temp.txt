@@ -1,0 +1,73 @@
+       {
+            "kind": "books#volume",
+            "id": "ZiJMzwEACAAJ",
+            "etag": "lPAPhW+t9WI",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/ZiJMzwEACAAJ",
+            "volumeInfo": {
+                "title": "Harry Potter and the Sorcerer's Stone (Harry Potter, Book 1)",
+                "authors": [
+                    "J. K. Rowling"
+                ],
+                "publisher": "Scholastic Incorporated",
+                "publishedDate": "2023-05-02",
+                "description": "Harry Potter has never been the star of a Quidditch team, scoring points while riding a broom far above the ground. He knows no spells, has never helped to hatch a dragon, and has never worn a cloak of invisibility. All he knows is a miserable life with the Dursleys, his horrible aunt and uncle, and their abominable son, Dudley - a great big swollen spoiled bully. Harry's room is a tiny closet at the foot of the stairs, and he hasn't had a birthday party in eleven years. But all that is about to change when a mysterious letter arrives by owl messenger: a letter with an invitation to an incredible place that Harry - and anyone who reads about him - will find unforgettable.",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "1338878921"
+                    },
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9781338878929"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": false
+                },
+                "pageCount": 0,
+                "printType": "BOOK",
+                "categories": [
+                    "Juvenile Fiction"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=ZiJMzwEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=ZiJMzwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.nl/books?id=ZiJMzwEACAAJ&dq=Harry+Potter+and+the+Sorcerer%27s+Stone&hl=&cd=1&source=gbs_api",
+                "infoLink": "http://books.google.nl/books?id=ZiJMzwEACAAJ&dq=Harry+Potter+and+the+Sorcerer%27s+Stone&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/Harry_Potter_and_the_Sorcerer_s_Stone_Ha.html?hl=&id=ZiJMzwEACAAJ"
+            },
+            "saleInfo": {
+                "country": "NL",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "NL",
+                "viewability": "NO_PAGES",
+                "embeddable": false,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=ZiJMzwEACAAJ&hl=&source=gbs_api",
+                "accessViewStatus": "NONE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "Rescued from the outrageous neglect of his aunt and uncle, a young boy with a great destiny proves his worth while attending Hogwarts School for Witchcraft and Wizardry."
+            }
+        },
