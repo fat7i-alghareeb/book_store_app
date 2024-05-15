@@ -40,7 +40,10 @@ class BookCard extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(20, 0, 5, 15),
               child: SizedBox(
                 width: containerWidth * .4,
-                child: CustomBookImage(image: book.image!),
+                child: Hero(
+                  tag: book.bookId,
+                  child: CustomBookImage(image: book.image!),
+                ),
               ),
             ),
           ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import '../../../../../Core/domain/entities/book_entity.dart';
 import '../../../../../Core/shared/widgets/custom_book_image.dart';
@@ -22,7 +23,10 @@ class MainDetailsWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomBookImage(image: book.image!),
+          Hero(
+            tag: book.bookId,
+            child: CustomBookImage(image: book.image!),
+          ),
           const SizedBox(
             width: 20,
           ),

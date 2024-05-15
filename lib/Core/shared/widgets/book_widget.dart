@@ -19,8 +19,11 @@ class BookWidget extends StatelessWidget {
       children: [
         SizedBox(
           height: height * 0.7,
-          child: CustomBookImage(
-            image: book.image!,
+          child: Hero(
+            tag: book.bookId,
+            child: CustomBookImage(
+              image: book.image!,
+            ),
           ),
         ),
         Padding(
