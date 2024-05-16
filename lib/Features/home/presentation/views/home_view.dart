@@ -1,3 +1,4 @@
+import 'package:book_app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -5,6 +6,7 @@ import 'package:book_app/Core/utils/functions/setup_service_locator.dart';
 import 'package:book_app/Features/home/presentation/manger/featured_books_cubit/featured_books_cubit.dart';
 import 'package:book_app/Features/home/presentation/manger/newest_books_cubit/newest_books_cubit.dart';
 import 'package:book_app/Features/home/presentation/views/widgets/animated_clipper.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import '../../data/repos/home_repo_impl.dart';
 import 'widgets/home_body.dart';
 

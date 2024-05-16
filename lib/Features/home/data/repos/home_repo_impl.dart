@@ -2,26 +2,28 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
 import '../../../../Core/errors/failure.dart';
+import '../data_sources/home_local_data_source.dart';
 import '../data_sources/home_remote_data_source.dart';
 import '../../../../Core/domain/entities/book_entity.dart';
 import '../../../../Core/domain/repos/home_repo.dart';
 
 class HomeRepoImpl extends HomeRepo {
   final HomeRemoteDataSource homeRemoteDataSource;
-  // final HomeLocalDataSource homeLocalDataSource;
+  final HomeLocalDataSource homeLocalDataSource;
 
-  HomeRepoImpl({required this.homeRemoteDataSource});
+  HomeRepoImpl(
+      {required this.homeRemoteDataSource, required this.homeLocalDataSource});
   @override
   Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks(
       {int pageNumber = 0}) async {
     List<BookEntity> booksList;
     try {
-      // booksList = homeLocalDataSource.fetchFeaturedBooks(
-      //   pageNumber: pageNumber,
-      // );
-      // if (booksList.isNotEmpty) {
-      //   return right(booksList);
-      // }
+      booksList = homeLocalDataSource.fetchFeaturedBooks(
+        pageNumber: pageNumber,
+      );
+      if (booksList.isNotEmpty) {
+        return right(booksList);
+      }
       booksList =
           await homeRemoteDataSource.fetchFeaturedBooks(pageNumber: pageNumber);
       return right(booksList);
@@ -44,10 +46,10 @@ class HomeRepoImpl extends HomeRepo {
       {int pageNumber = 0}) async {
     List<BookEntity> books;
     try {
-      // books = homeLocalDataSource.fetchNewestBooks();
-      // if (books.isNotEmpty) {
-      //   return right(books);
-      // }
+      books = homeLocalDataSource.fetchNewestBooks();
+      if (books.isNotEmpty) {
+        return right(books);
+      }
       books = await homeRemoteDataSource.fetchNewestBooks();
       return right(books);
     } catch (e) {
