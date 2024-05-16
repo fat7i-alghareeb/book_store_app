@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
 import '../../../../../Core/domain/entities/book_entity.dart';
 import '../../../../../Core/shared/widgets/custom_book_image.dart';
 import '../../../../../Core/shared/widgets/rating_bar_widget.dart';

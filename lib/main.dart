@@ -5,13 +5,14 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'Core/themes.dart';
 import 'Core/domain/entities/book_entity.dart';
 import 'Core/utils/router/app_router.dart';
+import 'constants.dart';
 
 void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
   setupServiceLocator();
-  //await Hive.openBox<BookEntity>("kFeaturedBox");
-  // await Hive.openBox<BookEntity>(kNewestBox);
+  await Hive.openBox<BookEntity>(kFeaturedBox);
+  await Hive.openBox<BookEntity>(kNewestBox);
   //Bloc.observer = SimpleBlocObserver();
   runApp(MyApp());
   SystemChrome.setSystemUIOverlayStyle(
