@@ -8,13 +8,14 @@ class BookCardInfo extends StatelessWidget {
     required this.containerWidth,
     required this.height,
     required this.title,
-    required this.description,
+    required this.description, required this.rating,
   });
 
   final double containerWidth;
   final double height;
   final String title;
   final String description;
+  final double rating;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -55,7 +56,9 @@ class BookCardInfo extends StatelessWidget {
             ),
             SizedBox(
               width: containerWidth * .5,
-              child: const RatingBarWidget(),
+              child:  RatingBarWidget(
+                rating:rating ,
+              ),
             )
           ],
         ),

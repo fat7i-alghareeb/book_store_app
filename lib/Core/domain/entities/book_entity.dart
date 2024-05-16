@@ -14,7 +14,7 @@ class BookEntity {
   @HiveField(4)
   final num? price;
   @HiveField(5)
-  final num? rating;
+  final num rating;
   @HiveField(6)
   final String description;
   @HiveField(7)

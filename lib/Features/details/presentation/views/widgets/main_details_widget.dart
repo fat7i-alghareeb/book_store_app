@@ -43,7 +43,9 @@ class MainDetailsWidget extends StatelessWidget {
                   book.author,
                   style: Styles.textStyle14.copyWith(color: Colors.grey),
                 ),
-                const RatingBarWidget()
+                RatingBarWidget(
+                  rating: book.rating.toDouble() ,
+                )
               ],
             ),
           ),

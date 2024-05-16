@@ -34,6 +34,7 @@ class BookCard extends StatelessWidget {
                 height: height * .8,
                 title: book.title,
                 description: book.description,
+                rating: book.rating.toDouble(),
               ),
             ),
             Padding(
