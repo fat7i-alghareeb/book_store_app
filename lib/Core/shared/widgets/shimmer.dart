@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 class ShimmerWidget extends StatelessWidget {
   final List<double> paddingLTRB;
-  final double hight;
+  final double height;
   final double width;
   final double borderRadius;
   const ShimmerWidget({
     super.key,
     required this.paddingLTRB,
-    required this.hight,
-    required this.width,
+   required this.height,
+   required this.width,
     required this.borderRadius,
   });
 
@@ -23,7 +23,7 @@ class ShimmerWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(borderRadius),
           color: Colors.grey[600]?.withOpacity(0.7),
         ),
-        height: hight,
+        height: height,
         width: width,
       ),
     );

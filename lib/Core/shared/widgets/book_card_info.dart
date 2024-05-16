@@ -1,4 +1,5 @@
 import 'package:book_app/Core/shared/widgets/rating_bar_widget.dart';
+import 'package:book_app/constants.dart';
 import 'package:flutter/material.dart';
 import '../../utils/text_styles.dart';
 
@@ -8,7 +9,8 @@ class BookCardInfo extends StatelessWidget {
     required this.containerWidth,
     required this.height,
     required this.title,
-    required this.description, required this.rating,
+    required this.description,
+    required this.rating,
   });
 
   final double containerWidth;
@@ -22,7 +24,7 @@ class BookCardInfo extends StatelessWidget {
       width: containerWidth,
       height: height,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(kBorderRadius),
         color: Colors.white,
       ),
       child: Padding(
@@ -56,8 +58,8 @@ class BookCardInfo extends StatelessWidget {
             ),
             SizedBox(
               width: containerWidth * .5,
-              child:  RatingBarWidget(
-                rating:rating ,
+              child: RatingBarWidget(
+                rating: rating,
               ),
             )
           ],
