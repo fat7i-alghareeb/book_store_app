@@ -8,32 +8,35 @@ import 'recently_viewed_books_widget.dart';
 class HomeBody extends StatelessWidget {
   const HomeBody({
     super.key,
+    required this.controller,
   });
-
+  final AnimationController controller;
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CustomAppBar(),
-        FeaturedBooksWidget(),
-        Padding(
+        const CustomAppBar(),
+        FeaturedBooksWidget(
+          controller: controller,
+        ),
+        const Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Text(
             "Newest",
             style: Styles.textStyle24,
           ),
         ),
-        NewestBooksWidget(),
-        Padding(
+        const NewestBooksWidget(),
+        const Padding(
           padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
           child: Text(
             "Recently Viewed",
             style: Styles.textStyle24,
           ),
         ),
-        RecentlyViewedBooksWidget(),
-        SizedBox(
+        const RecentlyViewedBooksWidget(),
+        const SizedBox(
           height: 20,
         )
       ],

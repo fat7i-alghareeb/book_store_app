@@ -10,13 +10,15 @@ import 'swiper_widget.dart';
 class FeaturedBooksWidget extends StatelessWidget {
   const FeaturedBooksWidget({
     super.key,
+    required this.controller,
   });
-
+  final AnimationController controller;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FeaturedBooksCubit, FeaturedBooksState>(
       builder: (context, state) {
         if (state is FeaturedBooksSuccess) {
+          controller.forward();
           return Padding(
             padding: const EdgeInsets.only(top: 20, bottom: 10),
             child: SwiperWidget(

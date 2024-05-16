@@ -32,7 +32,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       parent: _clipperAnimationController,
       curve: Curves.decelerate,
     ));
-    _clipperAnimationController.forward();
   }
 
   @override
@@ -61,7 +60,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               clipperAnimation: _clipperAnimation,
               color: Theme.of(context).colorScheme.secondary.withOpacity(0.85),
             ),
-            const HomeBody(),
+             HomeBody(controller:_clipperAnimationController,),
           ],
         ),
       ),
