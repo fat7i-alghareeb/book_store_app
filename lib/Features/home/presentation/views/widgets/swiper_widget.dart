@@ -18,6 +18,7 @@ class SwiperWidget extends StatelessWidget {
     return SizedBox(
       height: height,
       child: Swiper(
+        index: 1,
         loop: false,
         viewportFraction: 0.45,
         scale: 0.6,

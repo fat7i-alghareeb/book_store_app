@@ -30,7 +30,11 @@ class _MainNavigatorState extends State<MainNavigator> {
   }
 
   void _onItemTapped(int selectedIndex) {
-    _pageController.jumpToPage(selectedIndex);
+    _pageController.animateToPage(
+      selectedIndex,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.ease,
+    );
   }
 
   @override
