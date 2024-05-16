@@ -1,5 +1,5 @@
-import 'package:book_app/Core/shared/widgets/rating_bar_widget.dart';
-import 'package:book_app/constants.dart';
+import 'rating_bar_widget.dart';
+import '../../../constants.dart';
 import 'package:flutter/material.dart';
 import '../../utils/text_styles.dart';
 

@@ -1,4 +1,4 @@
-import 'package:book_app/Core/utils/router/router_paths.dart';
+import '../../utils/router/router_paths.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

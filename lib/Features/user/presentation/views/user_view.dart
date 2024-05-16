@@ -1,6 +1,6 @@
-import 'package:book_app/Core/shared/widgets/book_card_list_view.dart';
-import 'package:book_app/Core/shared/widgets/books_list_view.dart';
-import 'package:book_app/Core/utils/text_styles.dart';
+import '../../../../Core/shared/widgets/book_card_list_view.dart';
+import '../../../../Core/shared/widgets/books_list_view.dart';
+import '../../../../Core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/profile_info.dart';

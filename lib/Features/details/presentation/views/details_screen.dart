@@ -1,5 +1,5 @@
-import 'package:book_app/Core/domain/entities/book_entity.dart';
-import 'package:book_app/Core/utils/text_styles.dart';
+import '../../../../Core/domain/entities/book_entity.dart';
+import '../../../../Core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'widgets/book_option_widget.dart';

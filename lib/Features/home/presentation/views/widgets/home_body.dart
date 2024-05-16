@@ -1,4 +1,4 @@
-import 'package:book_app/Features/home/presentation/views/widgets/custom_home_app_bar.dart';
+import 'custom_home_app_bar.dart';
 import 'package:flutter/material.dart';
 import '../../../../../Core/utils/text_styles.dart';
 import 'featured_books_widget.dart';

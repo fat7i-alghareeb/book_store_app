@@ -1,4 +1,4 @@
-import 'package:book_app/Core/shared/widgets/book_card.dart';
+import 'book_card.dart';
 import 'package:flutter/material.dart';
 
 import '../../domain/entities/book_entity.dart';

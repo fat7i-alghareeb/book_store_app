@@ -1,4 +1,4 @@
-import 'package:book_app/Features/home/data/models/book_model/book_model.dart';
+import '../models/book_model/book_model.dart';
 
 import '../../../../Core/utils/functions/save_books.dart';
 import '../../../../Core/utils/services/book_services.dart';

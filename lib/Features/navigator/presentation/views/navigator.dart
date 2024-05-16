@@ -1,6 +1,6 @@
-import 'package:book_app/Features/home/presentation/views/home_view.dart';
-import 'package:book_app/Features/navigator/presentation/views/widgets/custom%20bottom%20bar.dart/bottom_nav.dart';
-import 'package:book_app/Features/search/presentation/views/search_view.dart';
+import '../../../home/presentation/views/home_view.dart';
+import 'widgets/custom%20bottom%20bar.dart/bottom_nav.dart';
+import '../../../search/presentation/views/search_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../../user/presentation/views/user_view.dart';

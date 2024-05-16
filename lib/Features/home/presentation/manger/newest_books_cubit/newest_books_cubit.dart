@@ -1,4 +1,4 @@
-import 'package:book_app/Features/home/presentation/manger/newest_books_cubit/newest_books_state.dart';
+import 'newest_books_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../Core/domain/repos/home_repo.dart';

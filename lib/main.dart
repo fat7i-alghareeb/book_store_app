@@ -1,4 +1,4 @@
-import 'package:book_app/Core/utils/functions/setup_service_locator.dart';
+import 'Core/utils/functions/setup_service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -11,8 +11,8 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
   setupServiceLocator();
-  await Hive.openBox<BookEntity>(kFeaturedBox).then((value) => value.clear());
-  await Hive.openBox<BookEntity>(kNewestBox).then((value) => value.clear());
+  await Hive.openBox<BookEntity>(kFeaturedBox);
+  await Hive.openBox<BookEntity>(kNewestBox);
   //Bloc.observer = SimpleBlocObserver();
   runApp(MyApp());
   SystemChrome.setSystemUIOverlayStyle(
