@@ -20,7 +20,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
         endPoint: 'volumes?q=e&startIndex=${pageNumber * 10}');
     List<BookEntity> books =
         data.map((book) => BookModel.fromJson(book)).toList();
-    saveBooksData(books, kFeaturedBox);
+    saveBooksData(books,Constants.kFeaturedBox);
     return books;
   }
 
@@ -31,7 +31,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
             'volumes?q=a&langRestrict=en&orderBy=newest&startIndex=${pageNumber * 10}');
     List<BookEntity> books =
         data.map((book) => BookModel.fromJson(book)).toList();
-    saveBooksData(books, kNewestBox);
+    saveBooksData(books, Constants.kNewestBox);
     return books;
   }
 }

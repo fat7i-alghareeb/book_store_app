@@ -14,7 +14,7 @@ class HomeLocalDataSourceImpl extends HomeLocalDataSource {
     int startIndex = pageNumber * 10;
     int endIndex = (pageNumber + 1) * 10;
 
-    var box = Hive.box<BookEntity>(kFeaturedBox);
+    var box = Hive.box<BookEntity>(Constants.kFeaturedBox);
     int length = box.values.length;
     if (startIndex >= length || endIndex > length) {
       return [];
@@ -27,7 +27,7 @@ class HomeLocalDataSourceImpl extends HomeLocalDataSource {
     int startIndex = pageNumber * 10;
     int endIndex = (pageNumber + 1) * 10;
 
-    var box = Hive.box<BookEntity>(kNewestBox);
+    var box = Hive.box<BookEntity>(Constants.kNewestBox);
     int length = box.values.length;
     if (startIndex >= length || endIndex > length) {
       return [];

@@ -11,8 +11,8 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
   setupServiceLocator();
-  await Hive.openBox<BookEntity>(kFeaturedBox);
-  await Hive.openBox<BookEntity>(kNewestBox);
+  await Hive.openBox<BookEntity>(Constants.kFeaturedBox);
+  await Hive.openBox<BookEntity>(Constants.kNewestBox);
   //Bloc.observer = SimpleBlocObserver();
   runApp(MyApp());
   SystemChrome.setSystemUIOverlayStyle(

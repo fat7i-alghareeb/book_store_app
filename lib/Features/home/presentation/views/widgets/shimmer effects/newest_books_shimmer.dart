@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../../../Core/shared/widgets/shimmer.dart';
@@ -32,13 +31,13 @@ class NewestBooksShimmer extends StatelessWidget {
                       paddingLTRB: const [20, 0, 0, 0],
                       height: size.height * .21,
                       width: size.width * 0.8,
-                      borderRadius: kBorderRadius,
+                      borderRadius: Constants.kBorderRadius,
                     ),
                     ShimmerWidget(
                       paddingLTRB: const [30, 0, 0, 10],
                       height: size.height * .23,
                       width: (size.height * .23) * 2.6 / 4,
-                      borderRadius: kBorderRadius,
+                      borderRadius: Constants.kBorderRadius,
                     )
                   ],
                 ),

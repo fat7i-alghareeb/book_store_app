@@ -60,7 +60,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               clipperAnimation: _clipperAnimation,
               color: Theme.of(context).colorScheme.secondary.withOpacity(0.85),
             ),
-             HomeBody(controller:_clipperAnimationController,),
+            HomeBody(controller:_clipperAnimationController,),
           ],
         ),
       ),

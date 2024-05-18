@@ -15,7 +15,7 @@ class CustomBookImage extends StatelessWidget {
       child: Card(
         elevation: 5,
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(kBorderRadius),
+          borderRadius: BorderRadius.circular(Constants.kBorderRadius),
           child: CachedNetworkImage(
             imageUrl: image,
             fit: BoxFit.fill,

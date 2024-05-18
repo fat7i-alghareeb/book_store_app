@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../../../Core/shared/widgets/shimmer.dart';
@@ -46,7 +45,7 @@ class FeaturedBooksShimmer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ShimmerWidget(
-                borderRadius: kBorderRadius,
+                borderRadius: Constants.kBorderRadius,
                 height: size.height * .26,
                 width: (size.height * .26) * 2.6 / 4,
                 paddingLTRB: const [0, 0, 0, 00],
