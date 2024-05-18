@@ -26,7 +26,14 @@ class SwiperWidget extends StatelessWidget {
         duration: 800,
         autoplay: false,
         itemBuilder: (context, index) {
-          return InkWell(
+          if (index == books.length) {
+            return const Center(
+              child: CircularProgressIndicator(
+                color: Colors.amber,
+              ),
+            );
+          }
+          return GestureDetector(
             onTap: () {
               navigateToDetails(context, books[index]);
             },
