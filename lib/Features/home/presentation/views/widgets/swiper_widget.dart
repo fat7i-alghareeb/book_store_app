@@ -27,9 +27,6 @@ class SwiperWidget extends StatelessWidget {
         onIndexChanged: (index) async {
           if (index >= books.length - 2 && !isLoading) {
             isLoading = true;
-            print("fuck\n");
-            print(books.length);
-            print(Constants.pageNumber);
             await BlocProvider.of<FeaturedBooksCubit>(context)
                 .fetchFeaturedBooks(pageNumber: ++Constants.pageNumber);
             isLoading = false;
