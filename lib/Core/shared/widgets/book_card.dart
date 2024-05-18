@@ -19,7 +19,7 @@ class BookCard extends StatelessWidget {
     final double containerWidth = MediaQuery.of(context).size.width * .8;
     return Padding(
       padding: const EdgeInsets.only(top: 8.0),
-      child: InkWell(
+      child: GestureDetector(
         onTap: () {
           Navigator.pushNamed(context, KRouter.detailsScreen, arguments: book);
           HapticFeedback.heavyImpact();
