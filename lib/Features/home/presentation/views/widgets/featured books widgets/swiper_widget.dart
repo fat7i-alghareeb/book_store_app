@@ -23,12 +23,13 @@ class SwiperWidget extends StatelessWidget {
     return SizedBox(
       height: height,
       child: Swiper(
-        index: Constants.pageNumber * 10 + 1,
+        index: Constants.featuredBooksPageNumber * 10 + 1,
         onIndexChanged: (index) async {
           if (index >= books.length - 2 && !isLoading) {
             isLoading = true;
             await BlocProvider.of<FeaturedBooksCubit>(context)
-                .fetchFeaturedBooks(pageNumber: ++Constants.pageNumber)
+                .fetchFeaturedBooks(
+                    pageNumber: ++Constants.featuredBooksPageNumber)
                 .whenComplete(() => isLoading = false);
           }
         },

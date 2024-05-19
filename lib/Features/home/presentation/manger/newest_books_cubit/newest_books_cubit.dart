@@ -1,3 +1,4 @@
+import '../../../../../Core/domain/entities/book_entity.dart';
 import 'newest_books_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -7,13 +8,19 @@ class NewestBooksCubit extends Cubit<NewestBooksState> {
   NewestBooksCubit(this.homeRepo) : super(NewestBooksInitial());
 
   final HomeRepo homeRepo;
+  List<BookEntity> books = [];
 
   Future<void> fetchNewestBooks({int pageNumber = 0}) async {
-    emit(NewestBooksLoading());
+    pageNumber == 0
+        ? emit(NewestBooksLoading())
+        : emit(NewestBooksPaginationLoading());
     var result = await homeRepo.fetchNewestBooks(pageNumber: pageNumber);
     result.fold((failure) {
-      emit(NewestBooksFailure(failure.message));
+      pageNumber == 0
+          ? emit(NewestBooksFailure(failure.message))
+          : emit(NewestBooksPaginationFailure(failure.message));
     }, (books) {
+      this.books = books;
       emit(NewestBooksSuccess(books));
     });
   }
