@@ -3,10 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../Core/utils/functions/build_error_snack_bar.dart';
-import '../../manger/featured_books_cubit/featured_books_cubit.dart';
-import '../../manger/featured_books_cubit/featured_books_state.dart';
-import 'shimmer effects/featured_books_shimmer.dart';
+import '../../../../../../Core/utils/functions/build_error_snack_bar.dart';
+import '../../../manger/featured_books_cubit/featured_books_cubit.dart';
+import '../../../manger/featured_books_cubit/featured_books_state.dart';
+import '../shimmer effects/featured_books_shimmer.dart';
 import 'swiper_widget.dart';
 
 class FeaturedBooksWidget extends StatefulWidget {

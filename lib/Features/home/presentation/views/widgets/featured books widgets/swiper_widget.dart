@@ -3,9 +3,9 @@ import 'package:book_app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../Core/shared/widgets/book_widget.dart';
-import '../../../../../Core/domain/entities/book_entity.dart';
-import '../../../../../Core/utils/functions/details_navigator.dart';
+import '../../../../../../Core/shared/widgets/book_widget.dart';
+import '../../../../../../Core/domain/entities/book_entity.dart';
+import '../../../../../../Core/utils/functions/details_navigator.dart';
 
 class SwiperWidget extends StatelessWidget {
   final List<BookEntity> books;

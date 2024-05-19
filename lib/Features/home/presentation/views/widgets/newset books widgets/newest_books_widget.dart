@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../Core/shared/widgets/book_card_list_view.dart';
-import '../../manger/newest_books_cubit/newest_books_cubit.dart';
-import '../../manger/newest_books_cubit/newest_books_state.dart';
-import 'shimmer effects/newest_books_shimmer.dart';
+import '../../../../../../Core/shared/widgets/book_card_list_view.dart';
+import '../../../manger/newest_books_cubit/newest_books_cubit.dart';
+import '../../../manger/newest_books_cubit/newest_books_state.dart';
+import '../shimmer effects/newest_books_shimmer.dart';
 
 class NewestBooksWidget extends StatelessWidget {
   const NewestBooksWidget({
