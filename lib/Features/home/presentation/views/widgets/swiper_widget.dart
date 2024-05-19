@@ -28,8 +28,8 @@ class SwiperWidget extends StatelessWidget {
           if (index >= books.length - 2 && !isLoading) {
             isLoading = true;
             await BlocProvider.of<FeaturedBooksCubit>(context)
-                .fetchFeaturedBooks(pageNumber: ++Constants.pageNumber);
-            isLoading = false;
+                .fetchFeaturedBooks(pageNumber: ++Constants.pageNumber)
+                .whenComplete(() => isLoading = false);
           }
         },
         loop: false,
@@ -40,11 +40,15 @@ class SwiperWidget extends StatelessWidget {
         autoplay: false,
         itemBuilder: (context, index) {
           if (index == books.length) {
-            return const Center(
-              child: CircularProgressIndicator(
-                color: Colors.amber,
-              ),
-            );
+            if (!isLoading) {
+              return Center(
+                child: CircularProgressIndicator(
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+              );
+            } else {
+              return const SizedBox();
+            }
           }
           return GestureDetector(
             onTap: () {
