@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'News',
+      title: 'Book Store',
       // home: const MainNavigator(),
       onGenerateRoute: _appRouter.generateRoute,
       theme: lightMode,
