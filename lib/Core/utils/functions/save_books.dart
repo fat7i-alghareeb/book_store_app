@@ -6,7 +6,8 @@ void saveBooksData(List<BookEntity> books, String boxName) {
   box.addAll(books);
 }
 
-void saveBookToRecentData(BookEntity book, String boxName) async {
+Future<List<BookEntity>> saveBookToRecentData(
+    BookEntity book, String boxName) async {
   var box = await Hive.openBox<BookEntity>(boxName);
 
   int existingBookIndex = -1;
@@ -25,4 +26,5 @@ void saveBookToRecentData(BookEntity book, String boxName) async {
     box.deleteAt(0);
   }
   box.add(book);
+  return box.values.toList();
 }

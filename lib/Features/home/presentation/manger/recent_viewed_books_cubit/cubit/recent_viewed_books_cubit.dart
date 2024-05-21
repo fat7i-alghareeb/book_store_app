@@ -12,8 +12,7 @@ class RecentViewedBooksCubit extends Cubit<RecentViewedBooksState> {
   get books => _books;
   Future<void> addToRecentView(BookEntity book) async {
     try {
-      saveBookToRecentData(book, Constants.kRecentViewedBox);
-
+      _books = await saveBookToRecentData(book, Constants.kRecentViewedBox);
       emit(RecentViewedBooksSuccess());
     } catch (e) {
       print(e.toString());
