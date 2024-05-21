@@ -49,7 +49,9 @@ class UserView extends StatelessWidget {
             ),
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 10),
-              child: BooksListViewWidget(),
+              child: BooksListViewWidget(
+                books: [],
+              ),
             ),
             const SizedBox(
               height: 30,

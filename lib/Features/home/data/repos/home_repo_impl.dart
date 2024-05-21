@@ -59,4 +59,15 @@ class HomeRepoImpl extends HomeRepo {
       return left(ServerFailure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, List<BookEntity>>> fetchRecentViewedBooks() async {
+    List<BookEntity> books;
+    try {
+      books = homeLocalDataSource.fetchRecentViewedBooks();
+      return right(books);
+    } catch (e) {
+      return left(ServerFailure(e.toString()));
+    }
+  }
 }

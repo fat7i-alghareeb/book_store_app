@@ -13,6 +13,7 @@ void main() async {
   setupServiceLocator();
   await Hive.openBox<BookEntity>(Constants.kFeaturedBox);
   await Hive.openBox<BookEntity>(Constants.kNewestBox);
+  await Hive.openBox<BookEntity>(Constants.kRecentViewedBox);
   //Bloc.observer = SimpleBlocObserver();
   runApp(MyApp());
   SystemChrome.setSystemUIOverlayStyle(

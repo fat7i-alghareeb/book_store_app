@@ -1,3 +1,8 @@
+import 'package:book_app/Features/details/presentation/manger/cubit/add_books_cubit.dart';
+import 'package:book_app/constants.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
 import '../../../../Core/domain/entities/book_entity.dart';
 import '../../../../Core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
@@ -5,9 +10,22 @@ import 'package:flutter/services.dart';
 import 'widgets/book_option_widget.dart';
 import 'widgets/main_details_widget.dart';
 
-class DetailsScreen extends StatelessWidget {
+class DetailsScreen extends StatefulWidget {
   const DetailsScreen({super.key, required this.book});
   final BookEntity book;
+
+  @override
+  State<DetailsScreen> createState() => _DetailsScreenState();
+}
+
+class _DetailsScreenState extends State<DetailsScreen> {
+  @override
+  void initState() {
+    // var box = Hive.box<BookEntity>(Constants.kRecentViewedBox);
+    // print(box.length);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -31,7 +49,7 @@ class DetailsScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              MainDetailsWidget(book: book, height: height * 0.25),
+              MainDetailsWidget(book: widget.book, height: height * 0.25),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 30.0),
                 child: BookOptionWidget(hight: height * .07),
@@ -41,7 +59,7 @@ class DetailsScreen extends StatelessWidget {
                 style: Styles.textStyle24,
               ),
               Text(
-                book.description,
+                widget.book.description,
                 style: Styles.textStyle14,
               ),
             ],

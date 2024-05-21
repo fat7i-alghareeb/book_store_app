@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../Core/shared/widgets/book_widget.dart';
 import '../../../../../../Core/domain/entities/book_entity.dart';
 import '../../../../../../Core/utils/functions/details_navigator.dart';
+import '../../../manger/recent_viewed_books_cubit/cubit/recent_viewed_books_cubit.dart';
 
 class SwiperWidget extends StatelessWidget {
   final List<BookEntity> books;
@@ -53,6 +54,8 @@ class SwiperWidget extends StatelessWidget {
           }
           return GestureDetector(
             onTap: () {
+              BlocProvider.of<RecentViewedBooksCubit>(context)
+                  .addToRecentView(books[index]);
               navigateToDetails(context, books[index]);
             },
             child: BookWidget(

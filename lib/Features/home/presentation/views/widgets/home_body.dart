@@ -2,7 +2,7 @@ import 'custom_home_app_bar.dart';
 import 'package:flutter/material.dart';
 import '../../../../../Core/utils/text_styles.dart';
 import 'featured books widgets/featured_books_widget.dart';
-import 'newset books widgets/newest_books_widget.dart';
+import 'newest books widgets/newest_books_widget.dart';
 import 'recently_viewed_books_widget.dart';
 
 class HomeBody extends StatelessWidget {

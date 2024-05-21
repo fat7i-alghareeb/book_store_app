@@ -1,3 +1,4 @@
+import 'package:book_app/Features/home/presentation/manger/recent_viewed_books_cubit/cubit/recent_viewed_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../Core/utils/functions/setup_service_locator.dart';
@@ -52,6 +53,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           create: (context) =>
               NewestBooksCubit(getIt<HomeRepoImpl>())..fetchNewestBooks(),
         ),
+        BlocProvider(
+          create: (context) => RecentViewedBooksCubit(getIt<HomeRepoImpl>())
+            ..fetchRecentViewedBooks(),
+        ),
       ],
       child: SingleChildScrollView(
         child: Stack(
@@ -60,7 +65,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               clipperAnimation: _clipperAnimation,
               color: Theme.of(context).colorScheme.secondary.withOpacity(0.85),
             ),
-            HomeBody(controller:_clipperAnimationController,),
+            HomeBody(
+              controller: _clipperAnimationController,
+            ),
           ],
         ),
       ),

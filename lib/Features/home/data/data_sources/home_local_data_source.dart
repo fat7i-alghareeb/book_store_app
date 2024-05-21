@@ -6,6 +6,7 @@ import '../../../../constants.dart';
 abstract class HomeLocalDataSource {
   List<BookEntity> fetchFeaturedBooks({int pageNumber = 0});
   List<BookEntity> fetchNewestBooks({int pageNumber = 0});
+  List<BookEntity> fetchRecentViewedBooks();
 }
 
 class HomeLocalDataSourceImpl extends HomeLocalDataSource {
@@ -33,5 +34,11 @@ class HomeLocalDataSourceImpl extends HomeLocalDataSource {
       return [];
     }
     return box.values.toList().sublist(startIndex, endIndex);
+  }
+
+  @override
+  List<BookEntity> fetchRecentViewedBooks() {
+    var box = Hive.box<BookEntity>(Constants.kRecentViewedBox);
+    return box.values.toList();
   }
 }

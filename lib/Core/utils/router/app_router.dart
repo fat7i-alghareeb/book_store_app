@@ -1,3 +1,6 @@
+import 'package:book_app/Features/details/presentation/manger/cubit/add_books_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../domain/entities/book_entity.dart';
 import 'package:flutter/material.dart';
 import '../../../Features/details/presentation/views/details_screen.dart';
@@ -15,7 +18,10 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) {
             final BookEntity book = settings.arguments as BookEntity;
-            return DetailsScreen(book: book);
+            return BlocProvider(
+              create: (context) => AddBooksCubit(),
+              child: DetailsScreen(book: book),
+            );
           },
         );
       default:

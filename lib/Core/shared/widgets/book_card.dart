@@ -1,7 +1,7 @@
-import '../../utils/router/router_paths.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../Features/home/presentation/manger/recent_viewed_books_cubit/cubit/recent_viewed_books_cubit.dart';
+import '../../utils/functions/details_navigator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 import '../../domain/entities/book_entity.dart';
 import 'book_card_info.dart';
 import 'custom_book_image.dart';
@@ -21,8 +21,10 @@ class BookCard extends StatelessWidget {
       padding: const EdgeInsets.only(top: 8.0),
       child: GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, KRouter.detailsScreen, arguments: book);
-          HapticFeedback.heavyImpact();
+          BlocProvider.of<RecentViewedBooksCubit>(context)
+              .addToRecentView(book);
+
+          navigateToDetails(context, book);
         },
         child: Stack(
           alignment: AlignmentDirectional.bottomStart,
