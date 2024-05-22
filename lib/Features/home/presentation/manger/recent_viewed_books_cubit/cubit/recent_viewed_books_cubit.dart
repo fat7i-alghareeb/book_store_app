@@ -15,7 +15,7 @@ class RecentViewedBooksCubit extends Cubit<RecentViewedBooksState> {
       _books = await saveBookToRecentData(book, Constants.kRecentViewedBox);
       emit(RecentViewedBooksSuccess());
     } catch (e) {
-      print(e.toString());
+      emit(RecentViewedBooksSuccess());
     }
   }
 

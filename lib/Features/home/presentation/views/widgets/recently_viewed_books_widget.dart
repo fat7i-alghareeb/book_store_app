@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../Core/shared/widgets/books_list_view.dart';
+import '../../../../../Core/utils/text_styles.dart';
 
 class RecentlyViewedBooksWidget extends StatefulWidget {
   const RecentlyViewedBooksWidget({
@@ -31,14 +32,19 @@ class _RecentlyViewedBooksWidgetState extends State<RecentlyViewedBooksWidget> {
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: BlocConsumer<RecentViewedBooksCubit, RecentViewedBooksState>(
         listener: (context, state) {
-          if (state is RecentViewedBooksSuccess)
+          if (state is RecentViewedBooksSuccess) {
             books = BlocProvider.of<RecentViewedBooksCubit>(context).books;
+          }
         },
         builder: (context, state) {
           if (state is RecentViewedBooksSuccess) {
             if (books.isEmpty) {
-              return const Center(
-                child: Text("fuck"),
+              return Center(
+                child: Text(
+                  "You haven't viewed any books yet",
+                  style: Styles.textStyle24
+                      .copyWith(fontWeight: FontWeight.normal),
+                ),
               );
             } else {
               return BooksListViewWidget(
@@ -47,7 +53,10 @@ class _RecentlyViewedBooksWidgetState extends State<RecentlyViewedBooksWidget> {
             }
           } else if (state is RecentViewedBooksFailure) {
             return Center(
-              child: Text(state.errorMessage),
+              child: Text(
+                state.errorMessage,
+                style: Styles.textStyle14,
+              ),
             );
           } else {
             return const CircularProgressIndicator();

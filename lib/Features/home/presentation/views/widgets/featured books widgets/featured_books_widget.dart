@@ -1,7 +1,5 @@
 import 'package:book_app/Core/domain/entities/book_entity.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../Core/utils/functions/build_error_snack_bar.dart';
 import '../../../manger/featured_books_cubit/featured_books_cubit.dart';
@@ -53,6 +51,8 @@ class _FeaturedBooksWidgetState extends State<FeaturedBooksWidget> {
             ),
           );
         } else if (state is FeaturedBooksFailure) {
+          widget.controller.forward();
+
           return Center(
             child: Text(state.errMessage),
           );

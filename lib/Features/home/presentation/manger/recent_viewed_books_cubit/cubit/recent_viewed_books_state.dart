@@ -1,5 +1,3 @@
-import 'package:book_app/Core/domain/entities/book_entity.dart';
-
 abstract class RecentViewedBooksState {}
 
 final class RecentViewedBooksInitial extends RecentViewedBooksState {}

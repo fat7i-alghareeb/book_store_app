@@ -38,7 +38,15 @@ class ServerFailure extends Failure {
     } else if (statusCode == 500) {
       return ServerFailure('There is a problem with server, please try later');
     } else if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
-      return ServerFailure(response['error']['message']);
+      if (response is Map<String, dynamic> &&
+          response.containsKey('error') &&
+          response['error'] is Map<String, dynamic> &&
+          (response['error'] as Map<String, dynamic>).containsKey('message')) {
+        return ServerFailure(
+            (response['error'] as Map<String, dynamic>)['message']);
+      } else {
+        return ServerFailure('An error occurred. Please try again.');
+      }
     } else {
       return ServerFailure('There was an error , please try again');
     }

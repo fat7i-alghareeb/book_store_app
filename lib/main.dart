@@ -14,6 +14,7 @@ void main() async {
   await Hive.openBox<BookEntity>(Constants.kFeaturedBox);
   await Hive.openBox<BookEntity>(Constants.kNewestBox);
   await Hive.openBox<BookEntity>(Constants.kRecentViewedBox);
+  await Hive.openBox<int>(Constants.kSavedTimeBox);
   //Bloc.observer = SimpleBlocObserver();
   runApp(MyApp());
   SystemChrome.setSystemUIOverlayStyle(

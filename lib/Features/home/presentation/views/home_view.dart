@@ -1,3 +1,4 @@
+import 'package:book_app/Core/utils/functions/check_cache.dart';
 import 'package:book_app/Features/home/presentation/manger/recent_viewed_books_cubit/cubit/recent_viewed_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +22,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
   @override
   void initState() {
-    super.initState();
+    checkCache();
     _clipperAnimationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 500),
@@ -33,6 +34,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       parent: _clipperAnimationController,
       curve: Curves.decelerate,
     ));
+    super.initState();
   }
 
   @override
