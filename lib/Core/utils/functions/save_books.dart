@@ -1,9 +1,22 @@
 import 'package:hive/hive.dart';
 import '../../domain/entities/book_entity.dart';
 
-void saveBooksData(List<BookEntity> books, String boxName) {
+void saveBooksData(List<BookEntity> books, String boxName) async {
   var box = Hive.box<BookEntity>(boxName);
-  box.addAll(books);
+  await box.addAll(books);
+}
+
+void saveBookData(BookEntity book, String boxName) async {
+  var box = Hive.box<BookEntity>(boxName);
+  await box.add(book);
+}
+
+void deleteBookData(BookEntity book, String boxName) async {
+  var box = Hive.box<BookEntity>(boxName);
+  int index;
+  final books = box.values.toList();
+  index = books.indexOf(book);
+  box.deleteAt(index);
 }
 
 Future<List<BookEntity>> saveBookToRecentData(
