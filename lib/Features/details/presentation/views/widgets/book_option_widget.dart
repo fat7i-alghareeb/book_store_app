@@ -4,7 +4,6 @@ import 'package:book_app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import '../../../../../Core/utils/text_styles.dart';
 
 class BookOptionWidget extends StatelessWidget {
@@ -114,7 +113,16 @@ class BottomSheetBody extends StatefulWidget {
 }
 
 class _BottomSheetBodyState extends State<BottomSheetBody> {
-  bool isChecked = true;
+  late bool isSaved;
+  late bool isFavorite;
+  @override
+  void initState() {
+    isSaved = BlocProvider.of<AddBooksCubit>(context)
+        .checkIfExists(widget.book, Constants.kSavedBookBox);
+    isFavorite = BlocProvider.of<AddBooksCubit>(context)
+        .checkIfExists(widget.book, Constants.kFavoriteBooksBox);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -137,13 +145,49 @@ class _BottomSheetBodyState extends State<BottomSheetBody> {
                   color: Theme.of(context).colorScheme.secondary,
                   width: 2,
                 ),
-                value: isChecked,
+                value: isSaved,
                 onChanged: (value) {
+                  if (isSaved) {
+                    BlocProvider.of<AddBooksCubit>(context)
+                        .removeFromSaved(widget.book);
+                  } else {
+                    BlocProvider.of<AddBooksCubit>(context)
+                        .addToSaved(widget.book);
+                  }
                   setState(() {
-                    isChecked = value!;
+                    isSaved = value!;
                   });
-                  BlocProvider.of<AddBooksCubit>(context)
-                      .addToSaved(widget.book);
+                },
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Add to Favorite",
+                style: Styles.textStyle24.copyWith(
+                  fontStyle: FontStyle.italic,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+              ),
+              Checkbox(
+                side: BorderSide(
+                  color: Theme.of(context).colorScheme.secondary,
+                  width: 2,
+                ),
+                value: isFavorite,
+                onChanged: (value) {
+                  if (isFavorite) {
+                    BlocProvider.of<AddBooksCubit>(context)
+                        .removeFromFavorite(widget.book);
+                  } else {
+                    BlocProvider.of<AddBooksCubit>(context)
+                        .addToFavorite(widget.book);
+                  }
+                  setState(() {
+                    isFavorite = value!;
+                  });
                 },
               ),
             ],

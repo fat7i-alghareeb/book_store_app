@@ -23,6 +23,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     checkCache();
+    BlocProvider.of<RecentViewedBooksCubit>(context).fetchRecentViewedBooks();
     _clipperAnimationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 500),
@@ -54,10 +55,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         BlocProvider(
           create: (context) =>
               NewestBooksCubit(getIt<HomeRepoImpl>())..fetchNewestBooks(),
-        ),
-        BlocProvider(
-          create: (context) => RecentViewedBooksCubit(getIt<HomeRepoImpl>())
-            ..fetchRecentViewedBooks(),
         ),
       ],
       child: SingleChildScrollView(

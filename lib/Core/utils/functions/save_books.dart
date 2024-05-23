@@ -19,6 +19,12 @@ void deleteBookData(BookEntity book, String boxName) async {
   box.deleteAt(index);
 }
 
+bool checkExisting(BookEntity book, String boxName) {
+  var box = Hive.box<BookEntity>(boxName);
+  final isExist = box.values.toList().indexOf(book);
+  return isExist == -1 ? false : true;
+}
+
 Future<List<BookEntity>> saveBookToRecentData(
     BookEntity book, String boxName) async {
   var box = await Hive.openBox<BookEntity>(boxName);

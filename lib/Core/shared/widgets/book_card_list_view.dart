@@ -5,18 +5,18 @@ import 'book_card.dart';
 import 'package:flutter/material.dart';
 import '../../domain/entities/book_entity.dart';
 
-class BookCardListView extends StatefulWidget {
-  const BookCardListView({
+class HomeBookCardListView extends StatefulWidget {
+  const HomeBookCardListView({
     super.key,
     required this.books,
   });
   final List<BookEntity> books;
 
   @override
-  State<BookCardListView> createState() => _BookCardListViewState();
+  State<HomeBookCardListView> createState() => _HomeBookCardListViewState();
 }
 
-class _BookCardListViewState extends State<BookCardListView> {
+class _HomeBookCardListViewState extends State<HomeBookCardListView> {
   late final ScrollController _scrollController;
 
   var isLoading = false;

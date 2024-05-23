@@ -43,7 +43,7 @@ class _NewestBooksWidgetState extends State<NewestBooksWidget> {
             state is NewestBooksPaginationFailure) {
           return Padding(
             padding: const EdgeInsets.only(top: 20.0),
-            child: BookCardListView(
+            child: HomeBookCardListView(
               books: books,
             ),
           );

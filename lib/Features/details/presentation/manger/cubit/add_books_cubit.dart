@@ -16,6 +16,22 @@ class AddBooksCubit extends Cubit<AddBooksState> {
     }
   }
 
+  void removeFromFavorite(BookEntity book) {
+    try {
+      deleteBookData(book, Constants.kFavoriteBooksBox);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  void removeFromSaved(BookEntity book) {
+    try {
+      deleteBookData(book, Constants.kSavedBookBox);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   void addToSaved(BookEntity book) {
     try {
       saveBookData(book, Constants.kSavedBookBox);
@@ -23,5 +39,9 @@ class AddBooksCubit extends Cubit<AddBooksState> {
     } catch (e) {
       emit(AddBooksFailure(errorMessage: e.toString()));
     }
+  }
+
+  bool checkIfExists(BookEntity book, String boxName) {
+    return checkExisting(book, boxName);
   }
 }

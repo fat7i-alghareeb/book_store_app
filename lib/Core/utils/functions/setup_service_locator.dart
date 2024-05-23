@@ -1,3 +1,4 @@
+import 'package:book_app/Features/user/data/repo/user_repo_imp.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
@@ -14,9 +15,10 @@ void setupServiceLocator() {
       Dio(),
     ),
   );
+  getIt.registerSingleton<UserRepoImp>(UserRepoImp());
   getIt.registerSingleton<HomeRepoImpl>(
     HomeRepoImpl(
-       homeLocalDataSource: HomeLocalDataSourceImpl(),
+      homeLocalDataSource: HomeLocalDataSourceImpl(),
       homeRemoteDataSource: HomeRemoteDataSourceImpl(
         getIt.get<ApiService>(),
       ),

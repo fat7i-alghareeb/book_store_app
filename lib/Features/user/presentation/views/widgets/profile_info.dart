@@ -6,18 +6,21 @@ import 'indicator_books_widget.dart';
 class ProfileInfo extends StatelessWidget {
   const ProfileInfo({
     super.key,
+    required this.savedBooksNumber,
+    required this.favoriteBooksNumber,
   });
-
+  final int savedBooksNumber;
+  final int favoriteBooksNumber;
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Column(
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               "Fat7i Al3'areeb",
               style: Styles.textStyle24,
             ),
@@ -25,11 +28,11 @@ class ProfileInfo extends StatelessWidget {
               children: [
                 IndicatorBooksWidget(
                   indicatorTypeName: "Saved",
-                  count: "21",
+                  count: savedBooksNumber.toString(),
                 ),
                 IndicatorBooksWidget(
                   indicatorTypeName: "Fav",
-                  count: "7",
+                  count: favoriteBooksNumber.toString(),
                 ),
               ],
             )
