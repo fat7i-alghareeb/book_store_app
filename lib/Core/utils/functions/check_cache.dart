@@ -11,7 +11,7 @@ void checkCache() async {
     int savedTimestamp = box.getAt(0)!;
     var savedTime = DateTime.fromMillisecondsSinceEpoch(savedTimestamp);
     var currentTime = DateTime.now();
-    var difference = currentTime.difference(savedTime).inMinutes;
+    var difference = currentTime.difference(savedTime).inHours;
     if (difference >= 15) {
       Hive.box<BookEntity>(Constants.kFeaturedBox).clear();
       Hive.box<BookEntity>(Constants.kNewestBox).clear();

@@ -1,3 +1,4 @@
+import 'package:book_app/Core/utils/functions/details_navigator.dart';
 import 'package:flutter/material.dart';
 
 import '../../domain/entities/book_entity.dart';
@@ -20,8 +21,13 @@ class BooksListViewWidget extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
-            child: CustomBookImage(
-              image: books[index].image!,
+            child: GestureDetector(
+              onTap: () {
+                navigateToDetails(context, books[index]);
+              },
+              child: CustomBookImage(
+                image: books[index].image!,
+              ),
             ),
           );
         },
