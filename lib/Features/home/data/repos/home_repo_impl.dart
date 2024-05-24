@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
+import '../../../../Core/domain/entities/book_entity.dart';
+import '../../../../Core/domain/repos/home_repo.dart';
 import '../../../../Core/errors/failure.dart';
 import '../data_sources/home_local_data_source.dart';
 import '../data_sources/home_remote_data_source.dart';
-import '../../../../Core/domain/entities/book_entity.dart';
-import '../../../../Core/domain/repos/home_repo.dart';
 
 class HomeRepoImpl extends HomeRepo {
   final HomeRemoteDataSource homeRemoteDataSource;

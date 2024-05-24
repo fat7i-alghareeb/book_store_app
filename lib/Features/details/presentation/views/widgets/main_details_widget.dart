@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../../Core/domain/entities/book_entity.dart';
 import '../../../../../Core/shared/widgets/custom_book_image.dart';
 import '../../../../../Core/shared/widgets/rating_bar_widget.dart';
@@ -44,7 +45,7 @@ class MainDetailsWidget extends StatelessWidget {
                   style: Styles.textStyle14.copyWith(color: Colors.grey),
                 ),
                 RatingBarWidget(
-                  rating: book.rating.toDouble() ,
+                  rating: book.rating.toDouble(),
                 )
               ],
             ),

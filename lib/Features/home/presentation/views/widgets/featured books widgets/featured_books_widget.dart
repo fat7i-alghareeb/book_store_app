@@ -1,6 +1,7 @@
-import 'package:book_app/Core/domain/entities/book_entity.dart';
+import '../../../../../../Core/domain/entities/book_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../../Core/shared/widgets/error_widget.dart';
 import '../../../../../../Core/utils/functions/build_error_snack_bar.dart';
 import '../../../manger/featured_books_cubit/featured_books_cubit.dart';
 import '../../../manger/featured_books_cubit/featured_books_state.dart';
@@ -53,8 +54,15 @@ class _FeaturedBooksWidgetState extends State<FeaturedBooksWidget> {
         } else if (state is FeaturedBooksFailure) {
           widget.controller.forward();
 
-          return Center(
-            child: Text(state.errMessage),
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * 0.38,
+            child: OnFetchErrorWidget(
+              errorMessage: state.errMessage,
+              onRetry: () {
+                BlocProvider.of<FeaturedBooksCubit>(context)
+                    .fetchFeaturedBooks();
+              },
+            ),
           );
         } else {
           return const FeaturedBooksShimmer();

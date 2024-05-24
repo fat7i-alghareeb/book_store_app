@@ -1,6 +1,6 @@
-import 'package:book_app/Core/domain/entities/book_entity.dart';
-import 'package:book_app/Features/details/presentation/manger/cubit/add_books_cubit.dart';
-import 'package:book_app/constants.dart';
+import '../../../../../Core/domain/entities/book_entity.dart';
+import '../../manger/cubit/add_books_cubit.dart';
+import '../../../../../constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

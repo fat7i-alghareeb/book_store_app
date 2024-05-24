@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:book_app/Core/domain/entities/book_entity.dart';
+import '../../../../../Core/domain/entities/book_entity.dart';
 
 import '../../../../../Core/domain/repos/home_repo.dart';
 import 'featured_books_state.dart';

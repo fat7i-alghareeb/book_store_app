@@ -1,5 +1,5 @@
-import "package:book_app/Core/domain/entities/book_entity.dart";
-import "package:book_app/Core/domain/repos/user_repo.dart";
+import "../../../../../../Core/domain/entities/book_entity.dart";
+import "../../../../../../Core/domain/repos/user_repo.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "saved_books_state.dart";
 

@@ -1,4 +1,4 @@
-import 'package:book_app/Core/utils/functions/details_navigator.dart';
+import '../../utils/functions/details_navigator.dart';
 import 'package:flutter/material.dart';
 
 import '../../domain/entities/book_entity.dart';

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../../../Core/domain/entities/book_entity.dart';
 import '../../../../../../Core/shared/widgets/book_card_list_view.dart';
+import '../../../../../../Core/shared/widgets/error_widget.dart';
 import '../../../../../../Core/utils/functions/build_error_snack_bar.dart';
 import '../../../manger/newest_books_cubit/newest_books_cubit.dart';
 import '../../../manger/newest_books_cubit/newest_books_state.dart';
@@ -48,8 +50,14 @@ class _NewestBooksWidgetState extends State<NewestBooksWidget> {
             ),
           );
         } else if (state is NewestBooksFailure) {
-          return Center(
-            child: Text(state.errMessage),
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * .25,
+            child: OnFetchErrorWidget(
+              errorMessage: state.errMessage,
+              onRetry: () {
+                BlocProvider.of<NewestBooksCubit>(context).fetchNewestBooks();
+              },
+            ),
           );
         } else {
           return const NewestBooksShimmer();

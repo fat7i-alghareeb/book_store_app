@@ -1,11 +1,9 @@
-import 'package:book_app/Features/user/data/repo/user_repo_imp.dart';
-import 'package:book_app/Features/user/presentation/manger/favorite%20box%20cubit/cubit/favorite_books_cubit.dart';
-import 'package:book_app/Features/user/presentation/manger/saved%20box%20cubit/cubit/saved_books_cubit.dart';
-import 'package:book_app/Features/user/presentation/views/widgets/user_books_card_list_view.dart';
+import '../../data/repo/user_repo_imp.dart';
+import '../manger/favorite%20box%20cubit/cubit/favorite_books_cubit.dart';
+import '../manger/saved%20box%20cubit/cubit/saved_books_cubit.dart';
+import 'widgets/user_books_card_list_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../Core/domain/entities/book_entity.dart';
-import '../../../../Core/shared/widgets/book_card_list_view.dart';
 import '../../../../Core/shared/widgets/books_list_view.dart';
 import '../../../../Core/utils/functions/setup_service_locator.dart';
 import '../../../../Core/utils/text_styles.dart';

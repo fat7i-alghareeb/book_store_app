@@ -1,5 +1,6 @@
-import 'package:book_app/Core/utils/functions/check_cache.dart';
-import 'package:book_app/Features/home/presentation/manger/recent_viewed_books_cubit/cubit/recent_viewed_books_cubit.dart';
+import '../../../../Core/utils/functions/check_cache.dart';
+import '../manger/recent_viewed_books_cubit/cubit/recent_viewed_books_cubit.dart';
+import '../../../../constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../Core/utils/functions/setup_service_locator.dart';
@@ -23,6 +24,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     checkCache();
+    Constants.featuredBooksPageNumber = 0;
+    Constants.newestPageNumber = 0;
     BlocProvider.of<RecentViewedBooksCubit>(context).fetchRecentViewedBooks();
     _clipperAnimationController = AnimationController(
       vsync: this,

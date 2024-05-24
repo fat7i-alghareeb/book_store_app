@@ -1,5 +1,5 @@
-import 'package:book_app/Features/home/presentation/manger/featured_books_cubit/featured_books_cubit.dart';
-import 'package:book_app/constants.dart';
+import '../../../manger/featured_books_cubit/featured_books_cubit.dart';
+import '../../../../../../constants.dart';
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

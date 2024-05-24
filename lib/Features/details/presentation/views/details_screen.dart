@@ -1,7 +1,8 @@
-import '../../../../Core/domain/entities/book_entity.dart';
-import '../../../../Core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import '../../../../Core/domain/entities/book_entity.dart';
+import '../../../../Core/utils/text_styles.dart';
 import 'widgets/book_option_widget.dart';
 import 'widgets/main_details_widget.dart';
 

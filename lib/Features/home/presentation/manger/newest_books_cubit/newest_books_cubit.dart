@@ -1,8 +1,8 @@
-import '../../../../../Core/domain/entities/book_entity.dart';
-import 'newest_books_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../Core/domain/entities/book_entity.dart';
 import '../../../../../Core/domain/repos/home_repo.dart';
+import 'newest_books_state.dart';
 
 class NewestBooksCubit extends Cubit<NewestBooksState> {
   NewestBooksCubit(this.homeRepo) : super(NewestBooksInitial());

@@ -1,6 +1,6 @@
-import 'package:book_app/Core/domain/entities/book_entity.dart';
-import 'package:book_app/Features/home/presentation/manger/recent_viewed_books_cubit/cubit/recent_viewed_books_cubit.dart';
-import 'package:book_app/Features/home/presentation/manger/recent_viewed_books_cubit/cubit/recent_viewed_books_state.dart';
+import '../../../../../Core/domain/entities/book_entity.dart';
+import '../../manger/recent_viewed_books_cubit/cubit/recent_viewed_books_cubit.dart';
+import '../../manger/recent_viewed_books_cubit/cubit/recent_viewed_books_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -39,11 +39,17 @@ class _RecentlyViewedBooksWidgetState extends State<RecentlyViewedBooksWidget> {
         builder: (context, state) {
           if (state is RecentViewedBooksSuccess) {
             if (books.isEmpty) {
-              return Center(
-                child: Text(
-                  "You haven't viewed any books yet",
-                  style: Styles.textStyle24
-                      .copyWith(fontWeight: FontWeight.normal),
+              return SizedBox(
+                height: MediaQuery.of(context).size.height * 0.3,
+                child: Center(
+                  child: Text(
+                    "You haven't viewed any books yet",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontStyle: FontStyle.italic,
+                      color: Colors.grey[600],
+                    ),
+                  ),
                 ),
               );
             } else {
@@ -52,10 +58,13 @@ class _RecentlyViewedBooksWidgetState extends State<RecentlyViewedBooksWidget> {
               );
             }
           } else if (state is RecentViewedBooksFailure) {
-            return Center(
-              child: Text(
-                state.errorMessage,
-                style: Styles.textStyle14,
+            return SizedBox(
+              height: MediaQuery.of(context).size.height * 0.3,
+              child: Center(
+                child: Text(
+                  state.errorMessage,
+                  style: Styles.textStyle14,
+                ),
               ),
             );
           } else {

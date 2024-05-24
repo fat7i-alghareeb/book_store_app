@@ -1,6 +1,6 @@
-import '../../domain/entities/book_entity.dart';
 import 'package:flutter/material.dart';
 
+import '../../domain/entities/book_entity.dart';
 import 'book_info.dart';
 import 'custom_book_image.dart';
 

@@ -1,4 +1,4 @@
-import 'package:book_app/Features/details/presentation/manger/cubit/add_books_cubit.dart';
+import '../../../Features/details/presentation/manger/cubit/add_books_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../Features/home/data/repos/home_repo_impl.dart';

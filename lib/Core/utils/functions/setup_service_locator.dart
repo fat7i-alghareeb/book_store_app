@@ -1,4 +1,4 @@
-import 'package:book_app/Features/user/data/repo/user_repo_imp.dart';
+import '../../../Features/user/data/repo/user_repo_imp.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
