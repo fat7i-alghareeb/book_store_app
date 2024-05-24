@@ -24,11 +24,9 @@ class _BottomSheetBodyState extends State<BottomSheetBody> {
   @override
   void initState() {
     super.initState();
-    isSaved = context
-        .read<AddBooksCubit>()
+    isSaved = BlocProvider.of<AddBooksCubit>(context)
         .checkIfExists(widget.book, Constants.kSavedBookBox);
-    isFavorite = context
-        .read<AddBooksCubit>()
+    isFavorite = BlocProvider.of<AddBooksCubit>(context)
         .checkIfExists(widget.book, Constants.kFavoriteBooksBox);
   }
 

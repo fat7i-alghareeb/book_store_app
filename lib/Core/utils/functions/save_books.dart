@@ -15,13 +15,17 @@ void deleteBookData(BookEntity book, String boxName) async {
   var box = Hive.box<BookEntity>(boxName);
   int index;
   final books = box.values.toList();
-  index = books.indexOf(book);
+  index = books.indexWhere(
+    (element) => book.bookId == element.bookId,
+  );
   box.deleteAt(index);
 }
 
 bool checkExisting(BookEntity book, String boxName) {
   var box = Hive.box<BookEntity>(boxName);
-  final isExist = box.values.toList().indexOf(book);
+  final isExist = box.values.toList().indexWhere(
+        (element) => book.bookId == element.bookId,
+      );
   return isExist == -1 ? false : true;
 }
 
