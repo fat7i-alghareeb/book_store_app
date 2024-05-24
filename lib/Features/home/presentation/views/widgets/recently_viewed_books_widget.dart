@@ -19,11 +19,17 @@ class RecentlyViewedBooksWidget extends StatefulWidget {
 
 class _RecentlyViewedBooksWidgetState extends State<RecentlyViewedBooksWidget> {
   late List<BookEntity> books;
-
+  ScrollController scrollController = ScrollController();
   @override
   void initState() {
     books = BlocProvider.of<RecentViewedBooksCubit>(context).books;
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -34,6 +40,7 @@ class _RecentlyViewedBooksWidgetState extends State<RecentlyViewedBooksWidget> {
         listener: (context, state) {
           if (state is RecentViewedBooksSuccess) {
             books = BlocProvider.of<RecentViewedBooksCubit>(context).books;
+            scrollController.jumpTo(0);
           }
         },
         builder: (context, state) {
@@ -55,6 +62,7 @@ class _RecentlyViewedBooksWidgetState extends State<RecentlyViewedBooksWidget> {
             } else {
               return BooksListViewWidget(
                 books: books,
+                scrollController: scrollController,
               );
             }
           } else if (state is RecentViewedBooksFailure) {

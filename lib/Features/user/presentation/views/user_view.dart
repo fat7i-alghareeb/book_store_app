@@ -49,11 +49,18 @@ class UserBody extends StatefulWidget {
 class _UserBodyState extends State<UserBody> {
   late List<BookEntity> savedBooks;
   late List<BookEntity> favoriteBooks;
+  ScrollController scrollController = ScrollController();
   @override
   void initState() {
     savedBooks = BlocProvider.of<SavedBooksCubit>(context).books;
     favoriteBooks = BlocProvider.of<FavoriteBooksCubit>(context).books;
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -99,6 +106,7 @@ class _UserBodyState extends State<UserBody> {
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: BooksListViewWidget(
             books: favoriteBooks,
+            scrollController: scrollController,
           ),
         ),
         const SizedBox(
