@@ -32,6 +32,12 @@ class _RecentlyViewedBooksWidgetState extends State<RecentlyViewedBooksWidget> {
     super.dispose();
   }
 
+  void _jumpToTop() {
+    if (scrollController.hasClients) {
+      scrollController.jumpTo(0);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -40,7 +46,7 @@ class _RecentlyViewedBooksWidgetState extends State<RecentlyViewedBooksWidget> {
         listener: (context, state) {
           if (state is RecentViewedBooksSuccess) {
             books = BlocProvider.of<RecentViewedBooksCubit>(context).books;
-            scrollController.jumpTo(0);
+            _jumpToTop();
           }
         },
         builder: (context, state) {
