@@ -1,6 +1,6 @@
-import '../../../../../../Core/domain/entities/book_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../../Core/domain/entities/book_entity.dart';
 import '../../../../../../Core/shared/widgets/error_widget.dart';
 import '../../../../../../Core/utils/functions/build_error_snack_bar.dart';
 import '../../../manger/featured_books_cubit/featured_books_cubit.dart';
