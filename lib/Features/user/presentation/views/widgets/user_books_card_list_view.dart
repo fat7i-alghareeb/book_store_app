@@ -4,8 +4,10 @@ import '../../../../../Core/domain/entities/book_entity.dart';
 import '../../../../../Core/shared/widgets/book_card.dart';
 
 class UserBooksCardListView extends StatelessWidget {
-  const UserBooksCardListView({super.key, required this.books});
+  const UserBooksCardListView(
+      {super.key, required this.books, required this.onPop});
   final List<BookEntity> books;
+  final void Function() onPop;
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height * .25;
@@ -18,6 +20,7 @@ class UserBooksCardListView extends StatelessWidget {
           return BookCard(
             height: height,
             book: books[index],
+            onPop: onPop,
           );
         },
       ),

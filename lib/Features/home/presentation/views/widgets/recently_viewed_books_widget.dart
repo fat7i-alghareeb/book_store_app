@@ -63,6 +63,7 @@ class _RecentlyViewedBooksWidgetState extends State<RecentlyViewedBooksWidget> {
               return BooksListViewWidget(
                 books: books,
                 scrollController: scrollController,
+                onPop: () {},
               );
             }
           } else if (state is RecentViewedBooksFailure) {

@@ -1,3 +1,6 @@
+import 'package:book_app/Features/user/presentation/manger/favorite%20box%20cubit/cubit/favorite_books_state.dart';
+import 'package:book_app/Features/user/presentation/manger/saved%20box%20cubit/cubit/saved_books_state.dart';
+
 import '../../data/repo/user_repo_imp.dart';
 import '../manger/favorite%20box%20cubit/cubit/favorite_books_cubit.dart';
 import '../manger/saved%20box%20cubit/cubit/saved_books_cubit.dart';
@@ -91,8 +94,31 @@ class _UserBodyState extends State<UserBody> {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),
-          child: UserBooksCardListView(
-            books: savedBooks,
+          child: MultiBlocListener(
+            listeners: [
+              BlocListener<FavoriteBooksCubit, FavoriteBooksState>(
+                listener: (context, state) {
+                  savedBooks = BlocProvider.of<SavedBooksCubit>(context).books;
+                  favoriteBooks =
+                      BlocProvider.of<FavoriteBooksCubit>(context).books;
+                },
+              ),
+              BlocListener<SavedBooksCubit, SavedBooksState>(
+                listener: (context, state) {
+                  savedBooks = BlocProvider.of<SavedBooksCubit>(context).books;
+                  favoriteBooks =
+                      BlocProvider.of<FavoriteBooksCubit>(context).books;
+                },
+              ),
+            ],
+            child: UserBooksCardListView(
+              books: savedBooks,
+              onPop: () => setState(() {
+                BlocProvider.of<SavedBooksCubit>(context).fetchSavedBooks();
+                BlocProvider.of<FavoriteBooksCubit>(context)
+                    .fetchFavoriteBooks();
+              }),
+            ),
           ),
         ),
         Padding(
@@ -104,9 +130,32 @@ class _UserBodyState extends State<UserBody> {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),
-          child: BooksListViewWidget(
-            books: favoriteBooks,
-            scrollController: scrollController,
+          child: MultiBlocListener(
+            listeners: [
+              BlocListener<FavoriteBooksCubit, FavoriteBooksState>(
+                listener: (context, state) {
+                  savedBooks = BlocProvider.of<SavedBooksCubit>(context).books;
+                  favoriteBooks =
+                      BlocProvider.of<FavoriteBooksCubit>(context).books;
+                },
+              ),
+              BlocListener<SavedBooksCubit, SavedBooksState>(
+                listener: (context, state) {
+                  savedBooks = BlocProvider.of<SavedBooksCubit>(context).books;
+                  favoriteBooks =
+                      BlocProvider.of<FavoriteBooksCubit>(context).books;
+                },
+              ),
+            ],
+            child: BooksListViewWidget(
+              books: favoriteBooks,
+              scrollController: scrollController,
+              onPop: () => setState(() {
+                BlocProvider.of<SavedBooksCubit>(context).fetchSavedBooks();
+                BlocProvider.of<FavoriteBooksCubit>(context)
+                    .fetchFavoriteBooks();
+              }),
+            ),
           ),
         ),
         const SizedBox(

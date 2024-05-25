@@ -56,7 +56,11 @@ class SwiperWidget extends StatelessWidget {
             onTap: () {
               BlocProvider.of<RecentViewedBooksCubit>(context)
                   .addToRecentView(books[index]);
-              navigateToDetails(context, books[index]);
+              navigateToDetails(
+                context,
+                books[index],
+                () {},
+              );
             },
             child: BookWidget(
               height: height,

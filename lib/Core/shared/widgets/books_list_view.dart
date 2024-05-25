@@ -9,8 +9,10 @@ class BooksListViewWidget extends StatelessWidget {
     super.key,
     required this.books,
     required this.scrollController,
+    required this.onPop,
   });
   final List<BookEntity> books;
+  final void Function() onPop;
   final ScrollController scrollController;
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class BooksListViewWidget extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
               onTap: () {
-                navigateToDetails(context, reversedBooks[index]);
+                navigateToDetails(context, reversedBooks[index], onPop);
               },
               child: CustomBookImage(
                 image: reversedBooks[index].image!,
