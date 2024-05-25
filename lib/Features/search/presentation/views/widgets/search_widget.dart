@@ -46,7 +46,7 @@ class _SearchWidgetState extends State<SearchWidget> {
               ? Theme.of(context).colorScheme.secondary
               : Colors.transparent,
         ),
-        color: Theme.of(context).colorScheme.tertiary.withOpacity(0.4),
+        color: Theme.of(context).colorScheme.secondary.withOpacity(.05),
       ),
       padding: const EdgeInsets.all(5),
       child: Row(
