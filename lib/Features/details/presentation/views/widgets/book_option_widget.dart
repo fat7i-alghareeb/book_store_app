@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../Core/utils/text_styles.dart';
-import 'bottom_sheet_body.dart';
+import 'details_bottom_sheet_body.dart';
 
 class BookOptionWidget extends StatelessWidget {
   const BookOptionWidget({
@@ -93,7 +93,7 @@ class BookOptionWidget extends StatelessWidget {
                 ),
               ),
             ),
-            body: BottomSheetBody(
+            body: DetailsBottomSheetBody(
               book: book,
             ),
           ),

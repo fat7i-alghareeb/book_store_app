@@ -5,13 +5,14 @@ const lightMainColor = Color(0xFFF2F5F9);
 const lightSecondaryColor = Color(0xFF007084);
 const lightThirdlyColor = Color.fromARGB(255, 0, 0, 0);
 ///////////////////////////////////////////////////////////////////
-const darkMainColor = Color(0xFF0F0F0F);
-const darkSecondaryColor = Color(0xFFF2F2F2);
-const darkThirdlyColor = Colors.grey;
+const darkMainColor = Color.fromARGB(255, 55, 55, 55);
+const darkSecondaryColor = Color.fromARGB(255, 24, 187, 219);
+const darkThirdlyColor = Color.fromARGB(255, 255, 255, 255);
 ///////////////////////////////////////////////////////////////////
 ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
   fontFamily: "Cooper",
+  drawerTheme: const DrawerThemeData(backgroundColor: lightMainColor),
   appBarTheme: const AppBarTheme(
     color: lightMainColor,
     elevation: 0,
@@ -31,7 +32,8 @@ ThemeData lightMode = ThemeData(
   ),
 );
 ThemeData darkMode = ThemeData(
-  //fontFamily: "NewFont",
+  fontFamily: "Cooper",
+  drawerTheme: const DrawerThemeData(backgroundColor: darkMainColor),
   appBarTheme: const AppBarTheme(
     color: darkMainColor,
     elevation: 0,

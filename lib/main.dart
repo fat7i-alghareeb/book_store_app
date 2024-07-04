@@ -39,7 +39,8 @@ class MyApp extends StatelessWidget {
       // home: const MainNavigator(),
       onGenerateRoute: _appRouter.generateRoute,
       theme: lightMode,
-      //darkTheme: darkMode,
+      darkTheme: darkMode,
+      themeMode: ThemeMode.light,
     );
   }
 }

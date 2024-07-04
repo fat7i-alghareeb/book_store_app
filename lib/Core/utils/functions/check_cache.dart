@@ -12,7 +12,7 @@ void checkCache() async {
     var savedTime = DateTime.fromMillisecondsSinceEpoch(savedTimestamp);
     var currentTime = DateTime.now();
     var difference = currentTime.difference(savedTime).inHours;
-    if (difference >= 15) {
+    if (difference >= 500) {
       Hive.box<BookEntity>(Constants.kFeaturedBox).clear();
       Hive.box<BookEntity>(Constants.kNewestBox).clear();
       box.putAt(0, DateTime.now().millisecondsSinceEpoch);

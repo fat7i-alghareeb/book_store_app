@@ -21,9 +21,14 @@ class CustomAppBar extends StatelessWidget {
               color: Theme.of(context).colorScheme.primary,
             ),
           ),
-          FaIcon(
-            FontAwesomeIcons.bars,
-            color: Theme.of(context).colorScheme.primary,
+          IconButton(
+            onPressed: () {
+              Scaffold.of(context).openEndDrawer();
+            },
+            icon: FaIcon(
+              FontAwesomeIcons.bars,
+              color: Theme.of(context).colorScheme.primary,
+            ),
           ),
         ],
       ),

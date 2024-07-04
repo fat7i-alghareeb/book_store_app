@@ -38,6 +38,11 @@ class _UserBodyState extends State<UserBody> {
     });
   }
 
+  void fetchingTheChange() {
+    BlocProvider.of<SavedBooksCubit>(context).fetchSavedBooks();
+    BlocProvider.of<FavoriteBooksCubit>(context).fetchFavoriteBooks();
+  }
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -59,8 +64,9 @@ class _UserBodyState extends State<UserBody> {
         BooksSection(
           title: "Saved Books :",
           books: savedBooks,
-          onBooksUpdated: updateBooks,
+          updateBooks: updateBooks,
           scrollController: scrollController,
+          fetchingTheChange: fetchingTheChange,
         ),
         const SizedBox(
           height: 20,
@@ -68,8 +74,9 @@ class _UserBodyState extends State<UserBody> {
         BooksSection(
           title: "Favorite Books :",
           books: favoriteBooks,
-          onBooksUpdated: updateBooks,
+          updateBooks: updateBooks,
           scrollController: scrollController,
+          fetchingTheChange: fetchingTheChange,
         ),
         const SizedBox(height: 30),
       ],

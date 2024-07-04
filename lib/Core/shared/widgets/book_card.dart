@@ -11,11 +11,10 @@ class BookCard extends StatelessWidget {
     super.key,
     required this.height,
     required this.book,
-    required this.onPop,
   });
   final double height;
   final BookEntity book;
-  final void Function() onPop;
+
   @override
   Widget build(BuildContext context) {
     final double containerWidth = MediaQuery.of(context).size.width * .8;
@@ -26,7 +25,11 @@ class BookCard extends StatelessWidget {
           BlocProvider.of<RecentViewedBooksCubit>(context)
               .addToRecentView(book);
 
-          navigateToDetails(context, book, onPop);
+          navigateToDetails(
+            context,
+            book,
+            () {},
+          );
         },
         child: Stack(
           alignment: AlignmentDirectional.bottomStart,

@@ -69,7 +69,6 @@ class _HomeBookCardListViewState extends State<HomeBookCardListView> {
           return BookCard(
             height: height,
             book: widget.books[index],
-            onPop: () => setState(() {}),
           );
         },
       ),

@@ -4,6 +4,7 @@ import '../../../search/presentation/views/search_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../../user/presentation/views/user_view.dart';
+import 'widgets/drawer_widget.dart';
 
 class MainNavigator extends StatefulWidget {
   const MainNavigator({super.key});
@@ -46,6 +47,7 @@ class _MainNavigatorState extends State<MainNavigator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      endDrawer: const DrawerWidget(),
       body: Stack(
         children: [
           PageView(

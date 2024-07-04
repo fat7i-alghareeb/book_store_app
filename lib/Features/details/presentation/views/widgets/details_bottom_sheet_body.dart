@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../../Core/domain/entities/book_entity.dart';
 import '../../../../../constants.dart';
 import '../../manger/cubit/add_books_cubit.dart';
 import 'add_option_button.dart';
 
-class BottomSheetBody extends StatefulWidget {
-  const BottomSheetBody({
+class DetailsBottomSheetBody extends StatefulWidget {
+  const DetailsBottomSheetBody({
     super.key,
     required this.book,
   });
   final BookEntity book;
 
   @override
-  State<BottomSheetBody> createState() => _BottomSheetBodyState();
+  State<DetailsBottomSheetBody> createState() => _DetailsBottomSheetBodyState();
 }
 
-class _BottomSheetBodyState extends State<BottomSheetBody> {
+class _DetailsBottomSheetBodyState extends State<DetailsBottomSheetBody> {
   late bool isSaved;
   late bool isFavorite;
 
