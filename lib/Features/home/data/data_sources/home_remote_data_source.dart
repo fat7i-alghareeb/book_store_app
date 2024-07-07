@@ -1,5 +1,3 @@
-import '../models/book_model/book_model.dart';
-
 import '../../../../Core/utils/functions/books_operations_with_boxes.dart';
 import '../../../../Core/utils/services/book_services.dart';
 import '../../../../Core/domain/entities/book_entity.dart';
@@ -10,36 +8,30 @@ abstract class HomeRemoteDataSource {
   Future<List<BookEntity>> fetchNewestBooks({int pageNumber = 0});
 }
 
+// endPoint: 'volumes?q=e&startIndex=${pageNumber * 10}'
 class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   final ApiService apiService;
 
   HomeRemoteDataSourceImpl(this.apiService);
   @override
   Future<List<BookEntity>> fetchFeaturedBooks({int pageNumber = 0}) async {
-    var data = await apiService.get(
-        endPoint: 'volumes?q=e&startIndex=${pageNumber * 10}');
-    List<BookEntity> books =
-        data.map((book) => BookModel.fromJson(book)).toList();
+    var response =
+        await apiService.getBooks({"q": "e", "startIndex": pageNumber * 10});
+    List<BookEntity> books = response.items;
     saveBooksData(books, Constants.kFeaturedBox);
     return books;
   }
 
   @override
   Future<List<BookEntity>> fetchNewestBooks({int pageNumber = 0}) async {
-    var data = await apiService.get(
-        endPoint:
-            'volumes?q=a&langRestrict=en&orderBy=newest&startIndex=${pageNumber * 10}');
-    List<BookEntity> books =
-        data.map((book) => BookModel.fromJson(book)).toList();
+    var response = await apiService.getBooks({
+      "q": "e",
+      "orderBy": "newest",
+      "langRestrict": "en",
+      "startIndex": pageNumber * 10
+    });
+    List<BookEntity> books = response.items;
     saveBooksData(books, Constants.kNewestBox);
     return books;
   }
 }
-//   List<BookEntity> getBooksList(Map<String, dynamic> data) {
-//     List<BookEntity> books = [];
-//     for (var bookMap in data['items']) {
-//       books.add(BookModel.fromJson(bookMap));
-//     }
-//     return books;
-//   }
-// }
