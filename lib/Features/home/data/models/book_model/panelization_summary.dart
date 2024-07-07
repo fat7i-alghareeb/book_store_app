@@ -1,3 +1,7 @@
+import 'package:json_annotation/json_annotation.dart';
+part 'panelization_summary.g.dart';
+
+@JsonSerializable()
 class PanelizationSummary {
   bool? containsEpubBubbles;
   bool? containsImageBubbles;
@@ -7,15 +11,8 @@ class PanelizationSummary {
     this.containsImageBubbles,
   });
 
-  factory PanelizationSummary.fromJson(Map<String, dynamic> json) {
-    return PanelizationSummary(
-      containsEpubBubbles: json['containsEpubBubbles'] as bool?,
-      containsImageBubbles: json['containsImageBubbles'] as bool?,
-    );
-  }
+  factory PanelizationSummary.fromJson(Map<String, dynamic> json) =>
+      _$PanelizationSummaryFromJson(json);
 
-  Map<String, dynamic> toJson() => {
-        'containsEpubBubbles': containsEpubBubbles,
-        'containsImageBubbles': containsImageBubbles,
-      };
+  Map<String, dynamic> toJson() => _$PanelizationSummaryToJson(this);
 }

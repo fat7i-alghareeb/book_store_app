@@ -1,3 +1,7 @@
+import 'package:json_annotation/json_annotation.dart';
+part 'sale_info.g.dart';
+
+@JsonSerializable()
 class SaleInfo {
   String? country;
   String? saleability;
@@ -5,15 +9,8 @@ class SaleInfo {
 
   SaleInfo({this.country, this.saleability, this.isEbook});
 
-  factory SaleInfo.fromJson(Map<String, dynamic> json) => SaleInfo(
-        country: json['country'] as String?,
-        saleability: json['saleability'] as String?,
-        isEbook: json['isEbook'] as bool?,
-      );
+  factory SaleInfo.fromJson(Map<String, dynamic> json) =>
+      _$SaleInfoFromJson(json);
 
-  Map<String, dynamic> toJson() => {
-        'country': country,
-        'saleability': saleability,
-        'isEbook': isEbook,
-      };
+  Map<String, dynamic> toJson() => _$SaleInfoToJson(this);
 }

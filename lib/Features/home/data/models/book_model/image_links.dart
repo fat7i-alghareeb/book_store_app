@@ -1,16 +1,15 @@
+import 'package:json_annotation/json_annotation.dart';
+part 'image_links.g.dart';
+
+@JsonSerializable()
 class ImageLinks {
   String? smallThumbnail;
   String? thumbnail;
 
   ImageLinks({this.smallThumbnail, this.thumbnail});
 
-  factory ImageLinks.fromJson(Map<String, dynamic> json) => ImageLinks(
-        smallThumbnail: json['smallThumbnail'] as String?,
-        thumbnail: json['thumbnail'] as String?,
-      );
+  factory ImageLinks.fromJson(Map<String, dynamic> json) =>
+      _$ImageLinksFromJson(json);
 
-  Map<String, dynamic> toJson() => {
-        'smallThumbnail': smallThumbnail,
-        'thumbnail': thumbnail,
-      };
+  Map<String, dynamic> toJson() => _$ImageLinksToJson(this);
 }
