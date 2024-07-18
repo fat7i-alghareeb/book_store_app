@@ -18,7 +18,7 @@ class BookWidget extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: height * 0.7,
+          height: height * 0.72,
           child: Hero(
             tag: book.bookId,
             child: CustomBookImage(

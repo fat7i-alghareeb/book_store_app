@@ -17,7 +17,7 @@ class BookInfo extends StatelessWidget {
       children: [
         Text(
           title,
-          style: Styles.textStyle14,
+          style: Styles.textStyle20,
           textAlign: TextAlign.center,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,

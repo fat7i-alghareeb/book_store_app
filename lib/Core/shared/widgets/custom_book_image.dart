@@ -13,7 +13,10 @@ class CustomBookImage extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 2.6 / 4,
       child: Card(
-        elevation: 5,
+        elevation: 2,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(Constants.kBorderRadius),
+        ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(Constants.kBorderRadius),
           child: CachedNetworkImage(

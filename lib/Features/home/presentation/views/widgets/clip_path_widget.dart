@@ -10,7 +10,7 @@ class ClipPathWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipPath(
-      clipper: Clipper(),
+      clipper: MainClipper(),
       child: Container(
         color: Theme.of(context).colorScheme.secondary.withOpacity(0.85),
         height: MediaQuery.of(context).size.height * .8,

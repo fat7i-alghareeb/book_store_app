@@ -17,7 +17,7 @@ class AnimatedClipPath extends StatelessWidget {
       animation: _clipperAnimation,
       builder: (context, child) {
         return ClipPath(
-          clipper: Clipper(),
+          clipper: MainClipper(),
           child: Container(
             color: color,
             height:

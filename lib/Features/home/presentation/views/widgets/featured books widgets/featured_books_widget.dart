@@ -46,7 +46,7 @@ class _FeaturedBooksWidgetState extends State<FeaturedBooksWidget> {
             state is FeaturedBooksPaginationFailure) {
           widget.controller.forward();
           return Padding(
-            padding: const EdgeInsets.only(top: 20, bottom: 10),
+            padding: const EdgeInsets.only(top: 20),
             child: SwiperWidget(
               books: books,
             ),

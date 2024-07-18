@@ -37,7 +37,7 @@ class BookModel extends BookEntity {
               'https://dynamic.brandcrowd.com/template/preview/design/7469eb20-04f4-46fa-82a9-9d17dca76a4c?v=4&designTemplateVersion=1&size=design-preview-standalone-1x',
           authorName: volumeInfo.authors?.first ?? 'No Name',
           price: 0.0,
-          rating: Random().nextDouble() * 2.5 + 2.5,
+          rating: volumeInfo.averageRating ?? 0,
           title: volumeInfo.title!,
           author: volumeInfo.authors?[0] ?? " ",
         );

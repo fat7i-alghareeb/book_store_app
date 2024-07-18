@@ -1,7 +1,10 @@
+import 'package:book_app/Core/shared/widgets/app_icon.dart';
+import 'package:book_app/Features/home/presentation/views/widgets/clipper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../../Core/domain/entities/book_entity.dart';
+import '../../../../Core/shared/widgets/custom_book_image.dart';
 import '../../../../Core/utils/text_styles.dart';
 import 'widgets/book_option_widget.dart';
 import 'widgets/main_details_widget.dart';
@@ -23,13 +26,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: SingleChildScrollView(
-          child: DetailsBody(
-            book: widget.book,
-          ),
-        ),
+      body: DetailsBody(
+        book: widget.book,
       ),
     );
   }
@@ -48,36 +46,88 @@ class DetailsBody extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
 
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20.0),
-          child: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-              HapticFeedback.heavyImpact();
-            },
-            icon: const Icon(
-              Icons.arrow_back_ios_new_rounded,
-              size: 30,
-            ),
+        Expanded(
+          child: CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(
+                child: Stack(
+                  children: [
+                    ClipPath(
+                      clipper: DetailsClipper(),
+                      child: Container(
+                        color: Colors.grey.withOpacity(0.15),
+                        height: MediaQuery.of(context).size.height * .95,
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * .12,
+                        ),
+                        Center(
+                          child: SizedBox(
+                            height: MediaQuery.of(context).size.height * .35,
+                            child: Hero(
+                              tag: book.bookId,
+                              child: CustomBookImage(image: book.image!),
+                            ),
+                          ),
+                        ),
+                        MainDetailsWidget(book: book),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                "Book Overview ",
+                                style: Styles.textStyle24,
+                              ),
+                              const SizedBox(
+                                height: 15,
+                              ),
+                              Text(
+                                book.description,
+                                style: Styles.textStyle14,
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 40,
+                        ),
+                        child: AppIcon(
+                          onPressed: () {
+                            Navigator.pop(context);
+                            HapticFeedback.heavyImpact();
+                          },
+                          color: Theme.of(context).colorScheme.primary,
+                          widget: Icon(
+                            Icons.arrow_back_ios_new_rounded,
+                            color: Theme.of(context).colorScheme.secondary,
+                            size: 25,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
-        MainDetailsWidget(book: book, height: height * 0.25),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 30.0),
-          child: BookOptionWidget(
-            hight: height * .07,
-            book: book,
-          ),
-        ),
-        const Text(
-          "About this Book : ",
-          style: Styles.textStyle24,
-        ),
-        Text(
-          book.description,
-          style: Styles.textStyle14,
+        BookOptionWidget(
+          hight: height * .081,
+          book: book,
         ),
       ],
     );

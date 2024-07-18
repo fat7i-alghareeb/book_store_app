@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Clipper extends CustomClipper<Path> {
+class MainClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final path = Path();
@@ -22,6 +22,36 @@ class Clipper extends CustomClipper<Path> {
     path.lineTo(width * 1.0034800, height * -0.0006800);
 
     return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
+}
+
+class DetailsClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path_0 = Path();
+    path_0.moveTo(0, size.height * 0.0011236);
+    path_0.quadraticBezierTo(size.width * -0.0010313, size.height * 0.3136882,
+        size.width * -0.0013750, size.height * 0.4178764);
+    path_0.cubicTo(
+        size.width * 0.1045250,
+        size.height * 0.3935730,
+        size.width * 0.3734500,
+        size.height * 0.3681685,
+        size.width * 0.4966250,
+        size.height * 0.3714382);
+    path_0.cubicTo(
+        size.width * 0.6059250,
+        size.height * 0.3688202,
+        size.width * 0.8707000,
+        size.height * 0.3887753,
+        size.width * 0.9972000,
+        size.height * 0.4178539);
+    path_0.quadraticBezierTo(size.width * 0.9985250, size.height * 0.3139522,
+        size.width * 1.0025000, size.height * 0.0022472);
+    return path_0;
   }
 
   @override

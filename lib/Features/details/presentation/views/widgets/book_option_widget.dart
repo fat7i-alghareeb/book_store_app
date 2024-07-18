@@ -19,51 +19,57 @@ class BookOptionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
 
-    return SizedBox(
-      height: hight,
-      child: Row(
-        children: [
-          Container(
-            width: width * .6,
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.secondary.withOpacity(0.9),
-              borderRadius: BorderRadius.circular(Constants.kBorderRadius),
-            ),
-            child: Center(
-              child: Text(
-                "Read",
-                style: Styles.textStyle24.copyWith(
-                  color: Theme.of(context).colorScheme.primary,
-                ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      child: SizedBox(
+        height: hight,
+        child: Row(
+          children: [
+            Container(
+              width: width * .65,
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.secondary.withOpacity(0.9),
+                borderRadius: BorderRadius.circular(Constants.kBorderRadius),
               ),
-            ),
-          ),
-          const SizedBox(
-            width: 10,
-          ),
-          Expanded(
-            child: InkWell(
-              onTap: () {
-                HapticFeedback.heavyImpact();
-                showBottomSheet(context);
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  color:
-                      Theme.of(context).colorScheme.secondary.withOpacity(0.9),
-                  borderRadius: BorderRadius.circular(Constants.kBorderRadius),
-                ),
-                child: Center(
-                  child: Icon(
-                    Icons.format_list_bulleted_add,
-                    size: 30,
+              child: Center(
+                child: Text(
+                  "Read",
+                  style: Styles.textStyle24.copyWith(
                     color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+            const SizedBox(
+              width: 20,
+            ),
+            Expanded(
+              child: InkWell(
+                onTap: () {
+                  HapticFeedback.heavyImpact();
+                  showBottomSheet(context);
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius:
+                        BorderRadius.circular(Constants.kBorderRadius),
+                    border: Border.all(
+                      color: Theme.of(context).colorScheme.secondary,
+                      width: 2,
+                    ),
+                  ),
+                  child: Center(
+                    child: Icon(
+                      Icons.format_list_bulleted_add,
+                      size: 30,
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
