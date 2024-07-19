@@ -1,6 +1,6 @@
+import 'package:book_app/Features/home/data/models/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../Core/domain/entities/book_entity.dart';
 import '../../manger/favorite box cubit/cubit/favorite_books_cubit.dart';
 import '../../manger/saved box cubit/cubit/saved_books_cubit.dart';
 import 'books_section.dart';
@@ -14,8 +14,8 @@ class UserBody extends StatefulWidget {
 }
 
 class _UserBodyState extends State<UserBody> {
-  late List<BookEntity> savedBooks;
-  late List<BookEntity> favoriteBooks;
+  late List<BookModel> savedBooks;
+  late List<BookModel> favoriteBooks;
   final ScrollController scrollController = ScrollController();
 
   @override

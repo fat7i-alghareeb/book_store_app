@@ -1,41 +1,41 @@
+import 'package:book_app/Features/home/data/models/book_model.dart';
 import 'package:hive/hive.dart';
-import '../../domain/entities/book_entity.dart';
 
-void saveBooksData(List<BookEntity> books, String boxName) async {
-  var box = Hive.box<BookEntity>(boxName);
+void saveBooksData(List<BookModel> books, String boxName) async {
+  var box = Hive.box<BookModel>(boxName);
   await box.addAll(books);
 }
 
-void saveBookData(BookEntity book, String boxName) async {
-  var box = Hive.box<BookEntity>(boxName);
+void saveBookData(BookModel book, String boxName) async {
+  var box = Hive.box<BookModel>(boxName);
   await box.add(book);
 }
 
-void deleteBookData(BookEntity book, String boxName) async {
-  var box = Hive.box<BookEntity>(boxName);
+void deleteBookData(BookModel book, String boxName) async {
+  var box = Hive.box<BookModel>(boxName);
   int index;
   final books = box.values.toList();
   index = books.indexWhere(
-    (element) => book.bookId == element.bookId,
+    (element) => book.coverEditionKey == element.coverEditionKey,
   );
   box.deleteAt(index);
 }
 
-bool checkExisting(BookEntity book, String boxName) {
-  var box = Hive.box<BookEntity>(boxName);
+bool checkExisting(BookModel book, String boxName) {
+  var box = Hive.box<BookModel>(boxName);
   final isExist = box.values.toList().indexWhere(
-        (element) => book.bookId == element.bookId,
+        (element) => book.coverEditionKey == element.coverEditionKey,
       );
   return isExist == -1 ? false : true;
 }
 
-Future<List<BookEntity>> saveBookToRecentData(
-    BookEntity book, String boxName) async {
-  var box = await Hive.openBox<BookEntity>(boxName);
+Future<List<BookModel>> saveBookToRecentData(
+    BookModel book, String boxName) async {
+  var box = await Hive.openBox<BookModel>(boxName);
 
   int existingBookIndex = -1;
   for (int i = 0; i < box.length; i++) {
-    if (box.getAt(i)?.bookId == book.bookId) {
+    if (box.getAt(i)?.coverEditionKey == book.coverEditionKey) {
       existingBookIndex = i;
       break;
     }

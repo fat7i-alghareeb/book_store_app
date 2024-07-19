@@ -4,7 +4,7 @@ import 'package:get_it/get_it.dart';
 
 import '../../../Features/home/data/data_sources/home_local_data_source.dart';
 import '../../../Features/home/data/data_sources/home_remote_data_source.dart';
-import '../../../Features/home/data/repos/home_repo_impl.dart';
+import '../../../Features/home/data/repos/home_repo.dart';
 import '../services/book_services.dart';
 
 final getIt = GetIt.instance;
@@ -15,11 +15,11 @@ void setupServiceLocator() {
       createAndSetupDio(),
     ),
   );
-  getIt.registerSingleton<UserRepoImp>(UserRepoImp());
-  getIt.registerSingleton<HomeRepoImpl>(
-    HomeRepoImpl(
-      homeLocalDataSource: HomeLocalDataSourceImpl(),
-      homeRemoteDataSource: HomeRemoteDataSourceImpl(
+  getIt.registerSingleton<UserRepo>(UserRepo());
+  getIt.registerSingleton<HomeRepo>(
+    HomeRepo(
+      homeLocalDataSource: HomeLocalDataSource(),
+      homeRemoteDataSource: HomeRemoteDataSource(
         getIt.get<ApiService>(),
       ),
     ),

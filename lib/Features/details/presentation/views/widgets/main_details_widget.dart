@@ -1,6 +1,6 @@
+import 'package:book_app/Features/details/data/models/book_details_model.dart';
 import 'package:book_app/constants.dart';
 import 'package:flutter/material.dart';
-import '../../../../../Core/domain/entities/book_entity.dart';
 import '../../../../../Core/utils/text_styles.dart';
 
 class MainDetailsWidget extends StatelessWidget {
@@ -9,7 +9,7 @@ class MainDetailsWidget extends StatelessWidget {
     required this.book,
   });
 
-  final BookEntity book;
+  final BookDetailsModel book;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,14 +21,14 @@ class MainDetailsWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            book.title,
+            book.title!,
             style: Styles.textStyle24,
           ),
           const SizedBox(
             height: 5,
           ),
           Text(
-            book.author,
+            book.authors![0].author!.key ?? "",
             style: Styles.textStyle14.copyWith(color: Colors.grey),
           ),
           const SizedBox(
@@ -47,7 +47,7 @@ class MainDetailsWidget extends StatelessWidget {
                     width: 2,
                   ),
                   Text(
-                    book.rating.toStringAsFixed(1),
+                    "book.rating.toStringAsFixed(1)",
                     style: Styles.textStyle20.copyWith(
                       fontWeight: FontWeight.normal,
                       color: Colors.yellow[700],

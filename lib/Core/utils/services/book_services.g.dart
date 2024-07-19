@@ -3,26 +3,6 @@
 part of 'book_services.dart';
 
 // **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
-
-BookApiResponse _$BookApiResponseFromJson(Map<String, dynamic> json) =>
-    BookApiResponse(
-      kind: json['kind'] as String,
-      totalItems: (json['totalItems'] as num).toInt(),
-      items: (json['items'] as List<dynamic>)
-          .map((e) => BookModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-
-Map<String, dynamic> _$BookApiResponseToJson(BookApiResponse instance) =>
-    <String, dynamic>{
-      'kind': instance.kind,
-      'totalItems': instance.totalItems,
-      'items': instance.items,
-    };
-
-// **************************************************************************
 // RetrofitGenerator
 // **************************************************************************
 
@@ -33,7 +13,7 @@ class _ApiService implements ApiService {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://www.googleapis.com/books/v1/';
+    baseUrl ??= 'https://openlibrary.org/';
   }
 
   final Dio _dio;
@@ -41,21 +21,21 @@ class _ApiService implements ApiService {
   String? baseUrl;
 
   @override
-  Future<BookApiResponse> getBooks(Map<String, dynamic> map) async {
+  Future<TrendingResponse> getTrendingBooks(Map<String, dynamic> map) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(map);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<BookApiResponse>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<TrendingResponse>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              'volumes',
+              'trending/daily.json',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -64,7 +44,62 @@ class _ApiService implements ApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final _value = BookApiResponse.fromJson(_result.data!);
+    final _value = TrendingResponse.fromJson(_result.data!);
+    return _value;
+  }
+
+  @override
+  Future<RatingsResponse> getRatings(String workId) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<RatingsResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'works/${workId}/ratings.json',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = RatingsResponse.fromJson(_result.data!);
+    return _value;
+  }
+
+  @override
+  Future<SearchResponse> getSearchedBooks(Map<String, dynamic> map) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(map);
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<SearchResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'search.json',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = SearchResponse.fromJson(_result.data!);
     return _value;
   }
 

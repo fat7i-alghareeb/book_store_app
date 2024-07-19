@@ -1,8 +1,7 @@
+import 'package:book_app/Features/home/data/models/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../../../Core/domain/entities/book_entity.dart';
-import '../../../../../../Core/shared/widgets/book_card_list_view.dart';
+import 'book_card_list_view.dart';
 import '../../../../../../Core/shared/widgets/error_widget.dart';
 import '../../../../../../Core/utils/functions/build_error_snack_bar.dart';
 import '../../../manger/newest_books_cubit/newest_books_cubit.dart';
@@ -19,7 +18,7 @@ class NewestBooksWidget extends StatefulWidget {
 }
 
 class _NewestBooksWidgetState extends State<NewestBooksWidget> {
-  late List<BookEntity> books;
+  late List<BookModel> books;
 
   @override
   void initState() {

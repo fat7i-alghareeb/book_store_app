@@ -1,36 +1,30 @@
+import 'package:book_app/Features/home/data/models/book_model.dart';
 import '../../../../Core/utils/functions/books_operations_with_boxes.dart';
 import '../../../../Core/utils/services/book_services.dart';
-import '../../../../Core/domain/entities/book_entity.dart';
 import '../../../../constants.dart';
 
-abstract class HomeRemoteDataSource {
-  Future<List<BookEntity>> fetchFeaturedBooks({int pageNumber = 0});
-  Future<List<BookEntity>> fetchNewestBooks({int pageNumber = 0});
-}
-
-// endPoint: 'volumes?q=e&startIndex=${pageNumber * 10}'
-class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
+class HomeRemoteDataSource {
   final ApiService apiService;
 
-  HomeRemoteDataSourceImpl(this.apiService);
-  @override
-  Future<List<BookEntity>> fetchFeaturedBooks({int pageNumber = 0}) async {
-    var response =
-        await apiService.getBooks({"q": "e", "startIndex": pageNumber * 10});
-    List<BookEntity> books = response.items;
-    saveBooksData(books, Constants.kFeaturedBox);
+  HomeRemoteDataSource(this.apiService);
+
+  Future<List<BookModel>> fetchTrendingBooks({int pageNumber = 1}) async {
+    var response = await apiService.getTrendingBooks({
+      "page": pageNumber,
+      "limit": 10,
+    });
+    List<BookModel> books = response.books!;
+    saveBooksData(books, Constants.kTrendingBox);
     return books;
   }
 
-  @override
-  Future<List<BookEntity>> fetchNewestBooks({int pageNumber = 0}) async {
-    var response = await apiService.getBooks({
-      "q": "e",
-      "orderBy": "newest",
-      "langRestrict": "en",
-      "startIndex": pageNumber * 10
+  Future<List<BookModel>> fetchNewestBooks({int pageNumber = 1}) async {
+    var response = await apiService.getSearchedBooks({
+      "q": "programming",
+      "page": pageNumber,
+      "limit": 10,
     });
-    List<BookEntity> books = response.items;
+    List<BookModel> books = response.books!;
     saveBooksData(books, Constants.kNewestBox);
     return books;
   }

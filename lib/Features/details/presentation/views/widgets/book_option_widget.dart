@@ -1,4 +1,4 @@
-import '../../../../../Core/domain/entities/book_entity.dart';
+import 'package:book_app/Features/home/data/models/book_model.dart';
 import '../../manger/cubit/add_books_cubit.dart';
 import '../../../../../constants.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +14,7 @@ class BookOptionWidget extends StatelessWidget {
     required this.book,
   });
   final double hight;
-  final BookEntity book;
+  final BookModel book;
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;

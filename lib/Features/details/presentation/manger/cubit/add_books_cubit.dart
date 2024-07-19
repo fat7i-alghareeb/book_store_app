@@ -1,4 +1,5 @@
-import '../../../../../Core/domain/entities/book_entity.dart';
+import 'package:book_app/Features/home/data/models/book_model.dart';
+
 import '../../../../../Core/utils/functions/books_operations_with_boxes.dart';
 import '../../../../../constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,7 +8,7 @@ import 'add_books_state.dart';
 
 class AddBooksCubit extends Cubit<AddBooksState> {
   AddBooksCubit() : super(AddBooksInitial());
-  void addToFavorite(BookEntity book) {
+  void addToFavorite(BookModel book) {
     try {
       saveBookData(book, Constants.kFavoriteBooksBox);
       emit(AddBooksSuccess());
@@ -16,7 +17,7 @@ class AddBooksCubit extends Cubit<AddBooksState> {
     }
   }
 
-  void removeFromFavorite(BookEntity book) {
+  void removeFromFavorite(BookModel book) {
     try {
       deleteBookData(book, Constants.kFavoriteBooksBox);
     } catch (e) {
@@ -24,7 +25,7 @@ class AddBooksCubit extends Cubit<AddBooksState> {
     }
   }
 
-  void removeFromSaved(BookEntity book) {
+  void removeFromSaved(BookModel book) {
     try {
       deleteBookData(book, Constants.kSavedBookBox);
     } catch (e) {
@@ -32,7 +33,7 @@ class AddBooksCubit extends Cubit<AddBooksState> {
     }
   }
 
-  void addToSaved(BookEntity book) {
+  void addToSaved(BookModel book) {
     try {
       saveBookData(book, Constants.kSavedBookBox);
       emit(AddBooksSuccess());
@@ -41,7 +42,7 @@ class AddBooksCubit extends Cubit<AddBooksState> {
     }
   }
 
-  bool checkIfExists(BookEntity book, String boxName) {
+  bool checkIfExists(BookModel book, String boxName) {
     return checkExisting(book, boxName);
   }
 }

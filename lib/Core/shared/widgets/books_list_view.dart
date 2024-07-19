@@ -1,7 +1,7 @@
+import 'package:book_app/Core/utils/functions/get_image.dart';
+import 'package:book_app/Features/home/data/models/book_model.dart';
 import '../../utils/functions/details_navigator.dart';
 import 'package:flutter/material.dart';
-
-import '../../domain/entities/book_entity.dart';
 import 'custom_book_image.dart';
 
 class BooksListViewWidget extends StatelessWidget {
@@ -11,7 +11,7 @@ class BooksListViewWidget extends StatelessWidget {
     required this.scrollController,
     required this.onPop,
   });
-  final List<BookEntity> books;
+  final List<BookModel> books;
   final void Function() onPop;
   final ScrollController scrollController;
   @override
@@ -32,7 +32,10 @@ class BooksListViewWidget extends StatelessWidget {
                 navigateToDetails(context, reversedBooks[index], onPop);
               },
               child: CustomBookImage(
-                image: reversedBooks[index].image!,
+                image: getImage(
+                  olid: reversedBooks[index].coverEditionKey,
+                  id: reversedBooks[index].coverId,
+                ),
               ),
             ),
           );

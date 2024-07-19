@@ -1,6 +1,6 @@
+import 'package:book_app/Features/home/data/models/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../Core/domain/entities/book_entity.dart';
 import '../../../../../Core/shared/widgets/books_list_view.dart';
 import '../../../../../Core/utils/text_styles.dart';
 import '../../manger/recent_viewed_books_cubit/cubit/recent_viewed_books_cubit.dart';
@@ -17,7 +17,7 @@ class RecentlyViewedBooksWidget extends StatefulWidget {
 }
 
 class _RecentlyViewedBooksWidgetState extends State<RecentlyViewedBooksWidget> {
-  late List<BookEntity> books;
+  late List<BookModel> books;
   ScrollController scrollController = ScrollController();
   @override
   void initState() {

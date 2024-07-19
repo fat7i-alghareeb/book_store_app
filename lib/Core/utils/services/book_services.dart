@@ -1,35 +1,21 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
-import '../../../Features/home/data/models/book_model/book_model.dart';
+
+import '../../../Features/home/data/models/search_response.dart';
+import '../../../Features/home/data/models/trending_response.dart';
+import '../../shared/models/ratings_response.dart';
 
 part 'book_services.g.dart';
 
-@RestApi(baseUrl: 'https://www.googleapis.com/books/v1/')
+@RestApi(baseUrl: "https://openlibrary.org/")
 abstract class ApiService {
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
 
-  @GET('volumes')
-  Future<BookApiResponse> getBooks(@Queries() Map<String, dynamic> map);
-
-  // @GET('volumes')
-  // Future<BookApiResponse> fetchNewestBooks(@Queries() Map<String, dynamic> map);
-}
-
-@JsonSerializable()
-class BookApiResponse {
-  final String kind;
-  final int totalItems;
-  final List<BookModel> items;
-
-  BookApiResponse({
-    required this.kind,
-    required this.totalItems,
-    required this.items,
-  });
-
-  factory BookApiResponse.fromJson(Map<String, dynamic> json) =>
-      _$BookApiResponseFromJson(json);
-
-  Map<String, dynamic> toJson() => _$BookApiResponseToJson(this);
+  @GET('trending/daily.json')
+  Future<TrendingResponse> getTrendingBooks(
+      @Queries() Map<String, dynamic> map);
+  @GET("works/{workId}/ratings.json")
+  Future<RatingsResponse> getRatings(@Path("workId") String workId);
+  @GET('search.json')
+  Future<SearchResponse> getSearchedBooks(@Queries() Map<String, dynamic> map);
 }

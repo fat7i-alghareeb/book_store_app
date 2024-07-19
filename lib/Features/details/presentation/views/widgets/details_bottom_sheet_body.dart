@@ -1,6 +1,6 @@
+import 'package:book_app/Features/home/data/models/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../Core/domain/entities/book_entity.dart';
 import '../../../../../constants.dart';
 import '../../manger/cubit/add_books_cubit.dart';
 import 'add_option_button.dart';
@@ -10,7 +10,7 @@ class DetailsBottomSheetBody extends StatefulWidget {
     super.key,
     required this.book,
   });
-  final BookEntity book;
+  final BookModel book;
 
   @override
   State<DetailsBottomSheetBody> createState() => _DetailsBottomSheetBodyState();

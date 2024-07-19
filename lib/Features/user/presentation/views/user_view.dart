@@ -15,11 +15,11 @@ class UserView extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) =>
-              SavedBooksCubit(getIt<UserRepoImp>())..fetchSavedBooks(),
+              SavedBooksCubit(getIt<UserRepo>())..fetchSavedBooks(),
         ),
         BlocProvider(
           create: (context) =>
-              FavoriteBooksCubit(getIt<UserRepoImp>())..fetchFavoriteBooks(),
+              FavoriteBooksCubit(getIt<UserRepo>())..fetchFavoriteBooks(),
         ),
       ],
       child: const SingleChildScrollView(

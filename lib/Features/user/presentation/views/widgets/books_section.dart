@@ -1,7 +1,7 @@
 import 'package:book_app/Core/shared/widgets/books_list_view.dart';
+import 'package:book_app/Features/home/data/models/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../Core/domain/entities/book_entity.dart';
 import '../../../../../Core/utils/text_styles.dart';
 import '../../manger/favorite box cubit/cubit/favorite_books_cubit.dart';
 import '../../manger/favorite box cubit/cubit/favorite_books_state.dart';
@@ -10,7 +10,7 @@ import '../../manger/saved box cubit/cubit/saved_books_state.dart';
 
 class BooksSection extends StatelessWidget {
   final String title;
-  final List<BookEntity> books;
+  final List<BookModel> books;
   final VoidCallback updateBooks;
   final VoidCallback fetchingTheChange;
   final ScrollController scrollController;

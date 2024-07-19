@@ -4,10 +4,10 @@ import '../../../../constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../Core/utils/functions/setup_service_locator.dart';
-import '../manger/featured_books_cubit/featured_books_cubit.dart';
+import '../manger/trending_books_cubit/trending_books_cubit.dart';
 import '../manger/newest_books_cubit/newest_books_cubit.dart';
 import 'widgets/animated_clipper.dart';
-import '../../data/repos/home_repo_impl.dart';
+import '../../data/repos/home_repo.dart';
 import 'widgets/home_body.dart';
 
 class Home extends StatefulWidget {
@@ -24,8 +24,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     checkCache();
-    Constants.featuredBooksPageNumber = 0;
-    Constants.newestPageNumber = 0;
+    Constants.trendingBooksPageNumber = 1;
+    Constants.newestPageNumber = 1;
     BlocProvider.of<RecentViewedBooksCubit>(context).fetchRecentViewedBooks();
     _clipperAnimationController = AnimationController(
       vsync: this,
@@ -53,11 +53,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       providers: [
         BlocProvider(
           create: (context) =>
-              FeaturedBooksCubit(getIt<HomeRepoImpl>())..fetchFeaturedBooks(),
+              TrendingBooksCubit(getIt<HomeRepo>())..fetchTrendingBooks(),
         ),
         BlocProvider(
           create: (context) =>
-              NewestBooksCubit(getIt<HomeRepoImpl>())..fetchNewestBooks(),
+              NewestBooksCubit(getIt<HomeRepo>())..fetchNewestBooks(),
         ),
       ],
       child: CustomScrollView(

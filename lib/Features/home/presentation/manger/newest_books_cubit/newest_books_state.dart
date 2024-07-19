@@ -1,14 +1,15 @@
-import '../../../../../Core/domain/entities/book_entity.dart';
+import 'package:book_app/Features/home/data/models/book_model.dart';
 
 abstract class NewestBooksState {}
 
 class NewestBooksInitial extends NewestBooksState {}
 
 class NewestBooksLoading extends NewestBooksState {}
+
 class NewestBooksPaginationLoading extends NewestBooksState {}
 
 class NewestBooksSuccess extends NewestBooksState {
-  final List<BookEntity> books;
+  final List<BookModel> books;
 
   NewestBooksSuccess(this.books);
 }
@@ -18,6 +19,7 @@ class NewestBooksFailure extends NewestBooksState {
 
   NewestBooksFailure(this.errMessage);
 }
+
 class NewestBooksPaginationFailure extends NewestBooksState {
   final String errMessage;
 

@@ -1,0 +1,73 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'book_model.dart';
+
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class BookModelAdapter extends TypeAdapter<BookModel> {
+  @override
+  final int typeId = 0;
+
+  @override
+  BookModel read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return BookModel(
+      authorName: (fields[0] as List?)?.cast<String>(),
+      coverEditionKey: fields[1] as String?,
+      title: fields[2] as String?,
+      ratingsAverage: fields[3] as double?,
+    )..coverId = fields[4] as int?;
+  }
+
+  @override
+  void write(BinaryWriter writer, BookModel obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.authorName)
+      ..writeByte(1)
+      ..write(obj.coverEditionKey)
+      ..writeByte(2)
+      ..write(obj.title)
+      ..writeByte(3)
+      ..write(obj.ratingsAverage)
+      ..writeByte(4)
+      ..write(obj.coverId);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BookModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+BookModel _$BookModelFromJson(Map<String, dynamic> json) => BookModel(
+      authorName: (json['author_name'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      coverEditionKey: json['cover_edition_key'] as String?,
+      title: json['title'] as String?,
+      ratingsAverage: (json['ratings_average'] as num?)?.toDouble(),
+    )..coverId = (json['cover_i'] as num?)?.toInt();
+
+Map<String, dynamic> _$BookModelToJson(BookModel instance) => <String, dynamic>{
+      'author_name': instance.authorName,
+      'cover_edition_key': instance.coverEditionKey,
+      'title': instance.title,
+      'ratings_average': instance.ratingsAverage,
+      'cover_i': instance.coverId,
+    };

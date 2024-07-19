@@ -1,21 +1,21 @@
+import 'package:book_app/Features/home/data/models/book_model.dart';
 import 'Core/utils/functions/setup_service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'Core/themes.dart';
-import 'Core/domain/entities/book_entity.dart';
 import 'Core/utils/router/app_router.dart';
 import 'constants.dart';
 
 void main() async {
   await Hive.initFlutter();
-  Hive.registerAdapter(BookEntityAdapter());
+  Hive.registerAdapter(BookModelAdapter());
   setupServiceLocator();
-  await Hive.openBox<BookEntity>(Constants.kFeaturedBox);
-  await Hive.openBox<BookEntity>(Constants.kNewestBox);
-  await Hive.openBox<BookEntity>(Constants.kRecentViewedBox);
-  await Hive.openBox<BookEntity>(Constants.kFavoriteBooksBox);
-  await Hive.openBox<BookEntity>(Constants.kSavedBookBox);
+  await Hive.openBox<BookModel>(Constants.kTrendingBox);
+  await Hive.openBox<BookModel>(Constants.kNewestBox);
+  await Hive.openBox<BookModel>(Constants.kRecentViewedBox);
+  await Hive.openBox<BookModel>(Constants.kFavoriteBooksBox);
+  await Hive.openBox<BookModel>(Constants.kSavedBookBox);
   await Hive.openBox<int>(Constants.kSavedTimeBox);
   //Bloc.observer = SimpleBlocObserver();
   runApp(MyApp());
