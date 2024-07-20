@@ -19,7 +19,7 @@ Map<String, dynamic> _$RatingsResponseToJson(RatingsResponse instance) =>
     };
 
 Rating _$RatingFromJson(Map<String, dynamic> json) => Rating(
-      average: (json['average'] as num?)?.toInt(),
+      average: (json['average'] as num?)?.toDouble(),
       count: (json['count'] as num?)?.toInt(),
     );
 

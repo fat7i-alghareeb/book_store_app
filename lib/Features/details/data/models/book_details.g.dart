@@ -1,19 +1,20 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'book_details_model.dart';
+part of 'book_details.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-BookDetailsModel _$BookDetailsModelFromJson(Map<String, dynamic> json) =>
-    BookDetailsModel(
+BookDetails _$BookDetailsFromJson(Map<String, dynamic> json) => BookDetails(
       title: json['title'] as String?,
       key: json['key'] as String?,
       authors: (json['authors'] as List<dynamic>?)
           ?.map((e) => Authors.fromJson(e as Map<String, dynamic>))
           .toList(),
-      description: json['description'] as String?,
+      description: json['description'] == null
+          ? null
+          : Description.fromJson(json['description']),
       covers: (json['covers'] as List<dynamic>?)
           ?.map((e) => (e as num).toInt())
           .toList(),
@@ -25,7 +26,7 @@ BookDetailsModel _$BookDetailsModelFromJson(Map<String, dynamic> json) =>
           : Created.fromJson(json['created'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$BookDetailsModelToJson(BookDetailsModel instance) =>
+Map<String, dynamic> _$BookDetailsToJson(BookDetails instance) =>
     <String, dynamic>{
       'title': instance.title,
       'key': instance.key,

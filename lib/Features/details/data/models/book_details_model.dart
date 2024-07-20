@@ -1,31 +1,8 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:book_app/Features/details/data/models/book_details.dart';
+import 'package:book_app/Features/details/data/models/ratings_response.dart';
 
-import 'authors.dart';
-import 'created.dart';
-part 'book_details_model.g.dart';
-
-@JsonSerializable()
 class BookDetailsModel {
-  String? title;
-  String? key;
-  List<Authors>? authors;
-  String? description;
-  List<int>? covers;
-  List<String>? subjects;
-  Created? created;
-
-  BookDetailsModel({
-    this.title,
-    this.key,
-    this.authors,
-    this.description,
-    this.covers,
-    this.subjects,
-    this.created,
-  });
-
-  factory BookDetailsModel.fromJson(Map<String, dynamic> json) =>
-      _$BookDetailsModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$BookDetailsModelToJson(this);
+  final BookDetails bookDetails;
+  final Rating rating;
+  BookDetailsModel({required this.bookDetails, required this.rating});
 }

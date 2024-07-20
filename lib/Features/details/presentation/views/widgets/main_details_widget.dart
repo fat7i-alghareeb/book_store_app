@@ -6,10 +6,10 @@ import '../../../../../Core/utils/text_styles.dart';
 class MainDetailsWidget extends StatelessWidget {
   const MainDetailsWidget({
     super.key,
-    required this.book,
+    required this.bookDetailsModel,
   });
 
-  final BookDetailsModel book;
+  final BookDetailsModel bookDetailsModel;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,14 +21,14 @@ class MainDetailsWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            book.title!,
+            bookDetailsModel.bookDetails.title!,
             style: Styles.textStyle24,
           ),
           const SizedBox(
             height: 5,
           ),
           Text(
-            book.authors![0].author!.key ?? "",
+            bookDetailsModel.bookDetails.authors![0].author!.key ?? "",
             style: Styles.textStyle14.copyWith(color: Colors.grey),
           ),
           const SizedBox(
@@ -47,7 +47,7 @@ class MainDetailsWidget extends StatelessWidget {
                     width: 2,
                   ),
                   Text(
-                    "book.rating.toStringAsFixed(1)",
+                    bookDetailsModel.rating.average?.toStringAsFixed(2) ?? "0",
                     style: Styles.textStyle20.copyWith(
                       fontWeight: FontWeight.normal,
                       color: Colors.yellow[700],
@@ -59,7 +59,7 @@ class MainDetailsWidget extends StatelessWidget {
                 width: 5,
               ),
               Text(
-                "/ 708 reviews",
+                "/ ${bookDetailsModel.rating.count?.toString() ?? "0"}",
                 style: Styles.textStyle14.copyWith(
                   color: Colors.grey,
                 ),

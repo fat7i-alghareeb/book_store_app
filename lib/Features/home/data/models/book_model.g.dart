@@ -21,13 +21,15 @@ class BookModelAdapter extends TypeAdapter<BookModel> {
       coverEditionKey: fields[1] as String?,
       title: fields[2] as String?,
       ratingsAverage: fields[3] as double?,
-    )..coverId = fields[4] as int?;
+      key: fields[5] as String?,
+      coverId: fields[4] as int?,
+    );
   }
 
   @override
   void write(BinaryWriter writer, BookModel obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.authorName)
       ..writeByte(1)
@@ -37,7 +39,9 @@ class BookModelAdapter extends TypeAdapter<BookModel> {
       ..writeByte(3)
       ..write(obj.ratingsAverage)
       ..writeByte(4)
-      ..write(obj.coverId);
+      ..write(obj.coverId)
+      ..writeByte(5)
+      ..write(obj.key);
   }
 
   @override
@@ -62,7 +66,9 @@ BookModel _$BookModelFromJson(Map<String, dynamic> json) => BookModel(
       coverEditionKey: json['cover_edition_key'] as String?,
       title: json['title'] as String?,
       ratingsAverage: (json['ratings_average'] as num?)?.toDouble(),
-    )..coverId = (json['cover_i'] as num?)?.toInt();
+      key: json['key'] as String?,
+      coverId: (json['cover_i'] as num?)?.toInt(),
+    );
 
 Map<String, dynamic> _$BookModelToJson(BookModel instance) => <String, dynamic>{
       'author_name': instance.authorName,
@@ -70,4 +76,5 @@ Map<String, dynamic> _$BookModelToJson(BookModel instance) => <String, dynamic>{
       'title': instance.title,
       'ratings_average': instance.ratingsAverage,
       'cover_i': instance.coverId,
+      'key': instance.key,
     };

@@ -62,7 +62,7 @@ class _ApiService implements ApiService {
     )
             .compose(
               _dio.options,
-              'works/${workId}/ratings.json',
+              '${workId}/ratings.json',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -100,6 +100,33 @@ class _ApiService implements ApiService {
               baseUrl,
             ))));
     final _value = SearchResponse.fromJson(_result.data!);
+    return _value;
+  }
+
+  @override
+  Future<BookDetails> getBookDetails(String workId) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<BookDetails>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '${workId}.json',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = BookDetails.fromJson(_result.data!);
     return _value;
   }
 

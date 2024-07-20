@@ -19,13 +19,15 @@ class BookModel {
   @HiveField(4)
   @JsonKey(name: 'cover_i')
   int? coverId;
-
-  BookModel({
-    this.authorName,
-    this.coverEditionKey,
-    this.title,
-    this.ratingsAverage,
-  });
+  @HiveField(5)
+  String? key;
+  BookModel(
+      {this.authorName,
+      this.coverEditionKey,
+      this.title,
+      this.ratingsAverage,
+      this.key,
+      this.coverId});
 
   factory BookModel.fromJson(Map<String, dynamic> json) =>
       _$BookModelFromJson(json);

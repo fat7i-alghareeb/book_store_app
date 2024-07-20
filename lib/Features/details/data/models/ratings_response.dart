@@ -15,7 +15,7 @@ class RatingsResponse {
 
 @JsonSerializable()
 class Rating {
-  final int? average;
+  final double? average;
   final int? count;
 
   Rating({this.average, this.count});

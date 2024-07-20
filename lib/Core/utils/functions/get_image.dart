@@ -7,9 +7,9 @@ String getImage({String? olid, int? id}) {
 }
 
 String getImageByOlid(String olid) {
-  return "https://covers.openlibrary.org/b/olid/$olid-M.jpg";
+  return "https://covers.openlibrary.org/b/olid/$olid-L.jpg";
 }
 
 String getImageById(int id) {
-  return "https://covers.openlibrary.org/b/id/$id-M.jpg";
+  return "https://covers.openlibrary.org/b/id/$id-L.jpg";
 }
