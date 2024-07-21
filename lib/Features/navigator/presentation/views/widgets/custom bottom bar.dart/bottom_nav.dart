@@ -12,8 +12,8 @@ class CustomBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).colorScheme.secondary.withOpacity(0.05),
+    return SizedBox(
+      // color: Theme.of(context).colorScheme.secondary.withOpacity(0.05),
       //margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
       height: 70,
       child: ClipRRect(

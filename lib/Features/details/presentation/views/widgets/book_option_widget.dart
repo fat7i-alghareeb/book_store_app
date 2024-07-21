@@ -20,7 +20,7 @@ class BookOptionWidget extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       child: SizedBox(
         height: hight,
         child: Row(

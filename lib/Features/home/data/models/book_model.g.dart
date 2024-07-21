@@ -23,13 +23,14 @@ class BookModelAdapter extends TypeAdapter<BookModel> {
       ratingsAverage: fields[3] as double?,
       key: fields[5] as String?,
       coverId: fields[4] as int?,
+      authorKey: (fields[6] as List?)?.cast<String>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, BookModel obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.authorName)
       ..writeByte(1)
@@ -41,7 +42,9 @@ class BookModelAdapter extends TypeAdapter<BookModel> {
       ..writeByte(4)
       ..write(obj.coverId)
       ..writeByte(5)
-      ..write(obj.key);
+      ..write(obj.key)
+      ..writeByte(6)
+      ..write(obj.authorKey);
   }
 
   @override
@@ -68,6 +71,9 @@ BookModel _$BookModelFromJson(Map<String, dynamic> json) => BookModel(
       ratingsAverage: (json['ratings_average'] as num?)?.toDouble(),
       key: json['key'] as String?,
       coverId: (json['cover_i'] as num?)?.toInt(),
+      authorKey: (json['author_key'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$BookModelToJson(BookModel instance) => <String, dynamic>{
@@ -77,4 +83,5 @@ Map<String, dynamic> _$BookModelToJson(BookModel instance) => <String, dynamic>{
       'ratings_average': instance.ratingsAverage,
       'cover_i': instance.coverId,
       'key': instance.key,
+      'author_key': instance.authorKey,
     };

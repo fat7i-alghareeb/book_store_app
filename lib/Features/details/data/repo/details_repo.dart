@@ -1,3 +1,5 @@
+import 'package:book_app/Core/shared/models/author_details.dart';
+import 'package:book_app/Features/details/data/models/authors.dart';
 import 'package:book_app/Features/details/data/models/book_details.dart';
 import 'package:book_app/Features/details/data/models/book_details_model.dart';
 import 'package:book_app/Features/details/data/models/ratings_response.dart';
@@ -10,15 +12,20 @@ class DetailsRepo {
   final ApiService apiService;
 
   DetailsRepo(this.apiService);
-  Future<Either<Failure, BookDetailsModel>> fetchBookDetails(
-      {required String bookPath}) async {
-    BookDetails bookDetails;
+  Future<Either<Failure, BookDetailsModel>> fetchBookDetails({
+    required String bookPath,
+    required String authorId,
+  }) async {
     BookDetailsModel bookDetailsModel;
     try {
-      bookDetails = await apiService.getBookDetails(bookPath);
+      BookDetails bookDetails = await apiService.getBookDetails(bookPath);
       RatingsResponse ratingsResponse = await apiService.getRatings(bookPath);
+      AuthorDetails author = await apiService.getAuthorDetails(authorId);
       bookDetailsModel = BookDetailsModel(
-          bookDetails: bookDetails, rating: ratingsResponse.rating!);
+        bookDetails: bookDetails,
+        rating: ratingsResponse.rating!,
+        author: author,
+      );
       return right(bookDetailsModel);
     } catch (e) {
       if (e is DioException) {

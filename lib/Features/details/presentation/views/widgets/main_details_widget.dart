@@ -28,7 +28,7 @@ class MainDetailsWidget extends StatelessWidget {
             height: 5,
           ),
           Text(
-            bookDetailsModel.bookDetails.authors![0].author!.key ?? "",
+            bookDetailsModel.author.name ?? "",
             style: Styles.textStyle14.copyWith(color: Colors.grey),
           ),
           const SizedBox(

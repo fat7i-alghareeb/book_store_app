@@ -16,7 +16,7 @@ class CustomAppBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            "Book Store",
+            "Trending Books",
             style: Styles.textStyle24.copyWith(
               color: Theme.of(context).colorScheme.primary,
             ),

@@ -25,8 +25,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<DetailsBookCubit>(context)
-        .fetchBookDetails(bookPath: widget.book.key!);
+    BlocProvider.of<DetailsBookCubit>(context).fetchBookDetails(
+      bookPath: widget.book.key!,
+      authorId: widget.book.authorKey![0],
+    );
   }
 
   @override

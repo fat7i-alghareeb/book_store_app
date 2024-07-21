@@ -6,10 +6,14 @@ import 'details_book_state.dart';
 class DetailsBookCubit extends Cubit<DetailsBookState> {
   DetailsBookCubit(this.detailsRepo) : super(DetailsBookInitial());
   final DetailsRepo detailsRepo;
-  Future<void> fetchBookDetails({required String bookPath}) async {
+  Future<void> fetchBookDetails({
+    required String bookPath,
+    required String authorId,
+  }) async {
     emit(DetailsBookLoading());
 
-    var result = await detailsRepo.fetchBookDetails(bookPath: bookPath);
+    var result = await detailsRepo.fetchBookDetails(
+        bookPath: bookPath, authorId: authorId);
     result.fold(
       (failure) {
         emit(DetailsBookFailure(message: failure.message));

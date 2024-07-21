@@ -1,3 +1,5 @@
+import 'package:book_app/Core/shared/models/author_details.dart';
+import 'package:book_app/Features/details/data/models/authors.dart';
 import 'package:book_app/Features/details/data/models/book_details.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
@@ -21,4 +23,6 @@ abstract class ApiService {
   Future<SearchResponse> getSearchedBooks(@Queries() Map<String, dynamic> map);
   @GET("{workId}.json")
   Future<BookDetails> getBookDetails(@Path("workId") String workId);
+  @GET("/authors/{authorId}.json")
+  Future<AuthorDetails> getAuthorDetails(@Path("authorId") String authorId);
 }

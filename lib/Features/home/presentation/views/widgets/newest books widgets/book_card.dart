@@ -18,7 +18,7 @@ class BookCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double containerWidth = MediaQuery.of(context).size.width * .8;
+    final double containerWidth = MediaQuery.of(context).size.width * .75;
     return Padding(
       padding: const EdgeInsets.only(top: 8.0),
       child: GestureDetector(
@@ -39,15 +39,15 @@ class BookCard extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(10, 0, 5, 0),
               child: BookCardInfo(
                 containerWidth: containerWidth,
-                height: height * .8,
+                height: height * .7,
                 title: book.title!,
                 rating: book.ratingsAverage?.toDouble() ?? 0,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 5, 15),
+              padding: const EdgeInsets.fromLTRB(20, 0, 5, 10),
               child: SizedBox(
-                width: containerWidth * .4,
+                width: containerWidth * .37,
                 child: Hero(
                   tag: book.coverEditionKey ?? book.coverId!,
                   child: CustomBookImage(
