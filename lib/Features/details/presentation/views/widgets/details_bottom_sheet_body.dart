@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../constants.dart';
 import '../../manger/cubit/add_books_cubit.dart';
-import 'add_option_button.dart';
+import 'bottom_sheet_option_button.dart';
 
 class DetailsBottomSheetBody extends StatefulWidget {
   const DetailsBottomSheetBody({
@@ -35,21 +35,21 @@ class _DetailsBottomSheetBodyState extends State<DetailsBottomSheetBody> {
       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
       child: Column(
         children: [
-          OptionButton(
+          BottomSheetOptionButton(
             label: "Save book",
             icon: isSaved ? Icons.bookmark : Icons.bookmark_border,
             isActive: isSaved,
             activeColor: Theme.of(context).colorScheme.secondary,
-            inactiveColor: Theme.of(context).colorScheme.primary,
+            inactiveColor: Colors.grey[200]!,
             onTap: () => _toggleSaveStatus(),
           ),
           const SizedBox(height: 15),
-          OptionButton(
+          BottomSheetOptionButton(
             label: "Mark as Favorite",
             icon: isFavorite ? Icons.favorite : Icons.favorite_border,
             isActive: isFavorite,
             activeColor: Colors.red[800]!,
-            inactiveColor: Theme.of(context).colorScheme.primary,
+            inactiveColor: Colors.grey[200]!,
             onTap: () => _toggleFavoriteStatus(),
           ),
         ],

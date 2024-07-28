@@ -13,7 +13,7 @@ void checkCache() async {
     var currentTime = DateTime.now();
     var difference = currentTime.difference(savedTime).inHours;
 
-    if (difference >= 1) {
+    if (difference >= 24) {
       Hive.box<BookModel>(Constants.kTrendingBox).clear();
       Hive.box<BookModel>(Constants.kNewestBox).clear();
       box.putAt(0, DateTime.now().millisecondsSinceEpoch);

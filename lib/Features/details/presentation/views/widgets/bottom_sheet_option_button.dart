@@ -1,10 +1,8 @@
 import "package:flutter/material.dart";
-
 import "../../../../../Core/utils/text_styles.dart";
-import "../../../../../constants.dart";
 
-class OptionButton extends StatelessWidget {
-  const OptionButton({
+class BottomSheetOptionButton extends StatelessWidget {
+  const BottomSheetOptionButton({
     super.key,
     required this.label,
     required this.icon,
@@ -31,17 +29,10 @@ class OptionButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
           color: isActive ? activeColor : inactiveColor,
-          borderRadius: BorderRadius.circular(Constants.kBorderRadius),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.2),
-              blurRadius: 5,
-              offset: const Offset(0, 2),
-            ),
-          ],
+          borderRadius: BorderRadius.circular(30),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -50,14 +41,15 @@ class OptionButton extends StatelessWidget {
                 style: Styles.textStyle24.copyWith(
                   color: isActive
                       ? Theme.of(context).colorScheme.primary
-                      : Theme.of(context).colorScheme.secondary,
+                      : Colors.black,
+                  fontWeight: FontWeight.normal,
                 ),
               ),
               Icon(
                 icon,
                 color: isActive
                     ? Theme.of(context).colorScheme.primary
-                    : Theme.of(context).colorScheme.secondary,
+                    : Colors.black,
               ),
             ],
           ),

@@ -14,6 +14,7 @@ class CustomBookImage extends StatelessWidget {
       aspectRatio: 2.6 / 4,
       child: Card(
         elevation: 2,
+        margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Constants.kBorderRadius),
         ),
@@ -21,6 +22,13 @@ class CustomBookImage extends StatelessWidget {
           borderRadius: BorderRadius.circular(Constants.kBorderRadius),
           child: CachedNetworkImage(
             imageUrl: image,
+            progressIndicatorBuilder: (context, url, downloadProgress) =>
+                Center(
+              child: CircularProgressIndicator(
+                value: downloadProgress.progress,
+                color: Theme.of(context).colorScheme.secondary,
+              ),
+            ),
             fit: BoxFit.fill,
           ),
         ),

@@ -1,4 +1,6 @@
+import 'package:book_app/Features/search/presentation/manger/cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../Core/utils/text_styles.dart';
 
@@ -17,15 +19,22 @@ class CustomTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: TextField(
+        onSubmitted: (value) {
+          if (value.isNotEmpty) {
+            BlocProvider.of<SearchCubit>(context)
+                .fetchBookDetails(searchText: value);
+          }
+        },
         controller: _searchController,
         focusNode: searchFocusNode,
+        textInputAction: TextInputAction.search,
         cursorColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           border: InputBorder.none,
-          hintText: 'Search Books, Authors, or ISBN',
+          hintText: 'Search Books, Authors',
           hintStyle: Styles.textStyle14.copyWith(
             fontWeight: FontWeight.normal,
-            color: Colors.grey,
+            color: Colors.grey.shade400,
           ),
         ),
       ),
