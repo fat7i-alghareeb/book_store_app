@@ -1,7 +1,7 @@
 import 'package:book_app/Features/details/data/models/book_details_model.dart';
-import 'package:book_app/constants.dart';
 import 'package:flutter/material.dart';
 import '../../../../../Core/utils/text_styles.dart';
+import 'book_categories.dart';
 
 class MainDetailsWidget extends StatelessWidget {
   const MainDetailsWidget({
@@ -71,71 +71,6 @@ class MainDetailsWidget extends StatelessWidget {
           ),
           const BookCategoriesWidget(),
         ],
-      ),
-    );
-  }
-}
-
-class BookCategoriesWidget extends StatelessWidget {
-  const BookCategoriesWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 45,
-      child: ListView(
-        padding: EdgeInsets.zero,
-        scrollDirection: Axis.horizontal,
-        children: const [
-          CategoryContainerWidget(
-            categoryName: "Poetry",
-          ),
-          CategoryContainerWidget(
-            categoryName: "History",
-          ),
-          CategoryContainerWidget(
-            categoryName: "Romance",
-          ),
-          CategoryContainerWidget(
-            categoryName: "Action",
-          ),
-          CategoryContainerWidget(
-            categoryName: "fuck",
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class CategoryContainerWidget extends StatelessWidget {
-  const CategoryContainerWidget({
-    super.key,
-    required this.categoryName,
-  });
-  final String categoryName;
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 10),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(
-            Constants.kBorderRadius,
-          ),
-          color: Theme.of(context).colorScheme.secondary.withOpacity(0.1),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Center(
-            child: Text(
-              categoryName,
-              style: Styles.textStyle14.copyWith(
-                color: Theme.of(context).colorScheme.secondary,
-              ),
-            ),
-          ),
-        ),
       ),
     );
   }

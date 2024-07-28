@@ -2,7 +2,7 @@ import 'package:book_app/Features/search/presentation/manger/cubit/search_cubit.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../Core/utils/text_styles.dart';
+import '../../../../../../Core/utils/text_styles.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -21,8 +21,7 @@ class CustomTextField extends StatelessWidget {
       child: TextField(
         onSubmitted: (value) {
           if (value.isNotEmpty) {
-            BlocProvider.of<SearchCubit>(context)
-                .fetchBookDetails(searchText: value);
+            BlocProvider.of<SearchCubit>(context).fetchBooks(searchText: value);
           }
         },
         controller: _searchController,

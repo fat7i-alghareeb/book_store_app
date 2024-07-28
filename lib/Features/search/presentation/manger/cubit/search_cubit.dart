@@ -7,7 +7,7 @@ class SearchCubit extends Cubit<SearchState> {
   SearchCubit(this.searchRepo) : super(SearchInitial());
   final SearchRepo searchRepo;
 
-  Future<void> fetchBookDetails({required String searchText}) async {
+  Future<void> fetchBooks({required String searchText}) async {
     emit(SearchLoading());
     Map<String, dynamic> queries = {'title': searchText};
     queries.addAll(SearchConstants.sortType[SearchConstants.sortTypesIndex]!);
