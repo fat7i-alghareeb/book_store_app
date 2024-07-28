@@ -1,4 +1,3 @@
-import '../../../../../../Core/shared/widgets/rating_bar_widget.dart';
 import '../../../../../../constants.dart';
 import 'package:flutter/material.dart';
 import '../../../../../../Core/utils/text_styles.dart';
@@ -10,27 +9,30 @@ class BookCardInfo extends StatelessWidget {
     required this.height,
     required this.title,
     required this.rating,
+    required this.author,
   });
 
   final double containerWidth;
   final double height;
   final String title;
   final double rating;
+  final String author;
   @override
   Widget build(BuildContext context) {
     return Card(
       color: Colors.transparent,
+      margin: EdgeInsets.zero,
       elevation: 5,
       shadowColor: Theme.of(context).colorScheme.secondary.withOpacity(.05),
       child: Container(
-        width: containerWidth,
         height: height,
+        width: containerWidth,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(Constants.kBorderRadius),
           color: Theme.of(context).colorScheme.secondary.withOpacity(.1),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(top: 8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -46,13 +48,32 @@ class BookCardInfo extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
+              SizedBox(
+                width: containerWidth * .5,
+                child: Text(
+                  author,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: Styles.textStyle14,
+                ),
+              ),
               const SizedBox(
                 height: 10,
               ),
               SizedBox(
-                width: containerWidth * .5,
-                child: RatingBarWidget(
-                  rating: rating,
+                width: containerWidth * .52,
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.star_rounded,
+                      size: 23,
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
+                    Text(
+                      rating.toStringAsFixed(2),
+                      style: Styles.textStyle14,
+                    )
+                  ],
                 ),
               )
             ],

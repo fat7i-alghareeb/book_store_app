@@ -49,7 +49,7 @@ class _HomeBookCardListViewState extends State<HomeBookCardListView> {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.of(context).size.height * .22;
+    final double height = MediaQuery.of(context).size.height * .24;
     return SizedBox(
       height: height,
       child: ListView.builder(

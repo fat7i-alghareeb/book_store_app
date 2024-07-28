@@ -36,11 +36,12 @@ class BookCard extends StatelessWidget {
           alignment: AlignmentDirectional.bottomStart,
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(10, 0, 5, 0),
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: BookCardInfo(
                 containerWidth: containerWidth,
                 height: height * .7,
                 title: book.title!,
+                author: book.authorName?[0] ?? " ",
                 rating: book.ratingsAverage?.toDouble() ?? 0,
               ),
             ),
