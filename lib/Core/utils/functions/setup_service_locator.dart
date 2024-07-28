@@ -38,7 +38,6 @@ void setupServiceLocator() {
       getIt.get<ApiService>(),
     ),
   );
-  getIt.registerSingleton<SearchCubit>(SearchCubit(getIt<SearchRepo>()));
 }
 
 Dio createAndSetupDio() {
