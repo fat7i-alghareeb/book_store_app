@@ -37,7 +37,7 @@ class BookCardInfo extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               SizedBox(
-                width: containerWidth * .5,
+                width: containerWidth * .58,
                 child: Text(
                   title,
                   maxLines: 2,
@@ -49,7 +49,7 @@ class BookCardInfo extends StatelessWidget {
                 height: 10,
               ),
               SizedBox(
-                width: containerWidth * .5,
+                width: containerWidth * .58,
                 child: Text(
                   author,
                   maxLines: 1,
@@ -61,7 +61,7 @@ class BookCardInfo extends StatelessWidget {
                 height: 10,
               ),
               SizedBox(
-                width: containerWidth * .52,
+                width: containerWidth * .58,
                 child: Row(
                   children: [
                     Icon(

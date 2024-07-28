@@ -1,9 +1,11 @@
+import 'dart:math';
+
 import 'package:book_app/Features/home/data/models/book_model.dart';
 
 import '../../../manger/newest_books_cubit/newest_books_cubit.dart';
 import '../../../../../../constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'book_card.dart';
+import '../../../../../../Core/shared/widgets/book_card.dart';
 import 'package:flutter/material.dart';
 
 class HomeBookCardListView extends StatefulWidget {
@@ -67,9 +69,13 @@ class _HomeBookCardListViewState extends State<HomeBookCardListView> {
               ),
             );
           }
-          return BookCard(
-            height: height,
-            book: widget.books[index],
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: BookCard(
+              height: height,
+              book: widget.books[index],
+              containerWidth: MediaQuery.of(context).size.width * .75,
+            ),
           );
         },
       ),

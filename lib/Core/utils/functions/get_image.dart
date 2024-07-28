@@ -2,7 +2,7 @@ String getImage({String? olid, int? id}) {
   if (olid != null) {
     return getImageByOlid(olid);
   } else {
-    return getImageById(id!);
+    return getImageById(id ?? 1);
   }
 }
 

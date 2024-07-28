@@ -1,5 +1,6 @@
 import 'package:book_app/Features/details/data/repo/details_repo.dart';
 import 'package:book_app/Features/search/data/repo/search_repo.dart';
+import 'package:book_app/Features/search/presentation/manger/cubit/search_cubit.dart';
 
 import '../../../Features/user/data/repo/user_repo_imp.dart';
 import 'package:dio/dio.dart';
@@ -37,6 +38,7 @@ void setupServiceLocator() {
       getIt.get<ApiService>(),
     ),
   );
+  getIt.registerSingleton<SearchCubit>(SearchCubit(getIt<SearchRepo>()));
 }
 
 Dio createAndSetupDio() {

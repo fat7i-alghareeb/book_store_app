@@ -1,15 +1,12 @@
-import 'package:book_app/Core/shared/widgets/custom_book_image.dart';
 import 'package:book_app/Core/shared/widgets/sliver_sized_box.dart';
-import 'package:book_app/Core/utils/functions/get_image.dart';
 import 'package:book_app/Core/utils/functions/setup_service_locator.dart';
-import 'package:book_app/Features/search/data/repo/search_repo.dart';
 import 'package:book_app/Features/search/presentation/manger/cubit/search_cubit.dart';
 import 'package:book_app/Features/search/presentation/manger/cubit/search_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../Core/utils/text_styles.dart';
 import '../../../../constants.dart';
+import '../../../../Core/shared/widgets/book_card.dart';
 import 'widgets/text_field_widget.dart';
 
 class SearchView extends StatelessWidget {
@@ -20,7 +17,7 @@ class SearchView extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: BlocProvider(
-          create: (context) => SearchCubit(getIt<SearchRepo>()),
+          create: (context) => getIt<SearchCubit>(),
           child: const SearchScreenBody(),
         ),
       ),
@@ -57,73 +54,57 @@ class _SearchScreenBodyState extends State<SearchScreenBody> {
           const SliverSizedBox(
             height: 18,
           ),
-          SliverFillRemaining(
-            child: BlocBuilder<SearchCubit, SearchState>(
-              builder: (context, state) {
-                if (state is SearchSuccess) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "${state.searchResponse.numFound} Results Found",
-                        style: Styles.textStyle14,
-                      ),
-                      const SizedBox(
-                        height: 18,
-                      ),
-                      Expanded(
-                        child: ListView.builder(
-                          padding: EdgeInsets.zero,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: state.searchResponse.books?.length ?? 0,
-                          itemBuilder: (context, index) {
-                            return SizedBox(
-                              height: 200,
-                              child: Row(
-                                children: [
-                                  Hero(
-                                    tag: state.searchResponse.books?[index]
-                                            .coverEditionKey ??
-                                        state.searchResponse.books?[index]
-                                            .coverId ??
-                                        1,
-                                    child: CustomBookImage(
-                                      image: getImage(
-                                        olid: state.searchResponse.books?[index]
-                                            .coverEditionKey,
-                                        id: state.searchResponse.books?[index]
-                                                .coverId ??
-                                            1,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                      )
-                    ],
-                  );
-                } else if (state is SearchFailure) {
-                  return Center(
+          BlocBuilder<SearchCubit, SearchState>(
+            builder: (context, state) {
+              if (state is SearchSuccess) {
+                return SliverList.builder(
+                  itemCount: (state.searchResponse.books!.length + 1),
+                  itemBuilder: (context, index) {
+                    if (index == 0) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "${state.searchResponse.numFound} Results Found",
+                            style: Styles.textStyle14,
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          )
+                        ],
+                      );
+                    }
+                    return BookCard(
+                      height: MediaQuery.of(context).size.height * .24,
+                      book: state.searchResponse.books![index - 1],
+                      containerWidth: MediaQuery.of(context).size.width - 40,
+                    );
+                  },
+                );
+              } else if (state is SearchFailure) {
+                return SliverFillRemaining(
+                  child: Center(
                     child: Text(state.message),
-                  );
-                } else if (state is SearchLoading) {
-                  return Center(
+                  ),
+                );
+              } else if (state is SearchLoading) {
+                return SliverFillRemaining(
+                  child: Center(
                     child: CircularProgressIndicator(
                         color: Theme.of(context).colorScheme.secondary),
-                  );
-                } else {
-                  return Center(
+                  ),
+                );
+              } else {
+                return SliverFillRemaining(
+                  child: Center(
                     child: Image.asset(
                       "images/search.png",
                       height: 140,
                     ),
-                  );
-                }
-              },
-            ),
+                  ),
+                );
+              }
+            },
           )
         ],
       ),
