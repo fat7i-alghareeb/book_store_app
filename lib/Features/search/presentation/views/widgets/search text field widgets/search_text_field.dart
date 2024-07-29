@@ -4,10 +4,11 @@ import 'filter_button.dart';
 import 'search_button.dart';
 
 class SearchTextField extends StatefulWidget {
-  const SearchTextField(
-      {super.key,
-      required this.searchFocusNode,
-      required this.searchController});
+  const SearchTextField({
+    super.key,
+    required this.searchFocusNode,
+    required this.searchController,
+  });
   final FocusNode searchFocusNode;
   final TextEditingController searchController;
   @override
