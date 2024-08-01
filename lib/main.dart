@@ -1,3 +1,4 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
 import 'package:book_app/Features/home/data/models/book_model.dart';
 import 'Core/utils/functions/setup_service_locator.dart';
 import 'package:flutter/material.dart';
@@ -27,12 +28,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        systemNavigationBarColor: 2 < 4 ? Color(0xffffffff) : Color(0xff1b2026),
-      ),
-    );
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Book Store',
@@ -40,7 +35,7 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: _appRouter.generateRoute,
       theme: lightMode,
       darkTheme: darkMode,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
     );
   }
 }

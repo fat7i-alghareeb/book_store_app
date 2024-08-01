@@ -6,7 +6,7 @@ const lightMainColor = Color(0xFFFFFFFF);
 const lightOnPrimaryColor = Colors.black;
 const lightNeutralColor = Color(0xFFF4F4F4);
 ///////////////////////////////////////////////////////////////////
-const darkMainColor = Color(0xFF1F1A12);
+const darkMainColor = Color(0xFF2f4858);
 const darkOnPrimaryColor = Colors.white;
 const darkNeutralColor = Color(0xFF342F3F);
 

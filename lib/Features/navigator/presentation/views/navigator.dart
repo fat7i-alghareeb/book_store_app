@@ -1,3 +1,6 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
+import 'package:flutter/services.dart';
+
 import '../../../home/presentation/views/home_view.dart';
 import 'widgets/custom%20bottom%20bar.dart/bottom_nav.dart';
 import '../../../search/presentation/views/search_view.dart';
@@ -23,6 +26,10 @@ class _MainNavigatorState extends State<MainNavigator> {
     const SearchView(),
     const UserView(),
   ];
+  @override
+  void initState() {
+    super.initState();
+  }
 
   void _onPageChanged(int index) {
     setState(() {
@@ -46,6 +53,12 @@ class _MainNavigatorState extends State<MainNavigator> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarColor: context.primaryColor(),
+      ),
+    );
     return Scaffold(
       endDrawer: const DrawerWidget(),
       body: Stack(

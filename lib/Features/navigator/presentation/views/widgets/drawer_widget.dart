@@ -15,7 +15,7 @@ class DrawerWidget extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.all(15),
-              child: ThemeSwitch(lightTheme: true),
+              child: ThemeSwitch(),
             ),
           ],
         ),
