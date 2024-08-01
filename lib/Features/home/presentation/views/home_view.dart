@@ -88,10 +88,13 @@ class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LiquidPullToRefresh(
-      onRefresh: () async {
-        checkCache(clearNow: true);
-        BlocProvider.of<TrendingBooksCubit>(context).fetchTrendingBooks();
-        BlocProvider.of<NewestBooksCubit>(context).fetchNewestBooks();
+      onRefresh: () {
+        return checkCache(clearNow: true).then(
+          (value) {
+            BlocProvider.of<TrendingBooksCubit>(context).fetchTrendingBooks();
+            BlocProvider.of<NewestBooksCubit>(context).fetchNewestBooks();
+          },
+        );
       },
       animSpeedFactor: 3,
       showChildOpacityTransition: false,

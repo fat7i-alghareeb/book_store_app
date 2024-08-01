@@ -14,8 +14,8 @@ Future<void> checkCache({bool clearNow = false}) async {
     var difference = currentTime.difference(savedTime).inHours;
 
     if (difference >= 24 || clearNow) {
-      Hive.box<BookModel>(Constants.kTrendingBox).clear();
-      Hive.box<BookModel>(Constants.kNewestBox).clear();
+      await Hive.box<BookModel>(Constants.kTrendingBox).clear();
+      await Hive.box<BookModel>(Constants.kNewestBox).clear();
       box.putAt(0, DateTime.now().millisecondsSinceEpoch);
     }
   }
