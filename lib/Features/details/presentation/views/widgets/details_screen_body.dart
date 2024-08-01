@@ -1,3 +1,4 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -120,10 +121,10 @@ class DetailsBackButton extends StatelessWidget {
             Navigator.pop(context);
             HapticFeedback.heavyImpact();
           },
-          color: Theme.of(context).colorScheme.primary,
+          color: context.primaryColor(),
           widget: Icon(
             Icons.arrow_back_ios_new_rounded,
-            color: Theme.of(context).colorScheme.secondary,
+            color: context.accentColor(),
             size: 25,
           ),
         ),

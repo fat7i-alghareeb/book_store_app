@@ -1,3 +1,5 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
+
 import '../../../../../../constants.dart';
 import 'package:flutter/material.dart';
 import '../../../../../../Core/utils/text_styles.dart';
@@ -23,13 +25,13 @@ class BookCardInfo extends StatelessWidget {
       color: Colors.transparent,
       margin: EdgeInsets.zero,
       elevation: 5,
-      shadowColor: Theme.of(context).colorScheme.secondary.withOpacity(.05),
+      shadowColor: context.accentColor().withOpacity(.05),
       child: Container(
         height: height,
         width: containerWidth,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(Constants.kBorderRadius),
-          color: Theme.of(context).colorScheme.secondary.withOpacity(.1),
+          color: context.accentColor().withOpacity(.1),
         ),
         child: Padding(
           padding: const EdgeInsets.only(top: 8.0),
@@ -67,7 +69,7 @@ class BookCardInfo extends StatelessWidget {
                     Icon(
                       Icons.star_rounded,
                       size: 23,
-                      color: Theme.of(context).colorScheme.secondary,
+                      color: context.accentColor(),
                     ),
                     Text(
                       rating.toStringAsFixed(2),

@@ -1,3 +1,4 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../Core/utils/text_styles.dart';
@@ -50,7 +51,7 @@ class CategoryContainerWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(
             Constants.kBorderRadius,
           ),
-          color: Theme.of(context).colorScheme.secondary.withOpacity(0.1),
+          color: context.accentColor().withOpacity(0.1),
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -58,7 +59,7 @@ class CategoryContainerWidget extends StatelessWidget {
             child: Text(
               categoryName,
               style: Styles.textStyle14.copyWith(
-                color: Theme.of(context).colorScheme.secondary,
+                color: context.accentColor(),
               ),
             ),
           ),

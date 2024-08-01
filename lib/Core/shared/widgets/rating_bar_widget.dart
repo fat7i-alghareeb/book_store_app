@@ -1,3 +1,4 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -17,19 +18,18 @@ class RatingBarWidget extends StatelessWidget {
       ratingWidget: RatingWidget(
         full: Icon(
           Icons.star_rate_rounded,
-          color: Theme.of(context).colorScheme.secondary,
+          color: context.accentColor(),
         ),
         half: Icon(
           Icons.star_half_rounded,
-          color: Theme.of(context).colorScheme.secondary,
+          color: context.accentColor(),
         ),
         empty: Icon(
           Icons.star_outline_rounded,
-          color: Theme.of(context).colorScheme.secondary,
+          color: context.accentColor(),
         ),
       ),
-      onRatingUpdate: (value) {
-      },
+      onRatingUpdate: (value) {},
     );
   }
 }

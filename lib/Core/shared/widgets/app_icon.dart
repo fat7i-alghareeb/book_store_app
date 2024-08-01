@@ -1,3 +1,4 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
 import 'package:flutter/material.dart';
 
 class AppIcon extends StatelessWidget {
@@ -14,7 +15,7 @@ class AppIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: const CircleBorder(),
-      color: color ?? Theme.of(context).colorScheme.tertiary,
+      color: color ?? context.onPrimaryColor(),
       elevation: 0,
       child: IconButton(
         onPressed: onPressed,

@@ -1,3 +1,4 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../Core/utils/text_styles.dart';
@@ -58,9 +59,7 @@ class SearchTypeWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(
           Constants.kBorderRadius,
         ),
-        color: isSelected
-            ? Theme.of(context).colorScheme.secondary
-            : Colors.grey[200],
+        color: isSelected ? context.accentColor() : Colors.grey[200],
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -68,9 +67,7 @@ class SearchTypeWidget extends StatelessWidget {
           child: Text(
             typeName,
             style: Styles.textStyle14.copyWith(
-              color: isSelected
-                  ? Theme.of(context).colorScheme.primary
-                  : Colors.black,
+              color: isSelected ? context.primaryColor() : Colors.black,
             ),
           ),
         ),

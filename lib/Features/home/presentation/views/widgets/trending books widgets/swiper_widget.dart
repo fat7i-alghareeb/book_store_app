@@ -1,3 +1,4 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
 import 'package:book_app/Features/home/data/models/book_model.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +49,7 @@ class SwiperWidget extends StatelessWidget {
             if (!isLoading) {
               return Center(
                 child: CircularProgressIndicator(
-                  color: Theme.of(context).colorScheme.secondary,
+                  color: context.accentColor(),
                 ),
               );
             } else {

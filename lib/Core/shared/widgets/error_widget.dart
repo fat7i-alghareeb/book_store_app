@@ -1,3 +1,4 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
 import 'package:flutter/material.dart';
 
 class OnFetchErrorWidget extends StatelessWidget {
@@ -46,7 +47,7 @@ class OnFetchErrorWidget extends StatelessWidget {
               icon: const Icon(Icons.refresh),
               label: const Text('Retry'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Theme.of(context).colorScheme.secondary,
+                backgroundColor: context.accentColor(),
               ),
             ),
           ],

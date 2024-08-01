@@ -1,3 +1,4 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
 import 'package:book_app/Features/home/data/models/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -59,7 +60,7 @@ class _UserBodyState extends State<UserBody> {
         Divider(
           indent: width * .15,
           endIndent: width * .15,
-          color: Theme.of(context).colorScheme.secondary,
+          color: context.accentColor(),
         ),
         BooksSection(
           title: "Saved Books :",

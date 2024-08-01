@@ -1,3 +1,4 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
 import 'package:book_app/Features/home/data/models/book_model.dart';
 import '../../manger/cubit/add_books_cubit.dart';
 import '../../../../../constants.dart';
@@ -28,14 +29,14 @@ class BookOptionWidget extends StatelessWidget {
             Container(
               width: width * .65,
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.secondary.withOpacity(0.9),
+                color: context.accentColor().withOpacity(0.9),
                 borderRadius: BorderRadius.circular(Constants.kBorderRadius),
               ),
               child: Center(
                 child: Text(
                   "Read",
                   style: Styles.textStyle24.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
+                    color: context.primaryColor(),
                   ),
                 ),
               ),
@@ -54,7 +55,7 @@ class BookOptionWidget extends StatelessWidget {
                     borderRadius:
                         BorderRadius.circular(Constants.kBorderRadius),
                     border: Border.all(
-                      color: Theme.of(context).colorScheme.secondary,
+                      color: context.accentColor(),
                       width: 2,
                     ),
                   ),
@@ -62,7 +63,7 @@ class BookOptionWidget extends StatelessWidget {
                     child: Icon(
                       Icons.format_list_bulleted_add,
                       size: 30,
-                      color: Theme.of(context).colorScheme.secondary,
+                      color: context.accentColor(),
                     ),
                   ),
                 ),
@@ -94,7 +95,7 @@ class BookOptionWidget extends StatelessWidget {
                   child: Image.asset(
                     "images/expand-button.png",
                     height: 23,
-                    color: Theme.of(context).colorScheme.secondary,
+                    color: context.accentColor(),
                   ),
                 ),
               ),

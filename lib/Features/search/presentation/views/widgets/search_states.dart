@@ -1,3 +1,4 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,8 +28,7 @@ class SearchStates extends StatelessWidget {
         } else if (state is SearchLoading) {
           return SliverFillRemaining(
             child: Center(
-              child: CircularProgressIndicator(
-                  color: Theme.of(context).colorScheme.secondary),
+              child: CircularProgressIndicator(color: context.accentColor()),
             ),
           );
         } else {

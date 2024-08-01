@@ -1,3 +1,4 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
 import 'package:flutter/material.dart';
 
 class ThemeSwitch extends StatefulWidget {
@@ -29,13 +30,13 @@ class _ThemeSwitchState extends State<ThemeSwitch> {
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Theme.of(context).colorScheme.tertiary,
+            color: context.onPrimaryColor(),
           ),
         ),
         Switch(
           value: !lightTheme,
           activeColor: Colors.white,
-          inactiveThumbColor: Theme.of(context).colorScheme.secondary,
+          inactiveThumbColor: context.accentColor(),
           inactiveTrackColor: Colors.white,
           activeTrackColor: Colors.black,
           onChanged: (value) {

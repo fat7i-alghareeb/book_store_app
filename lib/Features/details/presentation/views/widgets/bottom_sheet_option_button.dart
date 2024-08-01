@@ -1,3 +1,4 @@
+import "package:book_app/Core/utils/helper_extensions.dart";
 import "package:flutter/material.dart";
 import "../../../../../Core/utils/text_styles.dart";
 
@@ -39,17 +40,13 @@ class BottomSheetOptionButton extends StatelessWidget {
               Text(
                 label,
                 style: Styles.textStyle24.copyWith(
-                  color: isActive
-                      ? Theme.of(context).colorScheme.primary
-                      : Colors.black,
+                  color: isActive ? context.primaryColor() : Colors.black,
                   fontWeight: FontWeight.normal,
                 ),
               ),
               Icon(
                 icon,
-                color: isActive
-                    ? Theme.of(context).colorScheme.primary
-                    : Colors.black,
+                color: isActive ? context.primaryColor() : Colors.black,
               ),
             ],
           ),

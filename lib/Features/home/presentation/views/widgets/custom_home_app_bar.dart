@@ -1,3 +1,4 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -18,7 +19,7 @@ class CustomAppBar extends StatelessWidget {
           Text(
             "Trending Books",
             style: Styles.textStyle24.copyWith(
-              color: Theme.of(context).colorScheme.primary,
+              color: context.primaryColor(),
             ),
           ),
           IconButton(
@@ -27,7 +28,7 @@ class CustomAppBar extends StatelessWidget {
             },
             icon: FaIcon(
               FontAwesomeIcons.bars,
-              color: Theme.of(context).colorScheme.primary,
+              color: context.primaryColor(),
             ),
           ),
         ],

@@ -1,3 +1,4 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
 import 'package:book_app/Features/home/data/models/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,7 +40,7 @@ class _DetailsBottomSheetBodyState extends State<DetailsBottomSheetBody> {
             label: "Save book",
             icon: isSaved ? Icons.bookmark : Icons.bookmark_border,
             isActive: isSaved,
-            activeColor: Theme.of(context).colorScheme.secondary,
+            activeColor: context.accentColor(),
             inactiveColor: Colors.grey[200]!,
             onTap: () => _toggleSaveStatus(),
           ),

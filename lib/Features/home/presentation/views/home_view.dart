@@ -1,3 +1,6 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
+
 import '../../../../Core/utils/functions/check_cache.dart';
 import '../manger/recent_viewed_books_cubit/cubit/recent_viewed_books_cubit.dart';
 import '../../../../constants.dart';
@@ -8,7 +11,7 @@ import '../manger/trending_books_cubit/trending_books_cubit.dart';
 import '../manger/newest_books_cubit/newest_books_cubit.dart';
 import 'widgets/animated_clipper.dart';
 import '../../data/repos/home_repo.dart';
-import 'widgets/home_body.dart';
+import 'widgets/home_content.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -23,21 +26,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
   @override
   void initState() {
-    checkCache();
-    Constants.trendingBooksPageNumber = 1;
-    Constants.newestPageNumber = 1;
-    BlocProvider.of<RecentViewedBooksCubit>(context).fetchRecentViewedBooks();
-    _clipperAnimationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 500),
-    );
-    _clipperAnimation = Tween<double>(
-      begin: 0.0,
-      end: .8,
-    ).animate(CurvedAnimation(
-      parent: _clipperAnimationController,
-      curve: Curves.decelerate,
-    ));
+    _init();
     super.initState();
   }
 
@@ -60,6 +49,52 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               NewestBooksCubit(getIt<HomeRepo>())..fetchNewestBooks(),
         ),
       ],
+      child: HomeBody(
+          clipperAnimation: _clipperAnimation,
+          clipperAnimationController: _clipperAnimationController),
+    );
+  }
+
+  void _init() {
+    checkCache();
+    Constants.trendingBooksPageNumber = 1;
+    Constants.newestPageNumber = 1;
+    BlocProvider.of<RecentViewedBooksCubit>(context).fetchRecentViewedBooks();
+    _clipperAnimationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+    _clipperAnimation = Tween<double>(
+      begin: 0.0,
+      end: .8,
+    ).animate(CurvedAnimation(
+      parent: _clipperAnimationController,
+      curve: Curves.decelerate,
+    ));
+  }
+}
+
+class HomeBody extends StatelessWidget {
+  const HomeBody({
+    super.key,
+    required Animation<double> clipperAnimation,
+    required AnimationController clipperAnimationController,
+  })  : _clipperAnimation = clipperAnimation,
+        _clipperAnimationController = clipperAnimationController;
+
+  final Animation<double> _clipperAnimation;
+  final AnimationController _clipperAnimationController;
+
+  @override
+  Widget build(BuildContext context) {
+    return LiquidPullToRefresh(
+      onRefresh: () async {
+        checkCache(clearNow: true);
+        BlocProvider.of<TrendingBooksCubit>(context).fetchTrendingBooks();
+        BlocProvider.of<NewestBooksCubit>(context).fetchNewestBooks();
+      },
+      animSpeedFactor: 3,
+      showChildOpacityTransition: false,
       child: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
@@ -67,10 +102,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               children: [
                 AnimatedClipPath(
                   clipperAnimation: _clipperAnimation,
-                  color:
-                      Theme.of(context).colorScheme.secondary.withOpacity(0.85),
+                  color: context.accentColor().withOpacity(0.85),
                 ),
-                HomeBody(
+                HomeContent(
                   controller: _clipperAnimationController,
                 ),
               ],

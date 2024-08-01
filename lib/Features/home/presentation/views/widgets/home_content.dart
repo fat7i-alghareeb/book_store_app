@@ -5,8 +5,8 @@ import 'trending books widgets/trending_books_widget.dart';
 import 'newest books widgets/newest_books_widget.dart';
 import 'recently_viewed_books_widget.dart';
 
-class HomeBody extends StatelessWidget {
-  const HomeBody({
+class HomeContent extends StatelessWidget {
+  const HomeContent({
     super.key,
     required this.controller,
   });

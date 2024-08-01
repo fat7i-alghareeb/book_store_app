@@ -1,3 +1,4 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../Core/utils/text_styles.dart';
@@ -49,14 +50,14 @@ class ProfileInfo extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Theme.of(context).colorScheme.secondary.withOpacity(0.7),
+                color: context.accentColor().withOpacity(0.7),
               ),
               padding: const EdgeInsets.all(10),
               margin: const EdgeInsets.symmetric(vertical: 20),
               child: Text(
                 "Edit Profile",
                 style: Styles.textStyle14.copyWith(
-                  color: Theme.of(context).colorScheme.primary,
+                  color: context.primaryColor(),
                 ),
               ),
             )

@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:book_app/Core/utils/helper_extensions.dart';
 import 'package:book_app/Features/home/data/models/book_model.dart';
 
 import '../../../manger/newest_books_cubit/newest_books_cubit.dart';
@@ -64,7 +65,7 @@ class _HomeBookCardListViewState extends State<HomeBookCardListView> {
               width: 200,
               child: Center(
                 child: CircularProgressIndicator(
-                  color: Theme.of(context).colorScheme.secondary,
+                  color: context.accentColor(),
                 ),
               ),
             );

@@ -1,3 +1,4 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../Core/utils/text_styles.dart';
@@ -26,9 +27,7 @@ class SortByButton extends StatelessWidget {
           curve: Curves.easeInOut,
           padding: const EdgeInsets.symmetric(vertical: 10),
           decoration: BoxDecoration(
-            color: isActive
-                ? Theme.of(context).colorScheme.secondary
-                : Colors.grey[200],
+            color: isActive ? context.accentColor() : Colors.grey[200],
             borderRadius: BorderRadius.circular(30),
           ),
           child: Padding(
@@ -36,9 +35,7 @@ class SortByButton extends StatelessWidget {
             child: Text(
               label,
               style: Styles.textStyle24.copyWith(
-                color: isActive
-                    ? Theme.of(context).colorScheme.primary
-                    : Colors.black,
+                color: isActive ? context.primaryColor() : Colors.black,
                 fontWeight: FontWeight.normal,
               ),
             ),

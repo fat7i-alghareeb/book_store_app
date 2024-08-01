@@ -1,3 +1,4 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
 import 'package:flutter/material.dart';
 
 class NavigatorIcon extends StatelessWidget {
@@ -22,8 +23,8 @@ class NavigatorIcon extends StatelessWidget {
             child: Icon(
               icon,
               color: changing
-                  ? Theme.of(context).colorScheme.secondary
-                  : Theme.of(context).colorScheme.secondary.withOpacity(0.1),
+                  ? context.accentColor()
+                  : context.accentColor().withOpacity(0.1),
               size: changing ? 40 : 30,
             ),
           ),

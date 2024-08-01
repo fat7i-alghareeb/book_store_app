@@ -2,7 +2,7 @@ import 'package:book_app/Features/home/data/models/book_model.dart';
 import '../../../constants.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-void checkCache() async {
+Future<void> checkCache({bool clearNow = false}) async {
   var box = Hive.box<int>(Constants.kSavedTimeBox);
 
   if (box.values.isEmpty) {
@@ -13,7 +13,7 @@ void checkCache() async {
     var currentTime = DateTime.now();
     var difference = currentTime.difference(savedTime).inHours;
 
-    if (difference >= 24) {
+    if (difference >= 24 || clearNow) {
       Hive.box<BookModel>(Constants.kTrendingBox).clear();
       Hive.box<BookModel>(Constants.kNewestBox).clear();
       box.putAt(0, DateTime.now().millisecondsSinceEpoch);

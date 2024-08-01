@@ -1,8 +1,9 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
 import 'package:flutter/material.dart';
 
 SnackBar buildErrorWidget(String errMessage, BuildContext context) {
   return SnackBar(
-    backgroundColor: Theme.of(context).colorScheme.secondary,
+    backgroundColor: context.accentColor(),
     content: Text(
       errMessage,
       style: const TextStyle(),
