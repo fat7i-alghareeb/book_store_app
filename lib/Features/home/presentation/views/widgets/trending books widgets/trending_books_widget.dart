@@ -1,3 +1,4 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
 import 'package:book_app/Features/home/data/models/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,7 +25,7 @@ class _TrendingBooksWidgetState extends State<TrendingBooksWidget> {
 
   @override
   void initState() {
-    books = BlocProvider.of<TrendingBooksCubit>(context).books;
+    books = context.getCubit<TrendingBooksCubit>().books;
     super.initState();
   }
 
@@ -45,11 +46,8 @@ class _TrendingBooksWidgetState extends State<TrendingBooksWidget> {
             state is TrendingBooksPaginationLoading ||
             state is TrendingBooksPaginationFailure) {
           widget.controller.forward();
-          return Padding(
-            padding: const EdgeInsets.only(top: 20),
-            child: SwiperWidget(
-              books: books,
-            ),
+          return SwiperWidget(
+            books: books,
           );
         } else if (state is TrendingBooksFailure) {
           widget.controller.forward();
@@ -59,8 +57,7 @@ class _TrendingBooksWidgetState extends State<TrendingBooksWidget> {
             child: OnFetchErrorWidget(
               errorMessage: state.errMessage,
               onRetry: () {
-                BlocProvider.of<TrendingBooksCubit>(context)
-                    .fetchTrendingBooks();
+                context.getCubit<TrendingBooksCubit>().fetchTrendingBooks();
               },
             ),
           );

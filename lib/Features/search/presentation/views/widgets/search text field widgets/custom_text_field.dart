@@ -22,7 +22,7 @@ class CustomTextField extends StatelessWidget {
       child: TextField(
         onSubmitted: (value) {
           if (value.isNotEmpty) {
-            BlocProvider.of<SearchCubit>(context).fetchBooks(searchText: value);
+            context.getCubit<SearchCubit>().fetchBooks(searchText: value);
           }
         },
         controller: _searchController,

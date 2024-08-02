@@ -13,33 +13,35 @@ class HomeContent extends StatelessWidget {
   final AnimationController controller;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const CustomAppBar(),
-        TrendingBooksWidget(
-          controller: controller,
-        ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: Text(
-            "Newest",
-            style: Styles.textStyle24,
+    return SafeArea(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const CustomAppBar(),
+          TrendingBooksWidget(
+            controller: controller,
           ),
-        ),
-        const NewestBooksWidget(),
-        const Padding(
-          padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
-          child: Text(
-            "Recently Viewed",
-            style: Styles.textStyle24,
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Text(
+              "Newest",
+              style: Styles.textStyle24,
+            ),
           ),
-        ),
-        const RecentlyViewedBooksWidget(),
-        const SizedBox(
-          height: 20,
-        )
-      ],
+          const NewestBooksWidget(),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+            child: Text(
+              "Recently Viewed",
+              style: Styles.textStyle24,
+            ),
+          ),
+          const RecentlyViewedBooksWidget(),
+          const SizedBox(
+            height: 20,
+          )
+        ],
+      ),
     );
   }
 }

@@ -5,6 +5,7 @@ class Constants {
   static const kSavedBookBox = "saved_box";
   static const kRecentViewedBox = "recent_viewed";
   static const kSavedTimeBox = "saved_time";
+  static const kUserBox = "user_box";
   static const double kBorderRadius = 18;
   static int trendingBooksPageNumber = 1;
   static int newestPageNumber = 1;

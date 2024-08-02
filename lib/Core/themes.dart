@@ -4,11 +4,11 @@ const accentColor = Color(0xFFd4a056);
 ///////////////////////////////////////////////////////////////////
 const lightMainColor = Color(0xFFFFFFFF);
 const lightOnPrimaryColor = Colors.black;
-const lightNeutralColor = Color(0xFFF4F4F4);
+const lightNeutralColor = Color.fromARGB(255, 235, 235, 235);
 ///////////////////////////////////////////////////////////////////
 const darkMainColor = Color(0xFF2f4858);
 const darkOnPrimaryColor = Colors.white;
-const darkNeutralColor = Color(0xFF342F3F);
+const darkNeutralColor = Color.fromARGB(255, 85, 102, 112);
 
 ///////////////////////////////////////////////////////////////////
 ThemeData lightMode = ThemeData(

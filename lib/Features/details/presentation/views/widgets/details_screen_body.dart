@@ -38,7 +38,7 @@ class DetailsBody extends StatelessWidget {
                     ClipPath(
                       clipper: DetailsClipper(),
                       child: Container(
-                        color: Colors.grey.withOpacity(0.15),
+                        color: context.neutralColor(),
                         height: MediaQuery.of(context).size.height * .95,
                       ),
                     ),

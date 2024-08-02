@@ -20,7 +20,7 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
+class _HomeState extends State<Home> with TickerProviderStateMixin {
   late AnimationController _clipperAnimationController;
   late Animation<double> _clipperAnimation;
 
@@ -56,17 +56,34 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   }
 
   void _init() {
-    checkCache();
+    checkCache().then(
+      (value) {
+        Constants.trendingBooksPageNumber = 1;
+        Constants.newestPageNumber = 1;
+        context.getCubit<RecentViewedBooksCubit>().fetchRecentViewedBooks();
+        _clipperAnimationController = AnimationController(
+          vsync: this,
+          duration: const Duration(milliseconds: 500),
+        );
+        _clipperAnimation = Tween<double>(
+          begin: 0.0,
+          end: .65,
+        ).animate(CurvedAnimation(
+          parent: _clipperAnimationController,
+          curve: Curves.decelerate,
+        ));
+      },
+    );
     Constants.trendingBooksPageNumber = 1;
     Constants.newestPageNumber = 1;
-    BlocProvider.of<RecentViewedBooksCubit>(context).fetchRecentViewedBooks();
+    context.getCubit<RecentViewedBooksCubit>().fetchRecentViewedBooks();
     _clipperAnimationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 500),
     );
     _clipperAnimation = Tween<double>(
       begin: 0.0,
-      end: .8,
+      end: .65,
     ).animate(CurvedAnimation(
       parent: _clipperAnimationController,
       curve: Curves.decelerate,
@@ -74,7 +91,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   }
 }
 
-class HomeBody extends StatelessWidget {
+class HomeBody extends StatefulWidget {
   const HomeBody({
     super.key,
     required Animation<double> clipperAnimation,
@@ -86,17 +103,29 @@ class HomeBody extends StatelessWidget {
   final AnimationController _clipperAnimationController;
 
   @override
+  State<HomeBody> createState() => _HomeBodyState();
+}
+
+class _HomeBodyState extends State<HomeBody> {
+  Future<void> _handleRefresh() async {
+    final trendingBooksCubit = context.getCubit<TrendingBooksCubit>();
+    final newestBooksCubit = context.getCubit<NewestBooksCubit>();
+
+    await checkCache(clearNow: true);
+    await Future.wait([
+      trendingBooksCubit.fetchTrendingBooks(),
+      newestBooksCubit.fetchNewestBooks(),
+    ]);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return LiquidPullToRefresh(
-      onRefresh: () {
-        return checkCache(clearNow: true).then(
-          (value) {
-            BlocProvider.of<TrendingBooksCubit>(context).fetchTrendingBooks();
-            BlocProvider.of<NewestBooksCubit>(context).fetchNewestBooks();
-          },
-        );
-      },
+      color: context.accentColor(),
+      backgroundColor: context.primaryColor(),
+      onRefresh: _handleRefresh,
       animSpeedFactor: 3,
+      springAnimationDurationInMilliseconds: 700,
       showChildOpacityTransition: false,
       child: CustomScrollView(
         slivers: [
@@ -104,11 +133,11 @@ class HomeBody extends StatelessWidget {
             child: Stack(
               children: [
                 AnimatedClipPath(
-                  clipperAnimation: _clipperAnimation,
-                  color: context.accentColor().withOpacity(0.85),
+                  clipperAnimation: widget._clipperAnimation,
+                  color: context.accentColor(),
                 ),
                 HomeContent(
-                  controller: _clipperAnimationController,
+                  controller: widget._clipperAnimationController,
                 ),
               ],
             ),

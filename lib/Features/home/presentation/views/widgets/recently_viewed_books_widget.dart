@@ -1,3 +1,4 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
 import 'package:book_app/Features/home/data/models/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +22,7 @@ class _RecentlyViewedBooksWidgetState extends State<RecentlyViewedBooksWidget> {
   ScrollController scrollController = ScrollController();
   @override
   void initState() {
-    books = BlocProvider.of<RecentViewedBooksCubit>(context).books;
+    books = context.getCubit<RecentViewedBooksCubit>().books;
     super.initState();
   }
 
@@ -44,7 +45,7 @@ class _RecentlyViewedBooksWidgetState extends State<RecentlyViewedBooksWidget> {
       child: BlocConsumer<RecentViewedBooksCubit, RecentViewedBooksState>(
         listener: (context, state) {
           if (state is RecentViewedBooksSuccess) {
-            books = BlocProvider.of<RecentViewedBooksCubit>(context).books;
+            books = context.getCubit<RecentViewedBooksCubit>().books;
             _jumpToTop();
           }
         },

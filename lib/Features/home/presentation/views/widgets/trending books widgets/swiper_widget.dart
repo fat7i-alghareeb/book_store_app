@@ -29,7 +29,8 @@ class SwiperWidget extends StatelessWidget {
         onIndexChanged: (index) async {
           if (index >= books.length - 2 && !isLoading) {
             isLoading = true;
-            await BlocProvider.of<TrendingBooksCubit>(context)
+            await context
+                .getCubit<TrendingBooksCubit>()
                 .fetchTrendingBooks(
                   pageNumber: ++Constants.trendingBooksPageNumber,
                 )
@@ -58,7 +59,8 @@ class SwiperWidget extends StatelessWidget {
           }
           return GestureDetector(
             onTap: () {
-              BlocProvider.of<RecentViewedBooksCubit>(context)
+              context
+                  .getCubit<RecentViewedBooksCubit>()
                   .addToRecentView(books[index]);
               navigateToDetails(
                 context,

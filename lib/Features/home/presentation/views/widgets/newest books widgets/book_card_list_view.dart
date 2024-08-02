@@ -37,7 +37,8 @@ class _HomeBookCardListViewState extends State<HomeBookCardListView> {
     if (currentPositions >= 0.9 * maxScrollLength) {
       if (!isLoading) {
         isLoading = true;
-        await BlocProvider.of<NewestBooksCubit>(context)
+        await context
+            .getCubit<NewestBooksCubit>()
             .fetchNewestBooks(pageNumber: ++Constants.newestPageNumber)
             .whenComplete(() => isLoading = false);
       }

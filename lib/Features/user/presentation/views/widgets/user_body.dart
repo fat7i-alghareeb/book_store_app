@@ -22,8 +22,8 @@ class _UserBodyState extends State<UserBody> {
   @override
   void initState() {
     super.initState();
-    savedBooks = BlocProvider.of<SavedBooksCubit>(context).books;
-    favoriteBooks = BlocProvider.of<FavoriteBooksCubit>(context).books;
+    savedBooks = context.getCubit<SavedBooksCubit>().books;
+    favoriteBooks = context.getCubit<FavoriteBooksCubit>().books;
   }
 
   @override
@@ -34,14 +34,14 @@ class _UserBodyState extends State<UserBody> {
 
   void updateBooks() {
     setState(() {
-      savedBooks = BlocProvider.of<SavedBooksCubit>(context).books;
-      favoriteBooks = BlocProvider.of<FavoriteBooksCubit>(context).books;
+      savedBooks = context.getCubit<SavedBooksCubit>().books;
+      favoriteBooks = context.getCubit<FavoriteBooksCubit>().books;
     });
   }
 
   void fetchingTheChange() {
-    BlocProvider.of<SavedBooksCubit>(context).fetchSavedBooks();
-    BlocProvider.of<FavoriteBooksCubit>(context).fetchFavoriteBooks();
+    context.getCubit<SavedBooksCubit>().fetchSavedBooks();
+    context.getCubit<FavoriteBooksCubit>().fetchFavoriteBooks();
   }
 
   @override

@@ -24,9 +24,11 @@ class _DetailsBottomSheetBodyState extends State<DetailsBottomSheetBody> {
   @override
   void initState() {
     super.initState();
-    isSaved = BlocProvider.of<AddBooksCubit>(context)
+    isSaved = context
+        .getCubit<AddBooksCubit>()
         .checkIfExists(widget.book, Constants.kSavedBookBox);
-    isFavorite = BlocProvider.of<AddBooksCubit>(context)
+    isFavorite = context
+        .getCubit<AddBooksCubit>()
         .checkIfExists(widget.book, Constants.kFavoriteBooksBox);
   }
 
@@ -61,9 +63,9 @@ class _DetailsBottomSheetBodyState extends State<DetailsBottomSheetBody> {
   void _toggleSaveStatus() {
     setState(() {
       if (isSaved) {
-        BlocProvider.of<AddBooksCubit>(context).removeFromSaved(widget.book);
+        context.getCubit<AddBooksCubit>().removeFromSaved(widget.book);
       } else {
-        BlocProvider.of<AddBooksCubit>(context).addToSaved(widget.book);
+        context.getCubit<AddBooksCubit>().addToSaved(widget.book);
       }
       isSaved = !isSaved;
     });
@@ -72,9 +74,9 @@ class _DetailsBottomSheetBodyState extends State<DetailsBottomSheetBody> {
   void _toggleFavoriteStatus() {
     setState(() {
       if (isFavorite) {
-        BlocProvider.of<AddBooksCubit>(context).removeFromFavorite(widget.book);
+        context.getCubit<AddBooksCubit>().removeFromFavorite(widget.book);
       } else {
-        BlocProvider.of<AddBooksCubit>(context).addToFavorite(widget.book);
+        context.getCubit<AddBooksCubit>().addToFavorite(widget.book);
       }
       isFavorite = !isFavorite;
     });

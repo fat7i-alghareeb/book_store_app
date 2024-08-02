@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 extension ColorScheme on BuildContext {
   Color primaryColor() => Theme.of(this).colorScheme.primary;
@@ -7,6 +8,8 @@ extension ColorScheme on BuildContext {
   Color neutralColor() => Theme.of(this).colorScheme.tertiary;
 }
 
-extension CubitsProvider on BuildContext {
-//Cubit cubitProvider(T cubit) => BlocProvider.of<cubit>(this)
+extension BlocProviderExtension on BuildContext {
+  T getCubit<T extends StateStreamableSource<Object?>>() {
+    return BlocProvider.of<T>(this);
+  }
 }

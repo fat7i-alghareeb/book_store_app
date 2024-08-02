@@ -2,6 +2,8 @@ import 'package:book_app/Core/utils/helper_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../Core/shared/cubit/user_info_cubit.dart';
+
 class ThemeSwitch extends StatefulWidget {
   const ThemeSwitch({
     super.key,
@@ -15,8 +17,7 @@ class _ThemeSwitchState extends State<ThemeSwitch> {
 
   @override
   void initState() {
-    lightTheme = true;
-    // lightTheme = BlocProvider.of<UserInfoCubit>(context).userTheme;
+    lightTheme = context.getCubit<UserInfoCubit>().userTheme;
     super.initState();
   }
 
@@ -44,8 +45,7 @@ class _ThemeSwitchState extends State<ThemeSwitch> {
             setState(
               () {
                 lightTheme = !value;
-                //ThemeMode.dark;
-                //    BlocProvider.of<UserInfoCubit>(context).changeTheme();
+                context.getCubit<UserInfoCubit>().changeTheme();
               },
             );
           },

@@ -1,3 +1,4 @@
+import 'package:book_app/Core/utils/helper_extensions.dart';
 import 'package:book_app/Features/details/presentation/manger/details%20book%20cubit/cubit/details_book_cubit.dart';
 import 'package:book_app/Features/details/presentation/manger/details%20book%20cubit/cubit/details_book_state.dart';
 import 'package:book_app/Features/home/data/models/book_model.dart';
@@ -17,10 +18,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<DetailsBookCubit>(context).fetchBookDetails(
-      bookPath: widget.book.key!,
-      authorId: widget.book.authorKey![0],
-    );
+    context.getCubit<DetailsBookCubit>().fetchBookDetails(
+          bookPath: widget.book.key!,
+          authorId: widget.book.authorKey![0],
+        );
   }
 
   @override
@@ -38,9 +39,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
               child: Text(state.message),
             );
           } else {
-            return const Center(
+            return Center(
               child: CircularProgressIndicator(
-                color: Colors.amber,
+                color: context.accentColor(),
               ),
             );
           }
