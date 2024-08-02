@@ -69,7 +69,9 @@ class MainDetailsWidget extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          const BookCategoriesWidget(),
+          BookCategoriesWidget(
+            subjects: bookDetailsModel.bookDetails.subjects ?? [],
+          ),
         ],
       ),
     );

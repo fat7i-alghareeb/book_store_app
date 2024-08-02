@@ -5,32 +5,19 @@ import '../../../../../Core/utils/text_styles.dart';
 import '../../../../../constants.dart';
 
 class BookCategoriesWidget extends StatelessWidget {
-  const BookCategoriesWidget({super.key});
-
+  const BookCategoriesWidget({super.key, required this.subjects});
+  final List<String> subjects;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 45,
-      child: ListView(
+      child: ListView.builder(
         padding: EdgeInsets.zero,
         scrollDirection: Axis.horizontal,
-        children: const [
-          CategoryContainerWidget(
-            categoryName: "Poetry",
-          ),
-          CategoryContainerWidget(
-            categoryName: "History",
-          ),
-          CategoryContainerWidget(
-            categoryName: "Romance",
-          ),
-          CategoryContainerWidget(
-            categoryName: "Action",
-          ),
-          CategoryContainerWidget(
-            categoryName: "fuck",
-          )
-        ],
+        itemCount: 8,
+        itemBuilder: (context, index) => CategoryContainerWidget(
+          categoryName: subjects[index],
+        ),
       ),
     );
   }
