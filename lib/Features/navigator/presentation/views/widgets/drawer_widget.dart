@@ -1,3 +1,5 @@
+import 'package:book_app/Features/navigator/presentation/views/widgets/custom%20bottom%20bar.dart/custom_divider.dart';
+
 import 'theme_switch.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +15,7 @@ class DrawerWidget extends StatelessWidget {
       child: const SafeArea(
         child: Column(
           children: [
+            CustomDivider(dividerName: "Settings"),
             Padding(
               padding: EdgeInsets.all(15),
               child: ThemeSwitch(),
