@@ -1,4 +1,4 @@
-import 'package:book_app/Core/utils/helper_extensions.dart';
+import '../../../../../Core/utils/helper_extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../Core/utils/text_styles.dart';
@@ -30,7 +30,9 @@ class IndicatorBooksWidget extends StatelessWidget {
           ),
           Text(
             indicatorTypeName,
-            style: Styles.textStyle11,
+            style: Styles.textStyle11.copyWith(
+              color: context.onPrimaryColor(),
+            ),
           )
         ],
       ),

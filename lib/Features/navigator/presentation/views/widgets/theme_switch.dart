@@ -1,7 +1,5 @@
-import 'package:book_app/Core/utils/helper_extensions.dart';
+import '../../../../../Core/utils/helper_extensions.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../../Core/shared/cubit/user_info_cubit.dart';
 
 class ThemeSwitch extends StatefulWidget {

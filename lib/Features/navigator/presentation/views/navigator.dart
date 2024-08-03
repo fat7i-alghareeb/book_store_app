@@ -1,11 +1,9 @@
-import 'package:book_app/Core/shared/cubit/user_info_cubit.dart';
-import 'package:book_app/Core/utils/helper_extensions.dart';
+import '../../../../Core/utils/helper_extensions.dart';
 import 'package:flutter/services.dart';
 import '../../../home/presentation/views/home_view.dart';
 import 'widgets/custom%20bottom%20bar.dart/bottom_nav.dart';
 import '../../../search/presentation/views/search_view.dart';
 import 'package:flutter/material.dart';
-
 import '../../../user/presentation/views/user_view.dart';
 import 'widgets/drawer_widget.dart';
 

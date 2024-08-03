@@ -1,4 +1,4 @@
-import 'package:book_app/Features/home/data/models/book_model.dart';
+import '../../../data/models/book_model.dart';
 
 abstract class NewestBooksState {}
 

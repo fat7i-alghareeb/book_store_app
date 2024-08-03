@@ -1,4 +1,4 @@
-import 'package:book_app/Features/home/data/models/book_model.dart';
+import '../models/book_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import '../../../../Core/errors/failure.dart';

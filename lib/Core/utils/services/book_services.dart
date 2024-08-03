@@ -1,6 +1,5 @@
-import 'package:book_app/Core/shared/models/author_details.dart';
-import 'package:book_app/Features/details/data/models/authors.dart';
-import 'package:book_app/Features/details/data/models/book_details.dart';
+import '../../shared/models/author_details.dart';
+import '../../../Features/details/data/models/book_details.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 

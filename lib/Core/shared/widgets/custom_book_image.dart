@@ -1,4 +1,4 @@
-import 'package:book_app/Core/utils/helper_extensions.dart';
+import '../../utils/helper_extensions.dart';
 
 import '../../../constants.dart';
 import 'package:cached_network_image/cached_network_image.dart';

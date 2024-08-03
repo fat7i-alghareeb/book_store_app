@@ -1,8 +1,6 @@
-import 'package:book_app/Core/utils/helper_extensions.dart';
-import 'package:book_app/Features/search/presentation/manger/cubit/search_cubit.dart';
+import '../../../../../../Core/utils/helper_extensions.dart';
+import '../../../manger/cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../../../Core/utils/text_styles.dart';
 
 class CustomTextField extends StatelessWidget {

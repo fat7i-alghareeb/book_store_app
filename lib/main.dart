@@ -1,7 +1,7 @@
-import 'package:book_app/Core/shared/cubit/user_info_cubit.dart';
-import 'package:book_app/Core/shared/cubit/user_info_state.dart';
-import 'package:book_app/Core/utils/helper_extensions.dart';
-import 'package:book_app/Features/home/data/models/book_model.dart';
+import 'Core/shared/cubit/user_info_cubit.dart';
+import 'Core/shared/cubit/user_info_state.dart';
+import 'Core/utils/helper_extensions.dart';
+import 'Features/home/data/models/book_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'Core/shared/models/user.dart';
 import 'Core/utils/functions/setup_service_locator.dart';

@@ -1,4 +1,4 @@
-import 'package:book_app/Features/home/data/models/search_response.dart';
+import '../../../home/data/models/search_response.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import '../../../../Core/errors/failure.dart';

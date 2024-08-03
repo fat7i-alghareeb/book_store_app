@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:book_app/Features/home/data/models/book_model.dart';
+import '../../../data/models/book_model.dart';
 import '../../../data/repos/home_repo.dart';
 import 'trending_books_state.dart';
 

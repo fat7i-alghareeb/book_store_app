@@ -1,4 +1,4 @@
-import 'package:book_app/Features/home/data/models/search_response.dart';
+import '../../../../home/data/models/search_response.dart';
 
 abstract class SearchState {}
 

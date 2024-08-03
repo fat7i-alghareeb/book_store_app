@@ -1,5 +1,5 @@
-import 'package:book_app/Core/utils/functions/get_image.dart';
-import 'package:book_app/Features/home/data/models/book_model.dart';
+import '../../utils/functions/get_image.dart';
+import '../../../Features/home/data/models/book_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../Features/home/presentation/manger/recent_viewed_books_cubit/cubit/recent_viewed_books_cubit.dart';
 import '../../utils/functions/details_navigator.dart';

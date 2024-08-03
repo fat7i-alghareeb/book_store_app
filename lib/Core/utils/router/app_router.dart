@@ -1,6 +1,6 @@
-import 'package:book_app/Features/details/data/repo/details_repo.dart';
-import 'package:book_app/Features/details/presentation/manger/details%20book%20cubit/cubit/details_book_cubit.dart';
-import 'package:book_app/Features/home/data/repos/home_repo.dart';
+import '../../../Features/details/data/repo/details_repo.dart';
+import '../../../Features/details/presentation/manger/details%20book%20cubit/cubit/details_book_cubit.dart';
+import '../../../Features/home/data/repos/home_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../Features/details/presentation/manger/cubit/add_books_cubit.dart';
 import '../../../Features/details/presentation/views/details_screen.dart';

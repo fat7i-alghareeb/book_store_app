@@ -1,4 +1,4 @@
-import 'package:book_app/Core/shared/models/bio.dart';
+import 'bio.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'author_details.g.dart';
 

@@ -1,6 +1,6 @@
-import 'package:book_app/Features/details/data/repo/details_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../data/repo/details_repo.dart';
 import 'details_book_state.dart';
 
 class DetailsBookCubit extends Cubit<DetailsBookState> {

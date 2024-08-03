@@ -1,11 +1,7 @@
-import 'dart:math';
-
-import 'package:book_app/Core/utils/helper_extensions.dart';
-import 'package:book_app/Features/home/data/models/book_model.dart';
-
+import '../../../../../../Core/utils/helper_extensions.dart';
+import '../../../../data/models/book_model.dart';
 import '../../../manger/newest_books_cubit/newest_books_cubit.dart';
 import '../../../../../../constants.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../Core/shared/widgets/book_card.dart';
 import 'package:flutter/material.dart';
 

@@ -1,5 +1,5 @@
-import 'package:book_app/Core/utils/helper_extensions.dart';
-import 'package:book_app/Features/home/data/models/book_model.dart';
+import '../../../../../Core/utils/helper_extensions.dart';
+import '../../../data/models/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../Core/shared/widgets/books_list_view.dart';

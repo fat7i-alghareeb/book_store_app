@@ -1,5 +1,5 @@
-import 'package:book_app/Core/utils/functions/get_image.dart';
-import 'package:book_app/Features/home/data/models/book_model.dart';
+import '../../utils/functions/get_image.dart';
+import '../../../Features/home/data/models/book_model.dart';
 import '../../utils/functions/details_navigator.dart';
 import 'package:flutter/material.dart';
 import 'custom_book_image.dart';

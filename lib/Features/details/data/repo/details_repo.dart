@@ -1,7 +1,7 @@
-import 'package:book_app/Core/shared/models/author_details.dart';
-import 'package:book_app/Features/details/data/models/book_details.dart';
-import 'package:book_app/Features/details/data/models/book_details_model.dart';
-import 'package:book_app/Features/details/data/models/ratings_response.dart';
+import '../../../../Core/shared/models/author_details.dart';
+import '../models/book_details.dart';
+import '../models/book_details_model.dart';
+import '../models/ratings_response.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import '../../../../Core/errors/failure.dart';

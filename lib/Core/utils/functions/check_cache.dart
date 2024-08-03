@@ -1,4 +1,4 @@
-import 'package:book_app/Features/home/data/models/book_model.dart';
+import '../../../Features/home/data/models/book_model.dart';
 import '../../../constants.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 

@@ -1,4 +1,4 @@
-import 'package:book_app/Features/details/data/models/book_details_model.dart';
+import '../../../data/models/book_details_model.dart';
 import 'package:flutter/material.dart';
 import '../../../../../Core/utils/text_styles.dart';
 import 'book_categories.dart';

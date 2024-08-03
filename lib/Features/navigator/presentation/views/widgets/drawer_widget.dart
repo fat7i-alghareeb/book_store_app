@@ -1,4 +1,4 @@
-import 'package:book_app/Features/navigator/presentation/views/widgets/theme_switch.dart';
+import 'theme_switch.dart';
 import 'package:flutter/material.dart';
 
 class DrawerWidget extends StatelessWidget {

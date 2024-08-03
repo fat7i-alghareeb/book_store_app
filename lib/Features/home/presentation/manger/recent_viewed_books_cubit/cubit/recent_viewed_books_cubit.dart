@@ -1,4 +1,4 @@
-import 'package:book_app/Features/home/data/models/book_model.dart';
+import '../../../../data/models/book_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../Core/utils/functions/books_operations_with_boxes.dart';
 import '../../../../../../constants.dart';

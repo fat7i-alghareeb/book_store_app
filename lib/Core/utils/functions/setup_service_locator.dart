@@ -1,11 +1,8 @@
-import 'package:book_app/Features/details/data/repo/details_repo.dart';
-import 'package:book_app/Features/search/data/repo/search_repo.dart';
-import 'package:book_app/Features/search/presentation/manger/cubit/search_cubit.dart';
-
+import '../../../Features/details/data/repo/details_repo.dart';
+import '../../../Features/search/data/repo/search_repo.dart';
 import '../../../Features/user/data/repo/user_repo_imp.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-
 import '../../../Features/home/data/data_sources/home_local_data_source.dart';
 import '../../../Features/home/data/data_sources/home_remote_data_source.dart';
 import '../../../Features/home/data/repos/home_repo.dart';
