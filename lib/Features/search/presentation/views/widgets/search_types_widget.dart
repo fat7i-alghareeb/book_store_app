@@ -59,7 +59,7 @@ class SearchTypeWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(
           Constants.kBorderRadius,
         ),
-        color: isSelected ? context.accentColor() : Colors.grey[200],
+        color: isSelected ? context.accentColor() : context.neutralColor(),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
