@@ -59,7 +59,9 @@ class SearchTypeWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(
           Constants.kBorderRadius,
         ),
-        color: isSelected ? context.accentColor() : context.neutralColor(),
+        color: isSelected
+            ? context.accentColor()
+            : context.neutralColor().withOpacity(.5),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -67,7 +69,9 @@ class SearchTypeWidget extends StatelessWidget {
           child: Text(
             typeName,
             style: Styles.textStyle14.copyWith(
-              color: isSelected ? context.primaryColor() : Colors.black,
+              color: isSelected
+                  ? context.primaryColor()
+                  : context.onPrimaryColor(),
             ),
           ),
         ),
