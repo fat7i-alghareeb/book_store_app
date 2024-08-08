@@ -1,9 +1,10 @@
-import '../../../../../Core/utils/helper_extensions.dart';
-import '../../../data/models/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../../Core/shared/widgets/books_list_view.dart';
+import '../../../../../Core/utils/helper_extensions.dart';
 import '../../../../../Core/utils/text_styles.dart';
+import '../../../data/models/book_model.dart';
 import '../../manger/recent_viewed_books_cubit/cubit/recent_viewed_books_cubit.dart';
 import '../../manger/recent_viewed_books_cubit/cubit/recent_viewed_books_state.dart';
 

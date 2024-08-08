@@ -1,16 +1,16 @@
-import '../../../../Core/utils/helper_extensions.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 import '../../../../Core/utils/functions/check_cache.dart';
-import '../manger/recent_viewed_books_cubit/cubit/recent_viewed_books_cubit.dart';
-import '../../../../constants.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../Core/utils/functions/setup_service_locator.dart';
-import '../manger/trending_books_cubit/trending_books_cubit.dart';
-import '../manger/newest_books_cubit/newest_books_cubit.dart';
-import 'widgets/animated_clipper.dart';
+import '../../../../Core/utils/helper_extensions.dart';
+import '../../../../constants.dart';
 import '../../data/repos/home_repo.dart';
+import '../manger/newest_books_cubit/newest_books_cubit.dart';
+import '../manger/recent_viewed_books_cubit/cubit/recent_viewed_books_cubit.dart';
+import '../manger/trending_books_cubit/trending_books_cubit.dart';
+import 'widgets/animated_clipper.dart';
 import 'widgets/home_content.dart';
 
 class Home extends StatefulWidget {
@@ -35,6 +35,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     _clipperAnimationController.dispose();
     super.dispose();
   }
+
+  //todo remove multiBlocProvider
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +123,7 @@ class _HomeBodyState extends State<HomeBody> {
   @override
   Widget build(BuildContext context) {
     return LiquidPullToRefresh(
-      color: context.accentColor(),
+      color: context.accentColor().withOpacity(0.8),
       backgroundColor: context.primaryColor(),
       onRefresh: _handleRefresh,
       animSpeedFactor: 3,

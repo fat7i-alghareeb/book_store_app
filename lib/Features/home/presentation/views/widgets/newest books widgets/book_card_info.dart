@@ -1,8 +1,8 @@
-import '../../../../../../Core/utils/helper_extensions.dart';
-
-import '../../../../../../constants.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../../Core/utils/helper_extensions.dart';
 import '../../../../../../Core/utils/text_styles.dart';
+import '../../../../../../constants.dart';
 
 class BookCardInfo extends StatelessWidget {
   const BookCardInfo({

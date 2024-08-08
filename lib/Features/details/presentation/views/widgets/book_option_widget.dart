@@ -12,27 +12,26 @@ import 'details_bottom_sheet_body.dart';
 class BookOptionWidget extends StatelessWidget {
   const BookOptionWidget({
     super.key,
-    required this.hight,
     required this.book,
   });
-  final double hight;
   final BookModel book;
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final url = "https://openlibrary.org${book.key}";
+    final height = MediaQuery.of(context).size.height;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       child: GestureDetector(
         onTap: () => urlLauncher(url),
         child: SizedBox(
-          height: hight,
+          height: height * .081,
           child: Row(
             children: [
               Container(
                 width: width * .65,
                 decoration: BoxDecoration(
-                  color: context.accentColor().withOpacity(0.9),
+                  color: context.accentColor(),
                   borderRadius: BorderRadius.circular(Constants.kBorderRadius),
                 ),
                 child: Center(

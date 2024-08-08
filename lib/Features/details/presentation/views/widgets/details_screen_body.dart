@@ -1,18 +1,12 @@
-import '../../../../../Core/utils/helper_extensions.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
-import '../../../../../Core/shared/widgets/app_icon.dart';
-import '../../../../../Core/shared/widgets/custom_book_image.dart';
-import '../../../../../Core/utils/functions/get_image.dart';
-import '../../../../../Core/utils/text_styles.dart';
 import '../../../../home/data/models/book_model.dart';
-import '../../../../home/presentation/views/widgets/clipper.dart';
 import '../../../data/models/book_details_model.dart';
-import 'book_option_widget.dart';
-import 'main_details_widget.dart';
+import 'animated_details_bottom.dart';
+import 'animated_details_clipper.dart';
+import 'animated_details_content.dart';
+import 'details_back_button.dart';
 
-class DetailsBody extends StatelessWidget {
+class DetailsBody extends StatefulWidget {
   const DetailsBody({
     super.key,
     required this.book,
@@ -23,9 +17,42 @@ class DetailsBody extends StatelessWidget {
   final BookModel book;
 
   @override
-  Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
+  State<DetailsBody> createState() => _DetailsBodyState();
+}
 
+class _DetailsBodyState extends State<DetailsBody>
+    with TickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  void initAnimations() {
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 800),
+    );
+    _animation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeInOut,
+    );
+
+    _controller.forward();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    initAnimations();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -35,100 +62,24 @@ class DetailsBody extends StatelessWidget {
               SliverToBoxAdapter(
                 child: Stack(
                   children: [
-                    ClipPath(
-                      clipper: DetailsClipper(),
-                      child: Container(
-                        color: context.neutralColor(),
-                        height: MediaQuery.of(context).size.height * .95,
-                      ),
+                    AnimatedDetailsClipper(animation: _animation),
+                    AnimatedDetailsContent(
+                        animation: _animation, widget: widget),
+                    SlideTransition(
+                      position: Tween<Offset>(
+                        begin: const Offset(-1, 0),
+                        end: Offset.zero,
+                      ).animate(_animation),
+                      child: const DetailsBackButton(),
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * .12,
-                        ),
-                        Center(
-                          child: SizedBox(
-                            height: MediaQuery.of(context).size.height * .35,
-                            child: Hero(
-                              tag: book.key!,
-                              child: CustomBookImage(
-                                image: getImage(
-                                  olid: book.coverEditionKey,
-                                  id: book.coverId,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        MainDetailsWidget(bookDetailsModel: bookDetailsModel),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                "Book Overview ",
-                                style: Styles.textStyle24,
-                              ),
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              Text(
-                                bookDetailsModel
-                                        .bookDetails.description?.value ??
-                                    " ",
-                                style: Styles.textStyle14,
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                    const DetailsBackButton(),
                   ],
                 ),
               ),
             ],
           ),
         ),
-        BookOptionWidget(
-          hight: height * .081,
-          book: book,
-        ),
+        AnimatedDetailsBottom(animation: _animation, book: widget.book),
       ],
-    );
-  }
-}
-
-class DetailsBackButton extends StatelessWidget {
-  const DetailsBackButton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topLeft,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 40,
-        ),
-        child: AppIcon(
-          onPressed: () {
-            Navigator.pop(context);
-            HapticFeedback.heavyImpact();
-          },
-          color: context.primaryColor(),
-          widget: Icon(
-            Icons.arrow_back_ios_new_rounded,
-            color: context.accentColor(),
-            size: 25,
-          ),
-        ),
-      ),
     );
   }
 }

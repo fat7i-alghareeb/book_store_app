@@ -1,7 +1,8 @@
-import '../../../../data/models/book_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../../../Core/utils/functions/books_operations_with_boxes.dart';
 import '../../../../../../constants.dart';
+import '../../../../data/models/book_model.dart';
 import '../../../../data/repos/home_repo.dart';
 import 'recent_viewed_books_state.dart';
 

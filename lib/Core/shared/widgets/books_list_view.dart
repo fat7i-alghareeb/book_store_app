@@ -1,7 +1,8 @@
-import '../../utils/functions/get_image.dart';
+import 'package:flutter/material.dart';
+
 import '../../../Features/home/data/models/book_model.dart';
 import '../../utils/functions/details_navigator.dart';
-import 'package:flutter/material.dart';
+import '../../utils/functions/get_image.dart';
 import 'custom_book_image.dart';
 
 class BooksListViewWidget extends StatelessWidget {
